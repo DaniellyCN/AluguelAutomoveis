@@ -8,8 +8,6 @@ public class LocadoraVeiculos {
         v1.setPlaca("OOO9999");
         v2.setAno(2022);
         v2.setValorD(50.00);
-
-        
         
         System.out.println(lista.toString());
 	}
