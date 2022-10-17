@@ -110,7 +110,6 @@ public class Veiculo implements IVeiculos{
    public String getInfo() {
         for(int i=0;i<listaV.size();i++){
             return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
-
         }
         return null;
     } 
