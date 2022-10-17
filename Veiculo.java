@@ -106,20 +106,32 @@ public class Veiculo implements IVeiculos{
         return null;
     }
 
-     @Override
-   public String getInfo() {
+    /* (non-Javadoc)
+     * @see IVeiculos#getInfo()
+     */
+    @Override
+    public String getInfo() {
         for(int i=0;i<listaV.size();i++){
             return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
         }
         return null;
     } 
 
+    /* (non-Javadoc)
+     * @see IVeiculos#getResumoInfo()
+     */
     @Override
     public String getResumoInfo() {
-        // TODO Auto-generated method stub
+        for(int i=0;i<listaV.size();i++){
+            return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+        }
         return null;
+
     }
 
+    /* (non-Javadoc)
+     * @see IVeiculos#remove(java.lang.String)
+     */
     @Override
     public boolean remove(String placa) {
         for(int i=0;i<listaV.size();i++){
@@ -131,6 +143,9 @@ public class Veiculo implements IVeiculos{
         return false;
     }
 
+    /* (non-Javadoc)
+     * @see IVeiculos#existe(java.lang.String)
+     */
     @Override
     public boolean existe(String placa) {
         for(int i=0;i<listaV.size();i++){
@@ -141,6 +156,9 @@ public class Veiculo implements IVeiculos{
         return false;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     public String toString(){
         String dados="Placa: "+placa+" Ano: "+ano+" Valor da diária: "+valorDiaria;
         for(Veiculo v: listaV){
