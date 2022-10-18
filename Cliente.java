@@ -32,4 +32,15 @@ public class Cliente{
     public int cep(){return cep;}
     public int getTelefone(){return telefone;}
 
+    public void setNome(String nome){this.nome = nome;}
+    public void setCpf(int cpf){this.cpf = cpf;}
+    public void setCnh(int cnh){this.cnh = cnh;}
+    public void setRua(String rua){this.rua = rua;}
+    public void setNumeroRua(int numero){numCasa = numero;}
+    public void setBairro(String bairro){this.bairro = bairro;}
+    public void setCidade(String cidade){this.cidade = cidade;}
+    public void setCep(int cep){this.cep = cep;}
+    public void setTelefone(int telefone){this.telefone = telefone;}
+    
+
 }

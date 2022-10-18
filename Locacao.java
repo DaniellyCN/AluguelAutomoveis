@@ -1,16 +1,16 @@
-package AluguelAutomoveis;
+
 public class Locacao{
     private int codigoDaLocacao;
-    //private Cliente cliente;
-   // private Veiculo veiculo;
+    private Cliente cliente;
+    private Veiculo veiculo;
     private boolean seguro;
     private int dataInicial;
     private int dataFinal;
-    //Cliente cliente, Veiculo veiculo,
-    public Locacao (int codigoDaLocacao,  boolean seguro, int dataInicial, int dataFinal){
+    
+    public Locacao (int codigoDaLocacao, Cliente cliente, Veiculo veiculo, boolean seguro, int dataInicial, int dataFinal){
         this.codigoDaLocacao = codigoDaLocacao;
-        //this.cliente = cliente;
-        //this.veiculo = veiculo;
+        this.cliente = cliente;
+        this.veiculo = veiculo;
         this.seguro = seguro;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -22,18 +22,18 @@ public class Locacao{
     public void setCodigoDaLocacao(int codigoDaLocacao) {
         this.codigoDaLocacao = codigoDaLocacao;
     }
-    //public Cliente getCliente() {
-     //   return cliente;
-    //}
-    //public void setCliente(Cliente cliente) {
-      //  this.cliente = cliente;
-    //}
-    //public Veiculo getVeiculo() {
-      //  return veiculo;
-    //}
-   // public void setVeiculo(Veiculo veiculo) {
-     //   this.veiculo = veiculo;
-    //}
+    public Cliente getCliente() {
+       return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
     public boolean getSeguro() {
         return seguro;
     }
@@ -54,11 +54,8 @@ public class Locacao{
     }
 
     public String toString (){
-        return "Código da locação: "+codigoDaLocacao+ "Seguro: "+seguro+ "Data inicial da locação: "+dataInicial+"Data final da locação: "+dataFinal;
-       // "Cliente"+cliente+"Veículo"+veiculo+
-    }
-
-    public void add(Locacao l1) {
-    }
+        return "Código da locação: "+codigoDaLocacao+"Cliente"+cliente+"Veículo"+veiculo+"Seguro: "+seguro+ "Data inicial da locação: "+dataInicial+"Data final da locação: "+dataFinal;
+    } 
+        
 
 }

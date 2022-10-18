@@ -6,7 +6,8 @@ public class Caminhao extends Veiculo{
      * @param numEixos
      * @param cargaMax
      */
-    public Caminhao(int numEixos, int cargaMax) {
+    public Caminhao(String placa,int numEixos, int cargaMax) {
+        super(placa);
         this.numEixos=numEixos;
         this.cargaMax=cargaMax;
     } 

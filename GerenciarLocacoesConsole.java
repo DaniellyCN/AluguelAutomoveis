@@ -1,4 +1,4 @@
-package AluguelAutomoveis;
-public interface GerenciarLocacoesConsole  {
+
+public class GerenciarLocacoesConsole  {
 
 }
