@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
-public class Veiculo implements IVeiculos{
+public abstract class  Veiculo implements IVeiculos{
+
 
     private String placa;
     private int ano;
@@ -14,7 +15,6 @@ public class Veiculo implements IVeiculos{
      * @param valorDiaria
      */
     public Veiculo(String placa, int ano, double valorDiaria){
-        //listaV= new ArrayList<>();
         this.placa=placa;
         this.ano=ano;
         this.valorDiaria=valorDiaria;
@@ -25,7 +25,6 @@ public class Veiculo implements IVeiculos{
      * @param placa
      */
     public Veiculo(String placa){
-       // listaV= new ArrayList<>();
         this.placa=placa;
         this.ano=0;
         this.valorDiaria=0;
@@ -36,13 +35,14 @@ public class Veiculo implements IVeiculos{
      * @param placa
      */
     public Veiculo(){
-        //listaV= new ArrayList<>();
+
         this.placa="AAA0000";
         this.ano=0;
         this.valorDiaria=0;
     }
 
     /**
+
      * @return String
      */
     public String getPlaca(){return placa;}
@@ -123,7 +123,11 @@ public class Veiculo implements IVeiculos{
     @Override
     public String getResumoInfo() {
         for(int i=0;i<listaV.size();i++){
-            return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+            if(listaV.get(i) != null){
+                return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+            }
+            return null;
+
         }
         return null;
 
