@@ -16,6 +16,26 @@ public abstract class Veiculo{
     }
 
     /**
+     * @param placa
+     * @param ano
+     */
+    public Veiculo(String placa, int ano){
+        this.placa=placa;
+        this.ano=ano;
+        this.valorDiaria=0;
+    }
+    
+    /**
+     * @param placa
+     * @param valorDiaria
+     */
+    public Veiculo(String placa, double valorDiaria){
+        this.placa=placa;
+        this.ano=0;
+        this.valorDiaria=valorDiaria;
+    }
+
+    /**
      * Construtor da classe Veiculo com um param
      * @param placa
      */
