@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class GerenciarVeiculo implements IVeiculos{
 
-    ArrayList<Veiculo> listaV = new ArrayList<>();
+    ArrayList<Veiculo> listaV=new ArrayList<>();
     
     /* (non-Javadoc)
     * @see IVeiculos#add(Veiculo)
@@ -44,10 +44,11 @@ public class GerenciarVeiculo implements IVeiculos{
      */
     @Override
     public String getInfo() {
+        String dados = "";
         for(int i=0;i<listaV.size();i++){
-            return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+            dados += "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD()+"\n";
         }
-        return null;
+        return dados;
     } 
 
     /* (non-Javadoc)
@@ -55,14 +56,13 @@ public class GerenciarVeiculo implements IVeiculos{
      */
     @Override
     public String getResumoInfo() {
+        String dados = "";
         for(int i=0;i<listaV.size();i++){
             if(listaV.get(i) != null){
-                return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+                dados += "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
-            return null;
-
         }
-        return null;
+        return dados;
 
     }
 
