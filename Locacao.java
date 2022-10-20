@@ -22,15 +22,17 @@ public class Locacao{
     public void setCodigoDaLocacao(int codigoDaLocacao) {
         this.codigoDaLocacao = codigoDaLocacao;
     }
-    public Cliente getCliente() {
-       return cliente;
+    public Cliente getCliente(){
+        return cliente;
     }
+    
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
     public Veiculo getVeiculo() {
         return veiculo;
     }
+      
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
@@ -54,8 +56,7 @@ public class Locacao{
     }
 
     public String toString (){
-        return "Código da locação: "+codigoDaLocacao+"Cliente"+cliente+"Veículo"+veiculo+"Seguro: "+seguro+ "Data inicial da locação: "+dataInicial+"Data final da locação: "+dataFinal;
-    } 
-        
-
+        return "Código da locação: "+codigoDaLocacao+ "Cliente"+cliente+"Veículo"+veiculo + "Seguro: "+seguro+ "Data inicial da locação: "+dataInicial+"Data final da locação: "+dataFinal;
+      
+    }
 }
