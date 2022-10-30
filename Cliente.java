@@ -8,10 +8,10 @@ public class Cliente {
     private String bairro;
     private String cidade;
     private int cep;
-    private int telefone;
+    private long telefone;
 
     public Cliente(String nome, long cpf, int cnh, String rua, int numCasa, String bairro, String cidade, int cep,
-            int telefone) {
+            long telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.cnh = cnh;
@@ -55,7 +55,7 @@ public class Cliente {
         return cep;
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
@@ -91,13 +91,14 @@ public class Cliente {
         this.cep = cep;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
     public String toString() {
-        return "Nome: " + nome + "CPF" + cpf + "cnh" + cnh + "rua" + rua + "numero da casa" + numCasa + "bairro"
-                + bairro + "cidade" + cidade + "cep" + cep + "telefone" + telefone;
+        return "Nome: " + nome + " CPF: " + cpf + " cnh: " + cnh + " rua: " + rua + " numero da casa: " + numCasa
+                + " bairro: "
+                + bairro + " cidade: " + cidade + " cep: " + cep + " telefone: " + telefone;
     }
 
 }
