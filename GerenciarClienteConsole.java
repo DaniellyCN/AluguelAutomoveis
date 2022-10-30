@@ -1,9 +1,12 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GerenciarClienteConsole {
     private Locacao locacao;
     private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
     Scanner entrada = new Scanner(System.in);
+    static ArrayList<Cliente> listaDClientes = new ArrayList<>();
 
     public void menuCadastroCliente() {
         int op;
@@ -32,29 +35,29 @@ public class GerenciarClienteConsole {
 
     public void abrirConta() {
 
-        Cliente cliente = new Cliente(null, 0, 0, null, 0, null, null, 0, 0);
+        Cliente cliente = new Cliente("", 0, 0, "", 0, "", "", 0, 0);
 
         System.out.println("Abertura de conta");
-        System.out.print("Informe o seu nome : ");
+        System.out.println("Informe o seu nome : ");
         cliente.setNome(entrada.nextLine());
 
-        System.out.print("Informe o CPF do titular: ");
+        System.out.println("Informe o CPF do titular: ");
         cliente.setCpf(entrada.nextLong());
 
-        System.out.print("Informe a rua: ");
+        System.out.println("Informe a rua: ");
         cliente.setRua(entrada.nextLine());
 
-        System.out.print("Informe o numCasa: ");
+        System.out.println("Informe o numCasa: ");
         cliente.setNumeroCasa(entrada.nextInt());
 
-        System.out.print("Informe o bairro: ");
+        System.out.println("Informe o bairro: ");
         cliente.setBairro(entrada.nextLine());
 
-        System.out.print("Informe o cidade: ");
+        System.out.println("Informe o cidade: ");
         cliente.setCidade(entrada.nextLine());
 
         System.out.print("Informe o telefone do titular: ");
-        cliente.setTelefone(entrada.nextInt());
+        cliente.setTelefone(entrada.nextLong());
 
         System.out.println("Conta cadastrada!!");
 
@@ -63,10 +66,11 @@ public class GerenciarClienteConsole {
     }
 
     private static void add(Cliente cliente) {
+        listaDClientes.add(cliente);
     }
 
     public void verificarConta() {
-
+        System.out.println(listaDClientes.toString());
     }
 
     public void deletarConta() {
