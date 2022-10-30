@@ -1,13 +1,17 @@
 public class Carro extends Veiculo {
-    protected String arC;
+    protected boolean arC;
     protected double mediaKm;
     protected int numeroPass, numeroPorta;
 
-    public Carro(String placa) {
+    public Carro(String placa, boolean arC, double mediaKm, int numeroPass, int numeroPorta) {
         super(placa);
+        this.arC= arC;
+        this.mediaKm = mediaKm;
+        this.numeroPass = numeroPass;
+        this.numeroPorta = numeroPorta;
     }
 
-    public String getArC() {
+    public boolean getArC() {
         return arC;
     }
 
@@ -23,7 +27,7 @@ public class Carro extends Veiculo {
         return numeroPorta;
     }
 
-    public void setArC(String arC) {
+    public void setArC( boolean arC) {
         this.arC = arC;
     }
 

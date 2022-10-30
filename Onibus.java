@@ -1,21 +1,27 @@
 public class Onibus extends Veiculo {
-    protected String categoria, internet, arC;
-    protected int numeroPass;
+    private String categoria;
+    private boolean internet;
+    private boolean arC;
+    private  int numeroPass;
 
-    public Onibus(String placa) {
+    public Onibus(String placa, String categoria, boolean internet, boolean
+    arC, int numeroPass) {
         super(placa);
-
+        this.categoria = categoria;
+        this.internet =internet;
+        this.numeroPass = numeroPass;
+        this.arC = arC;
     }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public String getInternet() {
+    public boolean getInternet() {
         return internet;
     }
 
-    public String getArC() {
+    public boolean getArC() {
         return arC;
     }
 
@@ -27,11 +33,11 @@ public class Onibus extends Veiculo {
         this.categoria = categoria;
     }
 
-    public void setInternet(String internet) {
+    public void setInternet( boolean internet) {
         this.internet = internet;
     }
 
-    public void setArC(String arC) {
+    public void setArC(boolean arC) {
         this.arC = arC;
     }
 

@@ -1,6 +1,3 @@
-package AluguelAutomoveis;
-
-
 /**
  * Interface que permite manipular um conjunto de locações.
  * @author Aline
