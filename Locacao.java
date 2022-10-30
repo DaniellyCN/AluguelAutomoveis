@@ -1,13 +1,14 @@
+import java.sql.Date;
 
 public class Locacao{
     private int codigoDaLocacao;
     private Cliente cliente;
     private Veiculo veiculo;
     private boolean seguro;
-    private int dataInicial;
-    private int dataFinal;
+    private Date dataInicial;
+    private Date dataFinal;
     
-    public Locacao (int codigoDaLocacao, Cliente cliente, Veiculo veiculo, boolean seguro, int dataInicial, int dataFinal){
+    public Locacao (int codigoDaLocacao, Cliente cliente, Veiculo veiculo, boolean seguro, Date dataInicial, Date dataFinal){
         this.codigoDaLocacao = codigoDaLocacao;
         this.cliente = cliente;
         this.veiculo = veiculo;
@@ -16,6 +17,9 @@ public class Locacao{
         this.dataFinal = dataFinal;
     }
 
+    public Locacao (){
+        
+    }
     public int getCodigoDaLocacao() {
         return codigoDaLocacao;
     }
@@ -42,16 +46,16 @@ public class Locacao{
     public void setSeguro(boolean seguro) {
         this.seguro = seguro;
     }
-    public int getDataInicial() {
+    public Date getDataInicial() {
         return dataInicial;
     }
-    public void setDataInicial(int dataInicial) {
+    public void setDataInicial(Date dataInicial) {
         this.dataInicial = dataInicial;
     }
-    public int getDataFinal() {
+    public Date getDataFinal() {
         return dataFinal;
     }
-    public void setDataFinal(int dataFinal) {
+    public void setDataFinal(Date dataFinal) {
         this.dataFinal = dataFinal;
     }
 

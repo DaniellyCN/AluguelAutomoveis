@@ -10,12 +10,12 @@ public class Cliente{
     private int cep;
     private int telefone;
 
-    public Cliente(String nome, int cpf, int cnh, String rua, int casa, String bairro, String cidade, int cep, int telefone){
+    public Cliente(String nome, int cpf, int cnh, String rua, int numCasa, String bairro, String cidade, int cep, int telefone){
         this.nome = nome;
         this.cpf = cpf;
         this.cnh = cnh;
         this.rua = rua;
-        numCasa = casa;
+        this.numCasa = numCasa;
         this.bairro = bairro;
         this.cidade = cidade;
         this.cep = cep;
@@ -26,7 +26,7 @@ public class Cliente{
     public int getCpf(){return cpf;}
     public int getCnh(){return cnh;}
     public String getRua(){return rua;}
-    public int getNumeroRua(){return numCasa;}
+    public int getNumeroCasa(){return numCasa;}
     public String getBairro(){return bairro;}
     public String getCidade(){return cidade;}
     public int cep(){return cep;}
@@ -36,11 +36,14 @@ public class Cliente{
     public void setCpf(int cpf){this.cpf = cpf;}
     public void setCnh(int cnh){this.cnh = cnh;}
     public void setRua(String rua){this.rua = rua;}
-    public void setNumeroRua(int numero){numCasa = numero;}
+    public void setNumeroCasa(int numero){numCasa = numero;}
     public void setBairro(String bairro){this.bairro = bairro;}
     public void setCidade(String cidade){this.cidade = cidade;}
     public void setCep(int cep){this.cep = cep;}
     public void setTelefone(int telefone){this.telefone = telefone;}
     
+    public String toString (){
+        return "Nome: "+nome+"CPF"+cpf+"cnh"+ cnh+"rua"+rua+"numero da casa"+numCasa+"bairro"+bairro+"cidade"+cidade+"cep"+cep+"telefone"+telefone;
+    }
 
 }
