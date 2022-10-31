@@ -1,10 +1,17 @@
 import java.util.Scanner;
 
 public class GerenciarClienteConsole{
-    private Locacao locacao;
-    private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
+    private GerenciarClientes gerenciarClientes;
     Scanner entrada = new Scanner(System.in);
+    
 
+    public GerenciarClienteConsole (GerenciarClientes gerenciarClientes){
+        this.gerenciarClientes = gerenciarClientes;
+    }
+
+    public GerenciarClienteConsole(){
+
+    }
 
     public void menuCadastroCliente(){
         int op; 
@@ -26,7 +33,7 @@ public class GerenciarClienteConsole{
                 case 3:
                 deletarConta();
                     default: 
-                    System.out.println("Opção inválida");
+                    //System.out.println("Opção inválida");
             }
         }while(op!=0); 
     }
@@ -60,21 +67,34 @@ public class GerenciarClienteConsole{
 
             System.out.println("Conta cadastrada!!");
 
-
-           GerenciarClienteConsole.add(cliente);
-            
-        
+            add(cliente);
         
     }
 
+    private void add(Cliente cliente) {
+       gerenciarClientes.add(cliente);
+    }
     public void verificarConta(){
-
+        System.out.println(gerenciarClientes.getResumoInfo());
     }
     public void deletarConta(){
-        System.out.println("você deseja excluir sua conta?");
        
-    }
+        int opcao; 
+        
+        System.out.println("\n\nDeseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
+        opcao = entrada.nextInt();
+        if(opcao == 1){
+            System.out.println("Digite seu CPF:");
+            long cpf = entrada.nextLong();
+            
+            if(gerenciarClientes.existe(cpf)){
+                gerenciarClientes.remove(cpf);
+                System.out.println("Conta excluida");
+            }
+            }if(opcao == 2){
+                System.out.println("Cadastro cancelado");
+            }
 
-   
+    }
 
 }

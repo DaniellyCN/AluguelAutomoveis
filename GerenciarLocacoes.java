@@ -51,7 +51,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
                 listaDeLocacoes.remove(i);
                 return true;
             }
-
+            
         }
         return false;
     }

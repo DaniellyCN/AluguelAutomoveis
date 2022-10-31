@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.ArrayList;
 
 public class GerenciarClientes implements IClientes{
@@ -6,8 +5,7 @@ public class GerenciarClientes implements IClientes{
     ArrayList<Cliente> listaDClientes=new ArrayList<>();
     
    
-    @Override
-    public  void add(Cliente c) {
+    public void add(Cliente c) {
          listaDClientes.add(c);    
     }
 
@@ -47,7 +45,7 @@ public class GerenciarClientes implements IClientes{
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
             if(listaDClientes.get(i) != null){
-                dados += "CPF do cliente: "+listaDClientes.get(i).getCpf();
+                dados += "CPF do cliente: "+listaDClientes.get(i).getCpf()+ "nome"+listaDClientes.get(i).getNome();
             }
         }
         return dados;
@@ -60,7 +58,7 @@ public class GerenciarClientes implements IClientes{
                 listaDClientes.remove(i);
                 return true;
             }
-        }
+        } System.out.println(" CPf encontrado, o cpf do cliente é: "+ CPF);
         return false;
     }
 
@@ -74,5 +72,7 @@ public class GerenciarClientes implements IClientes{
         }
         return false;
     }
+
+    //toString
 
 }
