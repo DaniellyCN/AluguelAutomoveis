@@ -31,6 +31,10 @@ public class Caminhao extends Veiculo{
      * @param cargaMax
      */
     public void seCargaMax(int cargaMax){this.cargaMax=cargaMax;}
+    public String toString() {
+        return "Número de eixos: "+numEixos+" Carga Maxima: "+cargaMax;
+        
+    }
 
     
 }
