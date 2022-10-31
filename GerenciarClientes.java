@@ -15,7 +15,7 @@ public class GerenciarClientes implements IClientes{
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()== CPF) {
                 return listaDClientes.get(i);
-            }
+            } 
         }
         return null;
     }

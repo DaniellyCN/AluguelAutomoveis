@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 
+
 public class GerenciarLocacoesConsole  {
     private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
     private GerenciarClientes gerenciarClientes = new GerenciarClientes();
@@ -28,7 +29,7 @@ public class GerenciarLocacoesConsole  {
                 gerenciarVeiculosConsole.menuCadastroVeiculo();
                     break;
                 case 3:
-                System.out.println("cadastro da locação ");
+                System.out.println(" ---- Cadastro da locação ----");
 
                 int opcao; 
                 System.out.println("\n 1.Cadastrar \n  2 - Verificar cadastro \n  3 - Deletar cadastro ");
@@ -57,28 +58,25 @@ public class GerenciarLocacoesConsole  {
         System.out.println("Informe o titular da locação");// cpf do cliente.
         locacao.setCliente(gerenciarClientes.get(entrada.nextInt()));
 
-        System.out.println("informe o veículo para a locação");//classe GerenciarVeiculoConsole não implementada.
-        
+        System.out.println("informe o veículo para a locação");
+        locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));
+        entrada.nextLine();
 
         System.out.println("informe se o veículo possui seguro: ");
         locacao.setSeguro(entrada.nextBoolean());
         entrada.nextLine();
+
         System.out.println("informe a data inicial da locação: ");
         locacao.setDataInicial(entrada.nextLine());
         
         System.out.println("informe a data final: ");
         locacao.setDataFinal(entrada.nextLine());
-       
-      
-
-
-
 
         gerenciarLocacoes.add(locacao);
     }
     public void verificarCadastro(){
         System.out.println("Verificar cadastro: ");
-        System.out.println(gerenciarLocacoes.toString());
+        System.out.println(gerenciarLocacoes.getInfo());
     
     }
     public void deletarCadastro(){

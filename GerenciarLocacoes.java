@@ -38,7 +38,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
 
     public String getInfo(){
         for(int i=0; i<listaDeLocacoes.size();){
-            return "Código:  " + listaDeLocacoes.get(i).getCodigoDaLocacao();
+            return "Código:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+ "\n Titular da locação: "+listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n Seguro do veículo: "+listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+"\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
         }
       return null;
     }

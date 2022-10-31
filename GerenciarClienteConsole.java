@@ -95,7 +95,7 @@ public class GerenciarClienteConsole{
                 System.out.println("Conta excluida");
             }
             }if(opcao == 2){
-                System.out.println("Cadastro cancelado");
+                System.out.println("processo cancelado");
             }
 
     }
