@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class GerenciarVeiculo implements IVeiculos{
@@ -94,13 +95,13 @@ public class GerenciarVeiculo implements IVeiculos{
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
-     
+     */
     public String toString(){
-        String dados="Placa: "+placa+" Ano: "+ano+" Valor da diária: "+valorDiaria;
+        String dados="";
         for(Veiculo v: listaV){
             dados+=v.toString()+"\n";
         }
         return dados;
         
-    }*/
+    }
 }

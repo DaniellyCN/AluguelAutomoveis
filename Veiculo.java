@@ -78,4 +78,10 @@ public class Veiculo{
      * @param valorDiaria
      */
     public void setValorD(double valorDiaria){this.valorDiaria=valorDiaria;}
+
+    public String toString() {
+        return "Placa: "+placa+" Ano: "+ano+" Valor da diária: "+valorDiaria;
+        
+        
+    }
 }
