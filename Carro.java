@@ -10,6 +10,9 @@ public class Carro extends Veiculo {
         this.numeroPass = numeroPass;
         this.numeroPorta = numeroPorta;
     }
+    public Carro(){
+
+    }
 
     public boolean getArC() {
         return arC;
@@ -41,5 +44,10 @@ public class Carro extends Veiculo {
 
     public void setNumPorta(int numeroPorta) {
         this.numeroPorta = numeroPorta;
+ 
+    }
+
+    public String toString (){
+        return " ar condicionado : "+arC+"km; "+mediaKm+"numero de passageiros"+ numeroPass +"numero de portas"+numeroPorta;
     }
 }

@@ -16,7 +16,7 @@ public class GerenciarClienteConsole{
     public void menuCadastroCliente(){
         int op; 
         do{
-            System.out.println("cadastro de clientes");
+            System.out.println("-------- cadastro de clientes -------");
             System.out.println("1.Abrir conta");
             System.out.println("2.Verificar conta");
             System.out.println("3.Deletar conta");
@@ -33,6 +33,9 @@ public class GerenciarClienteConsole{
                 case 3:
                 deletarConta();
                     default: 
+                case 4:
+                GerenciarLocacoesConsole gerenciarLocacoesConsole = new GerenciarLocacoesConsole();
+                gerenciarLocacoesConsole.menuLocacao();
                     //System.out.println("Opção inválida");
             }
         }while(op!=0); 
@@ -42,14 +45,14 @@ public class GerenciarClienteConsole{
     public void abrirConta(){
         
         Cliente cliente = new Cliente(null, 0, 0, null, 0, null, null, 0, 0);
-        
+            System.out.println("----------------------------------------------------------------------------");
             System.out.println("Abertura de conta");
             System.out.print("Informe o seu nome : ");
             cliente.setNome(entrada.nextLine());
 
             System.out.print("Informe o CPF do titular: ");
             cliente.setCpf(entrada.nextInt());
-           
+            entrada.nextLine();
             System.out.print("Informe a rua: ");
             cliente.setRua(entrada.nextLine());
 
@@ -58,7 +61,7 @@ public class GerenciarClienteConsole{
 
             System.out.print("Informe o bairro: ");
             cliente.setBairro(entrada.nextLine());
-
+            entrada.nextLine();
             System.out.print("Informe o cidade: ");
             cliente.setCidade(entrada.nextLine());
 
@@ -66,7 +69,7 @@ public class GerenciarClienteConsole{
             cliente.setTelefone(entrada.nextInt());
 
             System.out.println("Conta cadastrada!!");
-
+            System.out.println("----------------------------------------------------------------------------");
             add(cliente);
         
     }
@@ -96,5 +99,4 @@ public class GerenciarClienteConsole{
             }
 
     }
-
 }

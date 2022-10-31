@@ -1,4 +1,4 @@
-public abstract class Veiculo{
+public class Veiculo{
 
     private String placa;
     private int ano;
@@ -33,6 +33,9 @@ public abstract class Veiculo{
         this.placa=placa;
         this.ano=0;
         this.valorDiaria=valorDiaria;
+    }
+    public Veiculo(){
+        
     }
 
     /**

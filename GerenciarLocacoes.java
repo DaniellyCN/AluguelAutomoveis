@@ -30,7 +30,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
                 return "Código" + listaDeLocacoes.get(i).getCodigoDaLocacao();
             }
-        }
+        } 
         return null;
     }
 
@@ -51,7 +51,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
                 listaDeLocacoes.remove(i);
                 return true;
             }
-            
+            System.out.println(" CPf encontrado, o cpf do cliente é: "+ codigo);
         }
         return false;
     }
@@ -71,11 +71,12 @@ public  class  GerenciarLocacoes implements ILocacoes{
 
     public String toString(){
 
+       
         String dados = ""; 
         for(Locacao l : listaDeLocacoes){
             dados += l.toString()+"\n";
         }
         return dados;
      }
-
+    
 }
