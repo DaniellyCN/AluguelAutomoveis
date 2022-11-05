@@ -53,10 +53,13 @@ public class GerenciarClienteConsole {
 
         System.out.print("Informe o CPF do titular: ");
         cliente.setCpf(entrada.nextLong());
-        entrada.nextLine();
+
+        System.out.print("informe sua carteira de motorista: ");
+        cliente.setCnh(entrada.nextLong());
+
         System.out.print("Informe a rua: ");
         cliente.setRua(entrada.nextLine());
-
+        entrada.nextLine();
         System.out.print("Informe o numCasa: ");
         cliente.setNumeroCasa(entrada.nextInt());
 
@@ -71,16 +74,13 @@ public class GerenciarClienteConsole {
 
         System.out.println("Conta cadastrada!!");
         System.out.println("----------------------------------------------------------------------------");
-        GerenciarClienteConsole.add(cliente);
+        gerenciarClientes.add(cliente);
 
     }
 
-    private static void add(Cliente cliente) {
-        listaDClientes.add(cliente);
-    }
 
     public void verificarConta() {
-        System.out.println(listaDClientes.toString());
+        System.out.println(gerenciarClientes.getResumoInfo());
     }
 
     public void deletarConta() {

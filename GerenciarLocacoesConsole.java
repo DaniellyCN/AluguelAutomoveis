@@ -43,6 +43,8 @@ public class GerenciarLocacoesConsole  {
 
         System.out.println("Informe o titular da locação");// cpf do cliente.
         locacao.setCliente(gerenciarClientes.get(entrada.nextInt()));
+        
+
 
         System.out.println("informe o veículo para a locação");
         locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));

@@ -2,7 +2,7 @@
 public class Cliente {
     private String nome;
     private long cpf;
-    private int cnh;
+    private long cnh;
     private String rua;
     private int numCasa;
     private String bairro;
@@ -10,7 +10,7 @@ public class Cliente {
     private long cep;
     private long telefone;
 
-    public Cliente(String nome, long cpf, int cnh, String rua, int numCasa, String bairro, String cidade, long cep,
+    public Cliente(String nome, long cpf, long cnh, String rua, int numCasa, String bairro, String cidade, long cep,
             long telefone) {
         this.nome = nome;
         this.cpf = cpf;
@@ -31,7 +31,7 @@ public class Cliente {
         return cpf;
     }
 
-    public int getCnh() {
+    public long getCnh() {
         return cnh;
     }
 
@@ -67,7 +67,7 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public void setCnh(int cnh) {
+    public void setCnh(long cnh) {
         this.cnh = cnh;
     }
 
