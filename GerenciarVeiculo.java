@@ -104,10 +104,5 @@ public class GerenciarVeiculo implements IVeiculos{
         }
         return dados;
         
-<<<<<<< HEAD
     }
 }
-=======
-    }*/
-}
->>>>>>> milena

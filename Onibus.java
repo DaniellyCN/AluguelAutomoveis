@@ -47,6 +47,7 @@ public class Onibus extends Veiculo {
     public void setNumePass(int numeroPass) {
         this.numeroPass = numeroPass;
     }
+
     public String toString (){
         return super.toString()+"Categoria: "+categoria+" internet:  "+internet+"Ar condicionado: "+ arC +" Número de passageiro"+ numeroPass;
     }

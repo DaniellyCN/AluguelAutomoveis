@@ -16,10 +16,11 @@ public class GerenciarClienteConsole{
     public void menuCadastroCliente(){
         int op; 
         do{
-            System.out.println("-------- cadastro de clientes -------");
+            System.out.println("-------- Cadastro de clientes -------");
             System.out.println("1.Abrir conta");
             System.out.println("2.Verificar conta");
             System.out.println("3.Deletar conta");
+            System.out.println("4.Sair");
 
             op = entrada.nextInt();
             entrada.nextLine();
@@ -34,8 +35,7 @@ public class GerenciarClienteConsole{
                 deletarConta();
                     default: 
                 case 4:
-                GerenciarLocacoesConsole gerenciarLocacoesConsole = new GerenciarLocacoesConsole();
-                gerenciarLocacoesConsole.menuLocacao();
+                sair();
                     //System.out.println("Opção inválida");
             }
         }while(op!=0); 
@@ -97,6 +97,10 @@ public class GerenciarClienteConsole{
             }if(opcao == 2){
                 System.out.println("processo cancelado");
             }
-
+   
+    }
+    public void sair (){
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.menuPrincipal();
     }
 }

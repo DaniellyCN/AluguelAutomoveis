@@ -16,7 +16,7 @@ public class GerenciarLocacoesConsole  {
         int op; 
         do{
             System.out.println("---- Cadastro da locação ----");
-            System.out.println("\n 1.Cadastrar \n  2 - Verificar cadastro \n  3 - Deletar cadastro ");
+            System.out.println("\n 1.Cadastrar \n  2 - Verificar cadastro \n  3 - Deletar cadastro \n 4 -Sair");
             op = entrada.nextInt();
             entrada.nextLine();
             switch(op){
@@ -27,6 +27,8 @@ public class GerenciarLocacoesConsole  {
                 verificarCadastro();
                 case 3:
                 deletarCadastro();
+                case 4: 
+                sair();
                 default: 
             }
         }while(op!=0); 
@@ -71,6 +73,10 @@ public class GerenciarLocacoesConsole  {
                 gerenciarLocacoes.remove(codigoDaLocacao);
                 System.out.println("cadastro deletado");
             }
-    }  
+    } 
+    public void sair (){
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.menuPrincipal();
+    }
 }
  

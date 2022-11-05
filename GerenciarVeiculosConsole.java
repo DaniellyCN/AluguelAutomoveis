@@ -19,6 +19,7 @@ public class GerenciarVeiculosConsole {
             System.out.println("2.Cadastro de ônibus");
             System.out.println("3.Cadastro de Caminhão");
             System.out.println("4.Verificar cadastros dos veículos");
+            System.out.println("5.Sair");
             
             op = entrada.nextInt();
             entrada.nextLine();
@@ -33,6 +34,8 @@ public class GerenciarVeiculosConsole {
                 cadastroDeCaminhao();
                 case 4: 
                 verificarCadastroVeiculo();
+                case 5: 
+                sair();
                     default: 
                     //System.out.println("Opção inválida");
             }
@@ -121,4 +124,8 @@ public class GerenciarVeiculosConsole {
         System.out.println(gerenciarVeiculo.getInfo());
         
     } 
+    public void sair(){
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.menuPrincipal();
+    }
 }

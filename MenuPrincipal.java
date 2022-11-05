@@ -2,7 +2,7 @@ import java.util.Scanner;
 
  
     /**
-     * classe principal para similar uma locação de veículos.
+     * classe principal para simular uma locação de veículos.
      */
 public class MenuPrincipal {
     private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
@@ -15,7 +15,7 @@ public class MenuPrincipal {
         int op; 
         do{
             System.out.println(" ***** Seja bem vindo a Locadora de veículos ***** ");
-
+            System.out.println(" Para realizar uma locação você precisa estar cadastrado! Digite 1 para cadastrar: ");
             System.out.println("1.Clientes");
             System.out.println("2.Veiculos");
             System.out.println("3.Locacoes");
