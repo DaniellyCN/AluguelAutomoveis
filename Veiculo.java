@@ -78,4 +78,9 @@ public class Veiculo{
      * @param valorDiaria
      */
     public void setValorD(double valorDiaria){this.valorDiaria=valorDiaria;}
+
+    @Override
+    public String toString (){
+        return super.toString()+" placa: "+placa+" Ano: "+ano+" Valor da diaria: "+ valorDiaria;
+    }
 }
