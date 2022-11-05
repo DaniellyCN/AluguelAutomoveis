@@ -79,9 +79,8 @@ public class Veiculo{
      */
     public void setValorD(double valorDiaria){this.valorDiaria=valorDiaria;}
 
-    public String toString() {
-        return "Placa: "+placa+" Ano: "+ano+" Valor da diária: "+valorDiaria;
-        
-        
+    @Override
+    public String toString (){
+        return super.toString()+" placa: "+placa+" Ano: "+ano+" Valor da diaria: "+ valorDiaria;
     }
 }

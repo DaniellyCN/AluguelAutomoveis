@@ -13,6 +13,9 @@ public class Onibus extends Veiculo {
         this.arC = arC;
     }
 
+    public Onibus (){
+
+    }
     public String getCategoria() {
         return categoria;
     }
@@ -44,8 +47,7 @@ public class Onibus extends Veiculo {
     public void setNumePass(int numeroPass) {
         this.numeroPass = numeroPass;
     }
-    public String toString() {
-        return "Categoria: "+categoria+" Internet: "+internet+" Ar-condicionado: "+arC+"Número de Passageiros: "+numeroPass;
-        
+    public String toString (){
+        return super.toString()+"Categoria: "+categoria+" internet:  "+internet+"Ar condicionado: "+ arC +" Número de passageiro"+ numeroPass;
     }
 }

@@ -92,7 +92,7 @@ public class GerenciarClienteConsole{
             
             if(gerenciarClientes.existe(cpf)){
                 gerenciarClientes.remove(cpf);
-                System.out.println("Conta excluida");
+                System.out.println("Conta excluida!!");
             }
             }if(opcao == 2){
                 System.out.println("processo cancelado");

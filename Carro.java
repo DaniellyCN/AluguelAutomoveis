@@ -47,7 +47,9 @@ public class Carro extends Veiculo {
  
     }
 
+
+    
     public String toString (){
-        return " ar condicionado : "+arC+"km; "+mediaKm+"numero de passageiros"+ numeroPass +"numero de portas"+numeroPorta;
+        return super.toString()+" Ar condicionado : "+arC+" km:  "+mediaKm+" Número de passageiros"+ numeroPass +" Número de portas"+numeroPorta;
     }
 }
