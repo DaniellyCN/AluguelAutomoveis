@@ -34,8 +34,15 @@ public class Carro extends Veiculo {
 
     public void setArC( boolean arC) {
         this.arC = arC;
+        
     }
-
+    public void setArC( String arCondicionado) {
+        if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
+            arC = true;
+        }else{
+            arC = false;
+        }
+    }
     public void setMediaKm(double mediaKm) {
         this.mediaKm = mediaKm;
     }
