@@ -7,45 +7,56 @@ import gerenciar.Cliente;
 import gerenciar.GerenciarClientes;
 
 
-
+/*
+ * Classe de interface gráfica do cliente, responsável por abrir, verificar e deletar cadastro do cliente.
+ */
 public class GerenciarClienteConsole {
     private  GerenciarClientes gerenciarClientes;
     Scanner entrada = new Scanner(System.in);
 
+    /**
+     * @param gerenciarClientes  Passa de parâmetro gerenciar clientes onde possui os métodos para manipular a classe.
+     */
     public GerenciarClienteConsole(GerenciarClientes gerenciarClientes) {
         this.gerenciarClientes = gerenciarClientes;
     }
     public GerenciarClienteConsole() {}
 
+    /**
+     * Menu de cadastro, verificação e exclusão.
+     */
     public void menuCadastroCliente() {
         int op;
         do {
             System.out.println(" **** Cadastro de clientes ****");
-            System.out.println("[1] Abrir conta");
-            System.out.println("[2] Verificar conta");
-            System.out.println("[3] Deletar conta");
+            System.out.println("[1] Abrir cadastro");
+            System.out.println("[2] Verificar cadastro");
+            System.out.println("[3] Deletar cadastro");
             System.out.println("[4] Sair");
 
             op = entrada.nextInt();
             entrada.nextLine();
             switch (op) {
                 case 1:
-                    abrirConta();
+                    abrircadastro();
                     break;
                 case 2:
-                    verificarConta();
+                    verificarCadastro();
                     break;
                 case 3:
-                    deletarConta();
-                default:
+                    deletarCadastro();
                 case 4:
                     sair();
-                    // System.out.println("Opção inválida");
+                default:
+                    
             }
         } while (op != 0);
     }
 
-    public void abrirConta() {
+    /**
+     * Método para abrir cadastro do cliente
+     */
+    public void abrircadastro() {
         Cliente cliente = new Cliente(null, 0, 0, null, 0, null, null, 0, 0);
 
         System.out.println("-----------------------------------------");
@@ -82,11 +93,17 @@ public class GerenciarClienteConsole {
     }
 
 
-    public void verificarConta() {
+    /**
+     *Método que verifica o cadastro do cliente.
+     */
+    public void verificarCadastro() {
         System.out.println(gerenciarClientes.getResumoInfo());
     }
 
-    public void deletarConta() {
+    /**
+     * Método para deletar cadastro do cliente.
+     */
+    public void deletarCadastro() {
 
         int opcao;
 
@@ -102,11 +119,14 @@ public class GerenciarClienteConsole {
             }
         }
         if (opcao == 2) {
-            System.out.println("processo cancelado");
+            System.out.println("Processo cancelado");
         }
 
     }
 
+    /**
+     * Método para voltar para o menu principal.
+     */
     public void sair() {
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         menuPrincipal.menuPrincipal();
