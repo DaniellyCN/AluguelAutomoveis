@@ -1,4 +1,7 @@
-import java.util.List;
+package gerenciar;
+
+
+
 import java.util.ArrayList;
 
 public class GerenciarVeiculo implements IVeiculos{
@@ -8,7 +11,7 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
     * @see IVeiculos#add(Veiculo)
     */
-    @Override
+   
     public void add(Veiculo v) {
          listaV.add(v);    
     }
@@ -16,7 +19,7 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#get(java.lang.String)
      */
-    @Override
+    
     public Veiculo get(String placa) {
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca()==placa) {
@@ -29,7 +32,7 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#getInfo(java.lang.String)
      */
-    @Override
+
     public String getInfo(String placa) {
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca()==placa) {
@@ -42,7 +45,7 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#getInfo()
      */
-    @Override
+   
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaV.size();i++){
@@ -54,13 +57,13 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#getResumoInfo()
      */
-    @Override
+    
     public String getResumoInfo() {
         
         String dados = "";
         for(int i=0;i<listaV.size();i++){
             if(listaV.get(i) != null){
-                dados += "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+                dados += "[ Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
         return dados;
@@ -70,21 +73,21 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#remove(java.lang.String)
      */
-    @Override
+ 
     public boolean remove(String placa) {
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca()==placa) {
                 listaV.remove(i);
                 return true;
             }
-        }
+        }System.out.println("\n placa encontrada, a placa do carro é: "+ placa);
         return false;
     }
 
     /* (non-Javadoc)
      * @see IVeiculos#existe(java.lang.String)
      */
-    @Override
+    
     public boolean existe(String placa) {
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca()==placa){

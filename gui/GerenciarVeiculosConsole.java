@@ -1,8 +1,15 @@
+package gui;
+
 import java.util.Scanner;
-//fazer um menu separado para cliente veiculo e locacao e esse fica so para locacao
+
+import gerenciar.Caminhao;
+import gerenciar.Carro;
+import gerenciar.GerenciarVeiculo;
+import gerenciar.Onibus;
+
 public class GerenciarVeiculosConsole {
     private GerenciarVeiculo gerenciarVeiculo;
-    private GerenciarVeiculo gVeiculo = new GerenciarVeiculo();
+   // private GerenciarVeiculo gVeiculo = new GerenciarVeiculo();
 
 
     Scanner entrada = new Scanner(System.in);
@@ -19,7 +26,8 @@ public class GerenciarVeiculosConsole {
             System.out.println("2.Cadastro de ônibus");
             System.out.println("3.Cadastro de Caminhão");
             System.out.println("4.Verificar cadastros dos veículos");
-            System.out.println("5.Sair");
+            System.out.println("5. deletar veiculo");
+            System.out.println("6.Sair");
             
             op = entrada.nextInt();
             entrada.nextLine();
@@ -35,6 +43,8 @@ public class GerenciarVeiculosConsole {
                 case 4: 
                 verificarCadastroVeiculo();
                 case 5: 
+                deletarVeiculos();
+                case 6: 
                 sair();
                     default: 
                     //System.out.println("Opção inválida");
@@ -121,11 +131,32 @@ public class GerenciarVeiculosConsole {
         gerenciarVeiculo.add(caminhao);
     }
         public void verificarCadastroVeiculo(){
-        System.out.println(gerenciarVeiculo.getInfo());
+        System.out.println(gerenciarVeiculo.getResumoInfo());
         
     } 
     public void sair(){
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         menuPrincipal.menuPrincipal();
     }
+
+    public void deletarVeiculos (){
+        int opcao;
+
+        System.out.println("\nDeseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
+        opcao = entrada.nextInt();
+        if (opcao == 1) {
+            System.out.println("Digite o numero da placa:");
+             String placa= entrada.nextLine();
+            
+            if (gerenciarVeiculo.existe(placa)) {
+                gerenciarVeiculo.remove(placa);
+                System.out.println("Conta excluida!!");
+            }
+        }
+        if (opcao == 2) {
+            System.out.println("processo cancelado");
+        }
+
+    }
+    
 }

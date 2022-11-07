@@ -1,3 +1,6 @@
+package gerenciar;
+
+
 public class Onibus extends Veiculo {
     private String categoria;
     private boolean internet;

@@ -1,4 +1,14 @@
+package gui;
+
+
 import java.util.Scanner;
+
+import gerenciar.GerenciarClientes;
+import gerenciar.GerenciarLocacoes;
+import gerenciar.GerenciarVeiculo;
+import gerenciar.Locacao;
+
+
 public class GerenciarLocacoesConsole  {
     private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
     private GerenciarClientes gerenciarClientes = new GerenciarClientes();
@@ -36,13 +46,12 @@ public class GerenciarLocacoesConsole  {
 
     public void CadastrarLocacao(){
         Locacao locacao = new Locacao();
-      
-
+        
         System.out.println("Digite o código da locação: ");
         locacao.setCodigoDaLocacao(entrada.nextInt());
 
         System.out.println("Informe o titular da locação");// cpf do cliente.
-        locacao.setCliente(gerenciarClientes.get(entrada.nextInt()));
+       locacao.setCliente(gerenciarClientes.get(entrada.nextInt()));
         
 
 

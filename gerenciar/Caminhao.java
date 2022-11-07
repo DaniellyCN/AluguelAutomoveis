@@ -1,3 +1,6 @@
+package gerenciar;
+
+
 public class Caminhao extends Veiculo{
     private int numEixos;
     private int cargaMax;

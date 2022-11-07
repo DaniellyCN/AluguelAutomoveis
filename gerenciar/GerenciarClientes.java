@@ -1,3 +1,6 @@
+package gerenciar;
+
+
 import java.util.ArrayList;
 
 public class GerenciarClientes implements IClientes{
@@ -10,18 +13,18 @@ public class GerenciarClientes implements IClientes{
     }
 
     
-    @Override
+   
     public Cliente get(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()== CPF) {
                 return listaDClientes.get(i);
             } 
-        }
+        } System.out.println(" o cliente é : " + CPF);
         return null;
     }
 
   
-    @Override
+  
     public String getInfo(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()==CPF) {
@@ -31,7 +34,7 @@ public class GerenciarClientes implements IClientes{
         return null;
     }
 
-    @Override
+   
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
@@ -40,18 +43,18 @@ public class GerenciarClientes implements IClientes{
         return dados;
     } 
 
-    @Override
+    
     public String getResumoInfo() {
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
             if(listaDClientes.get(i) != null){
-                dados += "\n Detalhes do cadastro do cliente: \n CPF: "+listaDClientes.get(i).getCpf()+ "\n Nome: "+listaDClientes.get(i).getNome()+"\n Rua: " + listaDClientes.get(i).getRua()+"\n Número da casa: "+ listaDClientes.get(i).getRua()+ "\n Bairro: "+ listaDClientes.get(i).getBairro()+"\n Cidade: "+listaDClientes.get(i).getCidade()+"\n Telefone: "+listaDClientes.get(i).getTelefone()+" \n ------";
+                dados += "\n Detalhes do cadastro do cliente: \n CPF: "+listaDClientes.get(i).getCpf()+ " Nome: "+listaDClientes.get(i).getNome()+" Rua: " + listaDClientes.get(i).getRua()+" Número da casa: "+ listaDClientes.get(i).getNumeroCasa()+ " Bairro: "+ listaDClientes.get(i).getBairro()+" Cidade: "+listaDClientes.get(i).getCidade()+" Telefone: "+listaDClientes.get(i).getTelefone()+ "Carteira de motorista: " + listaDClientes.get(i).getCnh()+ "\n ------";
             }
         }
         return dados;
 
     }
-    @Override
+    
     public boolean remove(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCnh()== CPF) {
@@ -63,7 +66,7 @@ public class GerenciarClientes implements IClientes{
     }
 
 
-    @Override
+   
     public boolean existe(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()== CPF){
@@ -72,7 +75,5 @@ public class GerenciarClientes implements IClientes{
         }
         return false;
     }
-
-    //toString
 
 }

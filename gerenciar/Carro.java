@@ -1,3 +1,6 @@
+package gerenciar;
+
+
 public class Carro extends Veiculo {
     protected boolean arC;
     protected double mediaKm;
@@ -11,7 +14,6 @@ public class Carro extends Veiculo {
         this.numeroPorta = numeroPorta;
     }
     public Carro(){
-
     }
 
     public boolean getArC() {
@@ -50,6 +52,6 @@ public class Carro extends Veiculo {
 
     
     public String toString (){
-        return super.toString()+" Ar condicionado : "+arC+" km:  "+mediaKm+" Número de passageiros"+ numeroPass +" Número de portas"+numeroPorta;
+        return super.toString()+" Ar condicionado: "+arC+" km:"+mediaKm+" Número de passageiros:"+ numeroPass +" Número de portas:"+numeroPorta+"]";
     }
 }

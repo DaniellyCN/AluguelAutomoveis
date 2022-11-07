@@ -1,4 +1,12 @@
+package gui;
+
+
 import java.util.Scanner;
+
+import gerenciar.GerenciarClientes;
+import gerenciar.GerenciarLocacoes;
+import gerenciar.GerenciarVeiculo;
+
 
  
     /**
@@ -8,19 +16,15 @@ public class MenuPrincipal {
     private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
     private GerenciarClientes gerenciarClientes = new GerenciarClientes();
     private GerenciarVeiculo gerenciarVeiculo = new GerenciarVeiculo();
-   
+
     Scanner entrada = new Scanner(System.in);
 
     public void menuPrincipal(){
         int op; 
         do{
             System.out.println(" ***** Seja bem vindo a Locadora de veículos ***** ");
-            System.out.println(" Para realizar uma locação você precisa estar cadastrado! Digite 1 para entrar em clientes e se cadastrar! ");
-            System.out.println("1.Clientes");
-            System.out.println("2.Veiculos");
-            System.out.println("3.Locacoes");
-
-
+            System.out.println("Para realizar uma locação de veículos você precisa estar cadastrado! Digite 1 para entrar em clientes e se cadastrar! ");
+            System.out.println("\n [1] Clientes \n [2] Veículos \n [3] Locações");
             op = entrada.nextInt();
             entrada.nextLine();
             switch(op){

@@ -1,28 +1,30 @@
+package gui;
+
+
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+
+import gerenciar.Cliente;
+import gerenciar.GerenciarClientes;
+
+
 
 public class GerenciarClienteConsole {
-    private GerenciarClientes gerenciarClientes;
+    private  GerenciarClientes gerenciarClientes;
     Scanner entrada = new Scanner(System.in);
-    static ArrayList<Cliente> listaDClientes = new ArrayList<>();
 
     public GerenciarClienteConsole(GerenciarClientes gerenciarClientes) {
         this.gerenciarClientes = gerenciarClientes;
     }
-
-    public GerenciarClienteConsole() {
-
-    }
+    public GerenciarClienteConsole() {}
 
     public void menuCadastroCliente() {
         int op;
         do {
-            System.out.println("-------- Cadastro de clientes -------");
-            System.out.println("1.Abrir conta");
-            System.out.println("2.Verificar conta");
-            System.out.println("3.Deletar conta");
-            System.out.println("4.Sair");
+            System.out.println(" **** Cadastro de clientes ****");
+            System.out.println("[1] Abrir conta");
+            System.out.println("[2] Verificar conta");
+            System.out.println("[3] Deletar conta");
+            System.out.println("[4] Sair");
 
             op = entrada.nextInt();
             entrada.nextLine();
@@ -44,11 +46,11 @@ public class GerenciarClienteConsole {
     }
 
     public void abrirConta() {
-
         Cliente cliente = new Cliente(null, 0, 0, null, 0, null, null, 0, 0);
-        System.out.println("----------------------------------------------------------------------------");
-        System.out.println("Abertura de conta");
-        System.out.print("Informe o seu nome : ");
+
+        System.out.println("-----------------------------------------");
+        System.out.println(" Abertura do cadastro: ");
+        System.out.print("Informe o seu nome: ");
         cliente.setNome(entrada.nextLine());
 
         System.out.print("Informe o CPF do titular: ");
@@ -60,20 +62,21 @@ public class GerenciarClienteConsole {
         System.out.print("Informe a rua: ");
         cliente.setRua(entrada.nextLine());
         entrada.nextLine();
-        System.out.print("Informe o numCasa: ");
+        System.out.print("Informe o número da casa: ");
         cliente.setNumeroCasa(entrada.nextInt());
 
         System.out.print("Informe o bairro: ");
         cliente.setBairro(entrada.nextLine());
         entrada.nextLine();
-        System.out.print("Informe o cidade: ");
+
+        System.out.print("Informe a cidade: ");
         cliente.setCidade(entrada.nextLine());
 
         System.out.print("Informe o telefone do titular: ");
         cliente.setTelefone(entrada.nextLong());
 
         System.out.println("Conta cadastrada!!");
-        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------");
         gerenciarClientes.add(cliente);
 
     }

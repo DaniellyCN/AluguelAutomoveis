@@ -1,3 +1,6 @@
+package gerenciar;
+
+
 
 public class Locacao{
     private int codigoDaLocacao;
