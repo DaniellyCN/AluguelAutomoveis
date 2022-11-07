@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class GerenciarVeiculo implements IVeiculos{
-
+    
     ArrayList<Veiculo> listaV=new ArrayList<>();
     
     /* (non-Javadoc)
@@ -46,7 +46,7 @@ public class GerenciarVeiculo implements IVeiculos{
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaV.size();i++){
-            dados += "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD()+"\n";
+            dados += listaV.get(i).toString()+"\n";
         }
         return dados;
     } 
@@ -56,6 +56,7 @@ public class GerenciarVeiculo implements IVeiculos{
      */
     @Override
     public String getResumoInfo() {
+        
         String dados = "";
         for(int i=0;i<listaV.size();i++){
             if(listaV.get(i) != null){
@@ -95,13 +96,13 @@ public class GerenciarVeiculo implements IVeiculos{
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
-     
+     */
     public String toString(){
-        String dados="Placa: "+placa+" Ano: "+ano+" Valor da diária: "+valorDiaria;
+        String dados="";
         for(Veiculo v: listaV){
             dados+=v.toString()+"\n";
         }
         return dados;
         
-    }*/
+    }
 }

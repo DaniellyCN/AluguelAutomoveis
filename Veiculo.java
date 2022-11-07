@@ -1,4 +1,4 @@
-public abstract class Veiculo{
+public class Veiculo{
 
     private String placa;
     private int ano;
@@ -33,6 +33,9 @@ public abstract class Veiculo{
         this.placa=placa;
         this.ano=0;
         this.valorDiaria=valorDiaria;
+    }
+    public Veiculo(){
+        
     }
 
     /**
@@ -75,4 +78,9 @@ public abstract class Veiculo{
      * @param valorDiaria
      */
     public void setValorD(double valorDiaria){this.valorDiaria=valorDiaria;}
+
+    @Override
+    public String toString (){
+        return super.toString()+" placa: "+placa+" Ano: "+ano+" Valor da diaria: "+ valorDiaria;
+    }
 }
