@@ -32,8 +32,8 @@ public class Locacao{
         return cliente;
     }
     
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(String string) {
+        this.cliente = string;
     }
     public Veiculo getVeiculo() {
         return veiculo;
