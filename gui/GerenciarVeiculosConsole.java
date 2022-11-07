@@ -100,10 +100,12 @@ public class GerenciarVeiculosConsole{
         onibus.setValorD(entrada.nextDouble());
 
         System.out.println("O ônibus possui internet? ");
-        onibus.setInternet(entrada.nextBoolean());
+        onibus.setInternet(entrada.nextLine());
+
+        entrada.nextLine();
 
         System.out.println("O ônibus possui ar condicionado?");
-        onibus.setArC(entrada.nextBoolean());
+        onibus.setArC(entrada.nextLine());
 
         System.out.println("informe o numero de passageiro: ");
         onibus.setNumePass(entrada.nextInt());
@@ -119,24 +121,27 @@ public class GerenciarVeiculosConsole{
         System.out.println("Informe a placa do caminhão: ");
         caminhao.setPlaca(entrada.nextLine());
 
-        System.out.println("informe o ano do caminhão : ");
+        System.out.println("Informe o ano do caminhão : ");
         caminhao.setAno(entrada.nextInt());
 
-        System.out.println("informe o valor da diária: ");
+        System.out.println("Informe o valor da diária: ");
         caminhao.setValorD(entrada.nextDouble());
 
-        System.out.println("informe o numero de eixos: ");
+        System.out.println("Informe o numero de eixos: ");
         caminhao.setNumEixos(entrada.nextInt());
 
-        System.out.println("informe a carga máxima permitida: ");
+        System.out.println("Informe a carga máxima permitida: ");
         caminhao.seCargaMax(entrada.nextInt());
 
         System.out.println("Cadastro finalizado!");
         gerenciarVeiculo.add(caminhao);
+
+        
+        
     }
         public void verificarCadastroVeiculo(){
-        System.out.println(gerenciarVeiculo.getResumoInfo());
-        
+        System.out.println(gerenciarVeiculo.getInfo());
+       
     } 
     public void sair(){
         MenuPrincipal menuPrincipal = new MenuPrincipal();
@@ -149,7 +154,7 @@ public class GerenciarVeiculosConsole{
         System.out.println("\nDeseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
         opcao = entrada.nextInt();
         if (opcao == 1) {
-            System.out.println("Digite o numero da placa:");
+            System.out.println("Digite o número da placa:");
              String placa= entrada.nextLine();
             
              entrada.nextLine();
@@ -159,7 +164,7 @@ public class GerenciarVeiculosConsole{
             }
         }
         if (opcao == 2) {
-            System.out.println("processo cancelado");
+            System.out.println("Processo cancelado");
         }
 
     }

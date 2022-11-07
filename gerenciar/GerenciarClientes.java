@@ -2,30 +2,40 @@ package gerenciar;
 
 
 import java.util.ArrayList;
-
+/*
+ * Classe implementada da IClientes 
+ */
 public class GerenciarClientes implements IClientes{
 
+    /**
+     * lista de clientes
+     */
     ArrayList<Cliente> listaDClientes=new ArrayList<>();
     
    
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#add(gerenciar.Cliente)
+     */
     public void add(Cliente c) {
          listaDClientes.add(c);    
     }
 
-    
-   
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#get(long)
+     */
     public Cliente get(long CPF) {
         
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()== CPF) {
                 return listaDClientes.get(i);
             } 
-        } //System.out.println(" o cliente é : " + CPF+ listaDClientes.get(i).getNome);
+        } System.out.println("Cliente encontrado! O CPF do cliente é : " + CPF );
         return null;
     }
-
   
-  
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#getInfo(long)
+     */
     public String getInfo(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()==CPF) {
@@ -36,6 +46,9 @@ public class GerenciarClientes implements IClientes{
     }
 
    
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#getInfo()
+     */
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
@@ -45,6 +58,9 @@ public class GerenciarClientes implements IClientes{
     } 
 
     
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#getResumoInfo()
+     */
     public String getResumoInfo() {
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
@@ -56,6 +72,9 @@ public class GerenciarClientes implements IClientes{
 
     }
     
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#remove(long)
+     */
     public boolean remove(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCnh()== CPF) {
@@ -68,6 +87,9 @@ public class GerenciarClientes implements IClientes{
 
 
    
+    /* (non-Javadoc)
+     * @see gerenciar.IClientes#existe(long)
+     */
     public boolean existe(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()== CPF){

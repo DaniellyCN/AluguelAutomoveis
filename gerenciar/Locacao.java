@@ -32,8 +32,8 @@ public class Locacao{
         return cliente;
     }
     
-    public void setCliente(String string) {
-        this.cliente = string;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     public Veiculo getVeiculo() {
         return veiculo;
@@ -44,6 +44,14 @@ public class Locacao{
     }
     public boolean getSeguro() {
         return seguro;
+    }
+    public void setSeguro( String seguro) {
+        boolean arC;
+        if(seguro == "Sim" || seguro == "Sim".toLowerCase() || seguro == "Sim".toUpperCase()){
+            arC = true;
+        }else{
+            arC = false;
+        }
     }
     public void setSeguro(boolean seguro) {
         this.seguro = seguro;

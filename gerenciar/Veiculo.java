@@ -1,6 +1,8 @@
 package gerenciar;
 
-
+/*
+ * Classe veículo
+ */
 public class Veiculo{
 
     private String placa;
