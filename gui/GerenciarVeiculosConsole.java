@@ -2,12 +2,14 @@ package gui;
 
 import java.util.Scanner;
 
+
 import gerenciar.Caminhao;
 import gerenciar.Carro;
 import gerenciar.GerenciarVeiculo;
 import gerenciar.Onibus;
 
-public class GerenciarVeiculosConsole {
+public class GerenciarVeiculosConsole{
+
     private GerenciarVeiculo gerenciarVeiculo;
    // private GerenciarVeiculo gVeiculo = new GerenciarVeiculo();
 
