@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //fazer um menu separado para cliente veiculo e locacao e esse fica so para locacao
-public class GerenciarVeiculosConsole {
+public class GerenciarVeiculosConsole{
     private GerenciarVeiculo gerenciarVeiculo;
     private GerenciarVeiculo gVeiculo = new GerenciarVeiculo();
 
@@ -56,7 +56,7 @@ public class GerenciarVeiculosConsole {
         carro.setValorD(entrada.nextDouble());
 
         System.out.println("informe se o carro possui ar condicionado: ");
-        carro.setArC(entrada.nextBoolean());
+        carro.setArC(entrada.nextLine());
 
         System.out.println("informe a média de km: ");
         carro.setMediaKm(entrada.nextDouble());
