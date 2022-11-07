@@ -15,11 +15,12 @@ public class GerenciarClientes implements IClientes{
     
    
     public Cliente get(long CPF) {
+        
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()== CPF) {
                 return listaDClientes.get(i);
             } 
-        } System.out.println(" o cliente é : " + CPF);
+        } //System.out.println(" o cliente é : " + CPF+ listaDClientes.get(i).getNome);
         return null;
     }
 
@@ -28,7 +29,7 @@ public class GerenciarClientes implements IClientes{
     public String getInfo(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
             if (listaDClientes.get(i).getCpf()==CPF) {
-                return "CPF do cliente: "+listaDClientes.get(i).getCpf();
+                return "CPF do cliente: "+listaDClientes.get(i).getCpf(); 
             }
         }
         return null;
@@ -38,7 +39,7 @@ public class GerenciarClientes implements IClientes{
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
-            dados += "CPF do cliente: "+listaDClientes.get(i).getCpf();
+            dados += "CPF do cliente: "+listaDClientes.get(i).getCpf()+"o nome do cliente e"+ listaDClientes.get(i).getNome();
         }
         return dados;
     } 

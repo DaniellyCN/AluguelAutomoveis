@@ -66,8 +66,8 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public void setCpf(long cpf) {
-        this.cpf = cpf;
+    public void setCpf(String string) {
+        this.cpf = string;
     }
 
     public void setCnh(long cnh) {

@@ -66,7 +66,9 @@ public class GerenciarVeiculosConsole {
         carro.setValorD(entrada.nextDouble());
 
         System.out.println("informe se o carro possui ar condicionado: ");
-        carro.setArC(entrada.nextBoolean());
+        carro.setArC(entrada.nextLine());
+
+        entrada.nextLine();
 
         System.out.println("informe a média de km: ");
         carro.setMediaKm(entrada.nextDouble());
@@ -148,6 +150,7 @@ public class GerenciarVeiculosConsole {
             System.out.println("Digite o numero da placa:");
              String placa= entrada.nextLine();
             
+             entrada.nextLine();
             if (gerenciarVeiculo.existe(placa)) {
                 gerenciarVeiculo.remove(placa);
                 System.out.println("Conta excluida!!");
