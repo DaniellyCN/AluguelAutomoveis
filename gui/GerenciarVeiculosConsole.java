@@ -11,7 +11,6 @@ import gerenciar.Onibus;
 public class GerenciarVeiculosConsole{
 
     private GerenciarVeiculo gerenciarVeiculo;
-   // private GerenciarVeiculo gVeiculo = new GerenciarVeiculo();
 
 
     Scanner entrada = new Scanner(System.in);
@@ -42,16 +41,20 @@ public class GerenciarVeiculosConsole{
                     break;
                 case 3:
                 cadastroDeCaminhao();
+                break;
                 case 4: 
                 verificarCadastroVeiculo();
+                break;
                 case 5: 
+                
                 deletarVeiculos();
+                break;
                 case 6: 
-                sair();
+                
                     default: 
                     //System.out.println("Opção inválida");
             }
-        }while(op!=0); 
+        }while(op!=6); 
     }
     public void cadastroDeCarro(){
         
@@ -143,11 +146,7 @@ public class GerenciarVeiculosConsole{
         System.out.println(gerenciarVeiculo.getInfo());
        
     } 
-    public void sair(){
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.menuPrincipal();
-    }
-
+    
     public void deletarVeiculos (){
         int opcao;
 

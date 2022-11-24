@@ -24,6 +24,10 @@ public class MenuPrincipal {
      */
     public void menuPrincipal(){
         int op; 
+
+        GerenciarClienteConsole gerenciarClienteConsole = new GerenciarClienteConsole(gerenciarClientes);
+        GerenciarVeiculosConsole gerenciarVeiculosConsole = new GerenciarVeiculosConsole(gerenciarVeiculo);
+        GerenciarLocacoesConsole gerenciarLocacoesConsole= new GerenciarLocacoesConsole(gerenciarLocacoes);
         do{
             System.out.println(" ***** Seja bem vindo a Locadora de veículos ***** ");
             System.out.println("Para realizar uma locação de veículos você precisa estar cadastrado! \n Digite 1 para entrar em clientes e se cadastrar \n Digete 2 para entrar e cadastrar um veículo \n Digite 3 para cadastrar uma locação");
@@ -32,15 +36,15 @@ public class MenuPrincipal {
             entrada.nextLine();
             switch(op){
                 case 1:
-                GerenciarClienteConsole gerenciarClienteConsole = new GerenciarClienteConsole(gerenciarClientes);
+               
                 gerenciarClienteConsole.menuCadastroCliente();
                     break;
                 case 2: 
-                GerenciarVeiculosConsole gerenciarVeiculosConsole = new GerenciarVeiculosConsole(gerenciarVeiculo);
+               
                 gerenciarVeiculosConsole.menuCadastroVeiculo();
                     break;
                 case 3: 
-                GerenciarLocacoesConsole gerenciarLocacoesConsole= new GerenciarLocacoesConsole(gerenciarLocacoes);
+                
                 gerenciarLocacoesConsole.menuLocacao();
             }
         }while(op!=0); 
