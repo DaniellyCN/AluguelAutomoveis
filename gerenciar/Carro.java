@@ -1,5 +1,5 @@
 package gerenciar;
-
+import Excecoes.ArCondicionadoException;
 
 public class Carro extends Veiculo {
     protected boolean arC;
@@ -30,11 +30,12 @@ public class Carro extends Veiculo {
         return arC;
     }
 
-    public void setArC( String arCondicionado) {
+    public void setArC(String arCondicionado) throws ArCondicionadoException{
         if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
             arC = true;
         }else{
             arC = false;
+            throw new ArCondicionadoException("Por favor, serão aceitas somente respostas com (Sim) ou (Não)");
         }
         
     }

@@ -1,7 +1,5 @@
 package gerenciar;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +71,7 @@ public class GerenciarVeiculo implements IVeiculos{
         String dados = "";
         for(int i=0;i<listaV.size();i++){
             if(listaV.get(i) != null){
-                dados += "[ Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+                dados += " Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
         return dados;
