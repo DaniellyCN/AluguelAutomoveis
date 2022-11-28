@@ -146,10 +146,6 @@ public class GerenciarVeiculosConsole{
     }
         public void verificarCadastroVeiculo(){
         System.out.println(gerenciarVeiculo.getInfo());
-        System.out.println("tamanho"+gerenciarVeiculo.getLista().size());
-        for (Veiculo v : gerenciarVeiculo.getLista()) {
-            System.out.println("batata"+v.getPlaca());
-        }
        
     } 
     
