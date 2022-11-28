@@ -17,6 +17,10 @@ public  class  GerenciarLocacoes implements ILocacoes{
         listaDeLocacoes = new ArrayList<>();
     }
 
+    public GerenciarLocacoes (List<Locacao> listaLocacoes){
+        this.listaDeLocacoes = listaLocacoes;
+    }
+
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#add(gerenciar.Locacao)
      */

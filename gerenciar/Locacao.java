@@ -28,7 +28,7 @@ public class Locacao{
         this.dataFinal = dataFinal;
     }
 
-    public Locacao (){
+    public Locacao () {
         
     }
      /**
@@ -78,11 +78,12 @@ public class Locacao{
      */
     public void setSeguro( String seguro) {
         boolean arC;
-        if(seguro == "Sim" || seguro == "Sim".toLowerCase() || seguro == "Sim".toUpperCase()){
+        if(seguro.toLowerCase().equals("sim")){
             arC = true;
         }else{
             arC = false;
         }
+        setSeguro(arC);
     }
     /**
      * @param seguro

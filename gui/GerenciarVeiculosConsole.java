@@ -7,6 +7,7 @@ import gerenciar.Caminhao;
 import gerenciar.Carro;
 import gerenciar.GerenciarVeiculo;
 import gerenciar.Onibus;
+import gerenciar.Veiculo;
 
 public class GerenciarVeiculosConsole{
 
@@ -56,6 +57,7 @@ public class GerenciarVeiculosConsole{
             }
         }while(op!=6); 
     }
+
     public void cadastroDeCarro(){
         
         Carro carro = new Carro();
@@ -144,19 +146,21 @@ public class GerenciarVeiculosConsole{
     }
         public void verificarCadastroVeiculo(){
         System.out.println(gerenciarVeiculo.getInfo());
+        System.out.println("tamanho"+gerenciarVeiculo.getLista().size());
+        for (Veiculo v : gerenciarVeiculo.getLista()) {
+            System.out.println("batata"+v.getPlaca());
+        }
        
     } 
     
     public void deletarVeiculos (){
-        int opcao;
-
-        System.out.println("\nDeseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
-        opcao = entrada.nextInt();
+        System.out.println("\n Deseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
+        int opcao = entrada.nextInt();
+        entrada.nextLine();
         if (opcao == 1) {
             System.out.println("Digite o número da placa:");
-             String placa= entrada.nextLine();
-            
-             entrada.nextLine();
+             String placa = entrada.nextLine();
+
             if (gerenciarVeiculo.existe(placa)) {
                 gerenciarVeiculo.remove(placa);
                 System.out.println("Conta excluida!!");

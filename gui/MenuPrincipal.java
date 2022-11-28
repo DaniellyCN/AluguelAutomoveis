@@ -13,11 +13,18 @@ import gerenciar.GerenciarVeiculo;
      * classe principal para simular uma locação de veículos.
      */
 public class MenuPrincipal {
-    private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
-    private GerenciarClientes gerenciarClientes = new GerenciarClientes();
-    private GerenciarVeiculo gerenciarVeiculo = new GerenciarVeiculo();
+    private GerenciarClienteConsole gerenciarClienteConsole;
+    private GerenciarVeiculosConsole gerenciarVeiculosConsole;
+    private GerenciarLocacoesConsole gerenciarLocacoesConsole;
 
     Scanner entrada = new Scanner(System.in);
+
+    public MenuPrincipal(GerenciarLocacoes gerenciarLocacoes, GerenciarClientes gerenciarClientes, GerenciarVeiculo gerenciarVeiculo) {
+        gerenciarClienteConsole = new GerenciarClienteConsole(gerenciarClientes);
+        gerenciarVeiculosConsole = new GerenciarVeiculosConsole(gerenciarVeiculo);
+        gerenciarLocacoesConsole = new GerenciarLocacoesConsole(gerenciarLocacoes, gerenciarClientes, gerenciarVeiculo);
+        
+    }
 
     /**
      * Menu principal do programa.
@@ -25,9 +32,6 @@ public class MenuPrincipal {
     public void menuPrincipal(){
         int op; 
 
-        GerenciarClienteConsole gerenciarClienteConsole = new GerenciarClienteConsole(gerenciarClientes);
-        GerenciarVeiculosConsole gerenciarVeiculosConsole = new GerenciarVeiculosConsole(gerenciarVeiculo);
-        GerenciarLocacoesConsole gerenciarLocacoesConsole= new GerenciarLocacoesConsole(gerenciarLocacoes);
         do{
             System.out.println(" ***** Seja bem vindo a Locadora de veículos ***** ");
             System.out.println("Para realizar uma locação de veículos você precisa estar cadastrado! \n Digite 1 para entrar em clientes e se cadastrar \n Digete 2 para entrar e cadastrar um veículo \n Digite 3 para cadastrar uma locação");
@@ -36,16 +40,13 @@ public class MenuPrincipal {
             entrada.nextLine();
             switch(op){
                 case 1:
-               
-                gerenciarClienteConsole.menuCadastroCliente();
+                    gerenciarClienteConsole.menuCadastroCliente();
                     break;
                 case 2: 
-               
-                gerenciarVeiculosConsole.menuCadastroVeiculo();
+                    gerenciarVeiculosConsole.menuCadastroVeiculo();
                     break;
                 case 3: 
-                
-                gerenciarLocacoesConsole.menuLocacao();
+                    gerenciarLocacoesConsole.menuLocacao();
             }
         }while(op!=0); 
     }

@@ -45,10 +45,8 @@ public class GerenciarClienteConsole {
                     break;
                 case 3:
                     deletarCadastro();
-                case 4:
-                    sair();
                 default:
-                    
+                    op = 0;
             }
         } while (op != 0);
     }
@@ -124,11 +122,5 @@ public class GerenciarClienteConsole {
 
     }
 
-    /**
-     * Método para voltar para o menu principal.
-     */
-    public void sair() {
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.menuPrincipal();
-    }
+    
 }

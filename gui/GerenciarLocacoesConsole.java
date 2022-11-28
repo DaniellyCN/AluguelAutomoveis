@@ -9,19 +9,18 @@ import gerenciar.Locacao;
  * Classe de interface gráfica responsável por cadastrar, verificar e deletar locações.
  */
 public class GerenciarLocacoesConsole  {
-    private GerenciarLocacoes gerenciarLocacoes = new GerenciarLocacoes();
-    private GerenciarClientes gerenciarClientes = new GerenciarClientes();
-    private GerenciarVeiculo gerenciarVeiculo = new GerenciarVeiculo();
+    private GerenciarLocacoes gerenciarLocacoes;// = new GerenciarLocacoes();
+    private GerenciarClientes gerenciarClientes;// = new GerenciarClientes();
+    private GerenciarVeiculo gerenciarVeiculo;
     Scanner entrada = new Scanner(System.in);
 
     /**
      * @param gerenciarLocacoes Passa de parâmetro gerenciarLocacoes onde possui os métodos para manipular a classe.
      */
-    public GerenciarLocacoesConsole (GerenciarLocacoes gerenciarLocacoes){
-        this.gerenciarLocacoes=gerenciarLocacoes;
-    }
-    public GerenciarLocacoesConsole(){
-
+    public GerenciarLocacoesConsole (GerenciarLocacoes gerenciarLocacoes, GerenciarClientes gerenciarClientes, GerenciarVeiculo gerenciarVeiculo){
+        this.gerenciarLocacoes = gerenciarLocacoes;
+        this.gerenciarClientes = gerenciarClientes;
+        this.gerenciarVeiculo = gerenciarVeiculo;
     }
 
     /**
@@ -43,7 +42,7 @@ public class GerenciarLocacoesConsole  {
                 case 3:
                 deletarCadastro();
                 case 4: 
-                sair();
+                 op = 0;
                 default: 
             }
         }while(op!=0); 
@@ -63,7 +62,7 @@ public class GerenciarLocacoesConsole  {
        
         System.out.println("Informe a placa do veiculo para a locação");
         locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));
-          
+       
         entrada.nextLine();
         System.out.println("Informe se o veículo possui seguro: ");
         locacao.setSeguro(entrada.nextLine());
@@ -83,8 +82,10 @@ public class GerenciarLocacoesConsole  {
     public void verificarCadastro(){
         System.out.println("Verificar cadastro: ");
         System.out.println(gerenciarLocacoes.getInfo());
+       
         
     }
+    
     /**
      * Método para deletar cadastro de veículos.
      */
@@ -97,12 +98,6 @@ public class GerenciarLocacoesConsole  {
                 System.out.println("Cadastro deletado!");
             }
     } 
-    /**
-     * Método para voltar para o menu principal.
-     */
-    public void sair (){
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.menuPrincipal();
-    }
+   
 }
  

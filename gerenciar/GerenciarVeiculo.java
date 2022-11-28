@@ -3,10 +3,19 @@ package gerenciar;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GerenciarVeiculo implements IVeiculos{
     
-    ArrayList<Veiculo> listaV=new ArrayList<>();
+    List<Veiculo> listaV; // = new ArrayList<>();
+
+    public GerenciarVeiculo (List<Veiculo> veiculos){
+        this.listaV = veiculos;
+    }
+
+    public GerenciarVeiculo (){
+        this.listaV = new ArrayList<>();
+    }
     
     /* (non-Javadoc)
     * @see IVeiculos#add(Veiculo)
@@ -22,20 +31,21 @@ public class GerenciarVeiculo implements IVeiculos{
     
     public Veiculo get(String placa) {
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa) {
+            if (listaV.get(i).getPlaca().equals(placa)) {
                 return listaV.get(i);
             }
         }  
         return null;
     }
 
+   
     /* (non-Javadoc)
      * @see IVeiculos#getInfo(java.lang.String)
      */
 
     public String getInfo(String placa) {
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa) {
+            if (listaV.get(i).getPlaca().equals(placa)) {
                 return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
@@ -49,7 +59,7 @@ public class GerenciarVeiculo implements IVeiculos{
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaV.size();i++){
-            dados += listaV.get(i).toString()+"\n";
+            dados += "veiculo"+listaV.get(i).toString()+"\n";
         }
         return dados;
     } 
@@ -76,7 +86,7 @@ public class GerenciarVeiculo implements IVeiculos{
  
     public boolean remove(String placa) {
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa) {
+            if (listaV.get(i).getPlaca().equals(placa)) {
                 listaV.remove(i);
                 return true;
             }
@@ -91,13 +101,13 @@ public class GerenciarVeiculo implements IVeiculos{
     
     public boolean existe(String placa) {
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa){
+            if (listaV.get(i).getPlaca().equals(placa)){ 
                 return true;
             }
         }
         return false;
     }
-
+    
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */

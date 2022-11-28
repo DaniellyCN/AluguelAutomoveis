@@ -86,6 +86,6 @@ public class Veiculo{
 
     @Override
     public String toString (){
-        return super.toString()+" placa: "+placa+" Ano: "+ano+" Valor da diaria: "+ valorDiaria;
+        return " placa: "+placa+" Ano: "+ano+" Valor da diaria: "+ valorDiaria;
     }
 }

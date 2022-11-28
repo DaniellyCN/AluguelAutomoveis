@@ -2,6 +2,7 @@ package gerenciar;
 
 
 import java.util.ArrayList;
+import java.util.List;
 /*
  * Classe implementada da IClientes 
  */
@@ -10,14 +11,21 @@ public class GerenciarClientes implements IClientes{
     /**
      * lista de clientes
      */
-    ArrayList<Cliente> listaDClientes=new ArrayList<>();
+    List<Cliente> listaDClientes; // = new ArrayList<>();
     
+    public GerenciarClientes (List<Cliente> clientes){
+        this.listaDClientes = clientes;
+    }
+
+    public GerenciarClientes (){
+        this.listaDClientes = new ArrayList<>();
+    }
    
     /* (non-Javadoc)
      * @see gerenciar.IClientes#add(gerenciar.Cliente)
      */
     public void add(Cliente c) {
-         listaDClientes.add(c);    
+        listaDClientes.add(c);    
     }
 
     /* (non-Javadoc)
@@ -29,7 +37,8 @@ public class GerenciarClientes implements IClientes{
             if (listaDClientes.get(i).getCpf()== CPF) {
                 return listaDClientes.get(i);
             } 
-        } System.out.println("Cliente encontrado! O CPF do cliente é : " + CPF );
+        } 
+        System.out.println("Cliente encontrado! O CPF do cliente é : " + CPF );
         return null;
     }
   
@@ -77,11 +86,12 @@ public class GerenciarClientes implements IClientes{
      */
     public boolean remove(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
-            if (listaDClientes.get(i).getCnh()== CPF) {
+            if (listaDClientes.get(i).getCpf()== CPF) {
                 listaDClientes.remove(i);
                 return true;
             }
-        } System.out.println("\n CPf encontrado, o cpf do cliente é: "+ CPF + "\n Nome do cliente: "+ listaDClientes.get(0).getNome());
+        }
+        System.out.println("\n CPf encontrado, o cpf do cliente é: "+ CPF + "\n Nome do cliente: "+ listaDClientes.get(0).getNome());
         return false;
     }
 
@@ -92,7 +102,7 @@ public class GerenciarClientes implements IClientes{
      */
     public boolean existe(long CPF) {
         for(int i=0;i<listaDClientes.size();i++){
-            if (listaDClientes.get(i).getCpf()== CPF){
+            if (listaDClientes.get(i).getCpf() == CPF){
                 return true;
             }
         }
