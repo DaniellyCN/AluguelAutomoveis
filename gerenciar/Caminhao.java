@@ -1,3 +1,6 @@
+package gerenciar;
+
+
 public class Caminhao extends Veiculo{
     private int numEixos;
     private int cargaMax;
@@ -11,9 +14,9 @@ public class Caminhao extends Veiculo{
         this.numEixos=numEixos;
         this.cargaMax=cargaMax;
     } 
-
+    
     /**
-     * @return
+     * @return número de eixos do carro
      */
     public int getNumEixos(){return numEixos;}
     
@@ -23,7 +26,7 @@ public class Caminhao extends Veiculo{
     public void setNumEixos(int numEixos){this.numEixos=numEixos;}
 
     /**
-     * @return
+     * @return carga máxima do caminhão
      */
     public int getCargaMax(){return cargaMax;}
 
@@ -32,5 +35,11 @@ public class Caminhao extends Veiculo{
      */
     public void seCargaMax(int cargaMax){this.cargaMax=cargaMax;}
 
-    
+
+    /* (non-Javadoc)
+     * @see gerenciar.Veiculo#toString()
+     */
+    public String toString (){
+        return super.toString()+" Número de eixos : "+numEixos+" carga máxima: "+ cargaMax;
+    }
 }
