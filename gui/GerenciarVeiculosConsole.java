@@ -63,84 +63,85 @@ public class GerenciarVeiculosConsole{
     public void cadastroDeCarro(){
         
         Carro carro = new Carro();
+        boolean testCarro = true;
 
         System.out.println("---Cadastro de carros---");
         System.out.println("Informe a placa do carro: ");
         carro.setPlaca(entrada.nextLine());
 
-        boolean testCarro1 = true;
         do{
             
             System.out.println("Informe o ano do carro: ");
             try {
                 carro.setAno(entrada.nextInt());
-                testCarro1=false;
+                testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();
                
             }
-        }while(testCarro1);
+        }while(testCarro);
          
-        boolean testCarro2=true;
+        testCarro=true;
         do{   
             System.out.println("Informe o valor da diária: ");
             try {
                 carro.setValorD(entrada.nextDouble());
-                testCarro2=false;
+                testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCarro2);
+        }while(testCarro);
 
-        boolean testCarro6=true;
-        do{
+        //testCarro=true;
+        //do{
             System.out.println("Informe se o carro possui ar condicionado: ");
-            try {
+          //  try {
+                
                 carro.setArC(entrada.nextLine());
-                entrada.nextLine();
-                testCarro6=false;
-            } catch (ArCondicionadoException e) {
-                System.out.println(e.getMessage());
-            }
-        }while(testCarro6);      
+            //    testCarro=false;
+            //} catch (ArCondicionadoException e) {
+              //  System.out.println(e.getMessage());
+                
+            //}entrada.nextLine();
+        //}while(testCarro);      
 
-        boolean testCarro3=true;
+        testCarro=true;
         do{   
             System.out.println("Informe a média de km: ");
             try {
                 carro.setMediaKm(entrada.nextDouble());
-                testCarro3=false;
+                testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCarro3);
+        }while(testCarro);
 
-        boolean testCarro4=true;
+        testCarro=true;
         do{   
             System.out.println("Informe o número de passageiros: ");
             try {
                 carro.setNumePass(entrada.nextInt());
-                testCarro4=false;
+                testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCarro4);
+        }while(testCarro);
         
-        boolean testCarro5=true;
+        testCarro=true;
         do{   
              System.out.println("Informe o número de porta do carro: ");
             try {
                 carro.setNumPorta(entrada.nextInt());
-                testCarro5=false;
+                testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCarro5);
+        }while(testCarro);
         
 
         System.out.println("Cadastro finalizado!");

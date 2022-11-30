@@ -33,9 +33,10 @@ public class Carro extends Veiculo {
     public void setArC(String arCondicionado) throws ArCondicionadoException{
         if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
             arC = true;
-        }else{
+        }else if(arCondicionado == "Não" || arCondicionado == "Não".toLowerCase() || arCondicionado == "Não".toUpperCase()){
             arC = false;
-            throw new ArCondicionadoException("Por favor, serão aceitas somente respostas com (Sim) ou (Não)");
+        }else{   
+            throw new ArCondicionadoException();
         }
         
     }

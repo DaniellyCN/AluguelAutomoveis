@@ -45,7 +45,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#getInfo(int)
      */
-    public String getInfo( int codigo){
+    public String getInfo(int codigo){
         for(int i = 0; i<listaDeLocacoes.size();i++){
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
                 return "Código" + listaDeLocacoes.get(i).getCodigoDaLocacao();
@@ -58,7 +58,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
      * @see gerenciar.ILocacoes#getInfo()
      */
     public String getInfo(){
-        for(int i=0; i<listaDeLocacoes.size();){
+        for(int i=0; i<listaDeLocacoes.size();i++){
             return "Código:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+ "\n Titular da locação: "+listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n Seguro do veículo: "+listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+"\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
         }
       return null;
