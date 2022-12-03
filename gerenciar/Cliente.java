@@ -52,7 +52,7 @@ public class Cliente {
         return cidade;
     }
 
-    public long cep() {
+    public long getCep() {
         return cep;
     }
 
