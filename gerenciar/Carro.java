@@ -24,19 +24,36 @@ public class Carro extends Veiculo {
     }
 
     /**
-     * @return um boleean de ar condicionado 
+     * @return um string de ar condicionado 
      */
-    public boolean getArC() {
-        return arC;
-    }
-
-    public void setArC(String arCondicionado) {
-        if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
-            arC = true;
-        }else{
-            arC = false;
+    public String getArC() {
+        if (arC == true) {
+           return "Sim"; 
+        } else {
+            return "Não";
         }
         
+    }
+
+    public void setArC(int arCondicionado) throws ArCondicionadoException{
+        switch (arCondicionado) {
+            case 1:
+            arC = true;
+                break;
+            case 2:
+            arC = false;
+                break;
+            default:
+            throw new ArCondicionadoException();
+        }
+        
+        /*if(arCondicionado == 1){
+            arC = true;
+        }else if(arCondicionado == 2){
+            arC = false;
+        }else{   
+            throw new ArCondicionadoException();
+        } */       
     }
 
     /**
@@ -89,12 +106,11 @@ public class Carro extends Veiculo {
  
     }
 
-
     
     /* (non-Javadoc)
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+" Ar condicionado: "+arC+" km:"+mediaKm+" Número de passageiros:"+ numeroPass +" Número de portas:"+numeroPorta;
+        return super.toString()+" Ar condicionado: "+getArC()+" km:"+mediaKm+" Número de passageiros:"+ numeroPass +" Número de portas:"+numeroPorta;
     }
 }
