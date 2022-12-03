@@ -93,20 +93,18 @@ public class GerenciarVeiculosConsole{
                 entrada.nextLine();  
             }
         }while(testCarro);
-
-        //testCarro=true;
-        //do{
-            System.out.println("Informe se o carro possui ar condicionado: ");
-          //  try {
-                
-                carro.setArC(entrada.nextLine());
-                entrada.nextLine();
-            //    testCarro=false;
-            //} catch (ArCondicionadoException e) {
-              //  System.out.println(e.getMessage());
-                
-            //}
-        //}while(testCarro);      
+  
+        testCarro=true;
+        do{   
+            System.out.println("Informe se o carro possui ar condicionado: (1) sim (2) não");
+            try {
+                carro.setArC(entrada.nextInt());
+                testCarro=false;
+            } catch (ArCondicionadoException e) {
+                System.out.println(e.getMessage());
+            }
+        }while(testCarro);            
+        
 
         testCarro=true;
         do{   
@@ -265,10 +263,10 @@ public class GerenciarVeiculosConsole{
         gerenciarVeiculo.add(caminhao);
 
     }
-        public void verificarCadastroVeiculo(){
-        System.out.println(gerenciarVeiculo.getInfo());
+    public void verificarCadastroVeiculo(){
+    System.out.println(gerenciarVeiculo.getInfo());
 
-        }
+    }
        
     
     
