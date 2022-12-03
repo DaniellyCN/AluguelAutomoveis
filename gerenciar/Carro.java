@@ -30,13 +30,11 @@ public class Carro extends Veiculo {
         return arC;
     }
 
-    public void setArC(String arCondicionado) throws ArCondicionadoException{
+    public void setArC(String arCondicionado) {
         if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
             arC = true;
-        }else if(arCondicionado == "Não" || arCondicionado == "Não".toLowerCase() || arCondicionado == "Não".toUpperCase()){
+        }else{
             arC = false;
-        }else{   
-            throw new ArCondicionadoException();
         }
         
     }

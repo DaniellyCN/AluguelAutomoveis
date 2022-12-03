@@ -100,11 +100,12 @@ public class GerenciarVeiculosConsole{
           //  try {
                 
                 carro.setArC(entrada.nextLine());
+                entrada.nextLine();
             //    testCarro=false;
             //} catch (ArCondicionadoException e) {
               //  System.out.println(e.getMessage());
                 
-            //}entrada.nextLine();
+            //}
         //}while(testCarro);      
 
         testCarro=true;
