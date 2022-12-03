@@ -1,5 +1,5 @@
 package gerenciar;
-
+import Excecoes.ArCondicionadoException;
 
 public class Carro extends Veiculo {
     protected boolean arC;
@@ -30,11 +30,13 @@ public class Carro extends Veiculo {
         return arC;
     }
 
-    public void setArC( String arCondicionado) {
+    public void setArC(String arCondicionado) throws ArCondicionadoException{
         if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
             arC = true;
-        }else{
+        }else if(arCondicionado == "Não" || arCondicionado == "Não".toLowerCase() || arCondicionado == "Não".toUpperCase()){
             arC = false;
+        }else{   
+            throw new ArCondicionadoException();
         }
         
     }

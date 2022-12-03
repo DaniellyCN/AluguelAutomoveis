@@ -8,6 +8,8 @@ import gerenciar.Carro;
 import gerenciar.GerenciarVeiculo;
 import gerenciar.Onibus;
 import gerenciar.Veiculo;
+import java.util.InputMismatchException;
+import Excecoes.ArCondicionadoException;
 
 public class GerenciarVeiculosConsole{
 
@@ -61,30 +63,86 @@ public class GerenciarVeiculosConsole{
     public void cadastroDeCarro(){
         
         Carro carro = new Carro();
+        boolean testCarro = true;
 
         System.out.println("---Cadastro de carros---");
         System.out.println("Informe a placa do carro: ");
         carro.setPlaca(entrada.nextLine());
 
-        System.out.println("informe o ano do carro: ");
-        carro.setAno(entrada.nextInt());
+        do{
+            
+            System.out.println("Informe o ano do carro: ");
+            try {
+                carro.setAno(entrada.nextInt());
+                testCarro=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();
+               
+            }
+        }while(testCarro);
+         
+        testCarro=true;
+        do{   
+            System.out.println("Informe o valor da diária: ");
+            try {
+                carro.setValorD(entrada.nextDouble());
+                testCarro=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCarro);
 
-        System.out.println("informe o valor da diária: ");
-        carro.setValorD(entrada.nextDouble());
+        //testCarro=true;
+        //do{
+            System.out.println("Informe se o carro possui ar condicionado: ");
+          //  try {
+                
+                carro.setArC(entrada.nextLine());
+            //    testCarro=false;
+            //} catch (ArCondicionadoException e) {
+              //  System.out.println(e.getMessage());
+                
+            //}entrada.nextLine();
+        //}while(testCarro);      
 
-        System.out.println("informe se o carro possui ar condicionado: ");
-        carro.setArC(entrada.nextLine());
+        testCarro=true;
+        do{   
+            System.out.println("Informe a média de km: ");
+            try {
+                carro.setMediaKm(entrada.nextDouble());
+                testCarro=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCarro);
 
-        entrada.nextLine();
-
-        System.out.println("informe a média de km: ");
-        carro.setMediaKm(entrada.nextDouble());
-
-        System.out.println("informe o número de passageiros: ");
-        carro.setNumePass(entrada.nextInt());
-
-        System.out.println("Informe o número de porta do carro: ");
-        carro.setNumPorta(entrada.nextInt());
+        testCarro=true;
+        do{   
+            System.out.println("Informe o número de passageiros: ");
+            try {
+                carro.setNumePass(entrada.nextInt());
+                testCarro=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCarro);
+        
+        testCarro=true;
+        do{   
+             System.out.println("Informe o número de porta do carro: ");
+            try {
+                carro.setNumPorta(entrada.nextInt());
+                testCarro=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCarro);
+        
 
         System.out.println("Cadastro finalizado!");
         gerenciarVeiculo.add(carro);
@@ -98,11 +156,29 @@ public class GerenciarVeiculosConsole{
         System.out.println("Informe a placa do ônibus: ");
         onibus.setPlaca(entrada.nextLine());
 
-        System.out.println("informe o ano do ônibus: ");
-        onibus.setAno(entrada.nextInt());
+        boolean testOnibus1 =true;
+        do{
+            System.out.println("informe o ano do ônibus: ");
+            try {
+                onibus.setAno(entrada.nextInt());
+                testOnibus1=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();
+            }
+        }while(testOnibus1);
 
-        System.out.println("informe o valor da diária: ");
-        onibus.setValorD(entrada.nextDouble());
+        boolean testOnibus2 =true;
+        do{   
+            System.out.println("Informe o valor da diária: ");
+            try {
+                onibus.setValorD(entrada.nextDouble());
+                testOnibus2=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testOnibus2);
 
         System.out.println("O ônibus possui internet? ");
         onibus.setInternet(entrada.nextLine());
@@ -112,8 +188,18 @@ public class GerenciarVeiculosConsole{
         System.out.println("O ônibus possui ar condicionado?");
         onibus.setArC(entrada.nextLine());
 
-        System.out.println("informe o numero de passageiro: ");
-        onibus.setNumePass(entrada.nextInt());
+        boolean testOnibus3 =true;
+        do{   
+            System.out.println("informe o numero de passageiro: ");
+            try {
+                onibus.setNumePass(entrada.nextInt());
+                testOnibus3=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testOnibus3);
+        
 
         System.out.println("Cadastro finalizado!");
         gerenciarVeiculo.add(onibus);
@@ -126,23 +212,57 @@ public class GerenciarVeiculosConsole{
         System.out.println("Informe a placa do caminhão: ");
         caminhao.setPlaca(entrada.nextLine());
 
-        System.out.println("Informe o ano do caminhão : ");
-        caminhao.setAno(entrada.nextInt());
+        boolean testCaminhao1 =true;
+        do{
+            System.out.println("Informe o ano do caminhão : ");
+            try {
+                caminhao.setAno(entrada.nextInt());
+                testCaminhao1=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();
+            }
+        }while(testCaminhao1);
 
-        System.out.println("Informe o valor da diária: ");
-        caminhao.setValorD(entrada.nextDouble());
+        boolean testCaminhao2 =true;
+        do{   
+            System.out.println("Informe o valor da diária: ");
+            try {
+                caminhao.setValorD(entrada.nextDouble());
+                testCaminhao2=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCaminhao2);
 
-        System.out.println("Informe o numero de eixos: ");
-        caminhao.setNumEixos(entrada.nextInt());
+        boolean testCaminhao3 =true;
+        do{   
+            System.out.println("Informe o numero de eixos: ");
+            try {
+                caminhao.setNumEixos(entrada.nextInt());
+                testCaminhao3=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCaminhao3);
 
-        System.out.println("Informe a carga máxima permitida: ");
-        caminhao.seCargaMax(entrada.nextInt());
+        boolean testCaminhao4 =true;
+        do{   
+            System.out.println("Informe a carga máxima permitida: ");
+            try {
+                caminhao.seCargaMax(entrada.nextInt());
+                testCaminhao4=false;
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, insira um valor numérico");
+                entrada.nextLine();  
+            }
+        }while(testCaminhao4);        
 
         System.out.println("Cadastro finalizado!");
         gerenciarVeiculo.add(caminhao);
 
-        
-        
     }
         public void verificarCadastroVeiculo(){
         System.out.println(gerenciarVeiculo.getInfo());

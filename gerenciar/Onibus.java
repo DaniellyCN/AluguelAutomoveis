@@ -87,7 +87,7 @@ public class Onibus extends Veiculo {
     /**
      * @param internet
      */
-    public void setInternet( boolean internet) {
+    public void setInternet(boolean internet) {
         this.internet = internet;
     }
 
@@ -109,6 +109,6 @@ public class Onibus extends Veiculo {
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+"Categoria: "+categoria+" internet:  "+internet+"Ar condicionado: "+ arC +" Número de passageiro"+ numeroPass;
+        return super.toString()+" Categoria: "+categoria+" Internet:  "+internet+" Ar condicionado: "+ arC +" Número de passageiro"+ numeroPass;
     }
 }

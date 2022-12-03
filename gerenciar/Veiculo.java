@@ -1,5 +1,7 @@
 package gerenciar;
 
+import java.util.InputMismatchException;
+
 /*
  * Classe veículo
  */
@@ -72,7 +74,11 @@ public class Veiculo{
     /**
      * @param ano
      */
-    public void setAno(int ano){this.ano=ano;}
+    public void setAno(int ano) {
+        
+        this.ano=ano;
+         
+    }
 
     /**
      * @return double
@@ -86,6 +92,6 @@ public class Veiculo{
 
     @Override
     public String toString (){
-        return " placa: "+placa+" Ano: "+ano+" Valor da diaria: "+ valorDiaria;
+        return " Placa: "+placa+" Ano: "+ano+" Valor da diária: "+ valorDiaria +" ";
     }
 }
