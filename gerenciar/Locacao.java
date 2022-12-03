@@ -39,8 +39,8 @@ public class Locacao{
      /**
      * @return código da locação
      */
-    public int getCodigoDaLocacao() {
-        return codigo++;
+    public static int getCodigoDaLocacao() {
+        return codigoDaLocacao++;
     }
     /**
      * @param codigoDaLocacao

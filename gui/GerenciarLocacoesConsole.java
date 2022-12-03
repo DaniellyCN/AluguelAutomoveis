@@ -72,7 +72,7 @@ public class GerenciarLocacoesConsole  {
        
            
                 System.out.println("O código da locação: ");
-                System.out.println(locacao.getCodigoDaLocacao());
+                System.out.println(Locacao.getCodigoDaLocacao());
 
         do{
             try{
