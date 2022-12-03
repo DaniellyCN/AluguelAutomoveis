@@ -1,11 +1,16 @@
 package gerenciar;
 
+import java.util.InputMismatchException;
+
+import javax.xml.catalog.Catalog;
+
 /*
  * Classe locação
  */
 
 public class Locacao{
-    private int codigoDaLocacao;
+    private static int codigoDaLocacao = 0;
+    private int codigo;
     private Cliente cliente;
     private Veiculo veiculo;
     private boolean seguro;
@@ -19,8 +24,8 @@ public class Locacao{
      * @param dataInicial  data inicial da locação
      * @param dataFinal   data final da locação
      */
-    public Locacao (int codigoDaLocacao, Cliente cliente, Veiculo veiculo, boolean seguro, String dataInicial, String dataFinal){
-        this.codigoDaLocacao = codigoDaLocacao;
+    public Locacao ( Cliente cliente, Veiculo veiculo, boolean seguro, String dataInicial, String dataFinal){
+        this.codigo = codigoDaLocacao++;
         this.cliente = cliente;
         this.veiculo = veiculo;
         this.seguro = seguro;
@@ -35,14 +40,12 @@ public class Locacao{
      * @return código da locação
      */
     public int getCodigoDaLocacao() {
-        return codigoDaLocacao;
+        return codigo++;
     }
     /**
      * @param codigoDaLocacao
      */
-    public void setCodigoDaLocacao(int codigoDaLocacao) {
-        this.codigoDaLocacao = codigoDaLocacao;
-    }
+    
     /**
      * @return cliente
      */
@@ -76,14 +79,18 @@ public class Locacao{
      /**
      * @param seguro
      */
-    public void setSeguro( String seguro) {
+    public void setSeguro( String seguro) throws IllegalArgumentException {
+
+        
         boolean arC;
         if(seguro.toLowerCase().equals("sim")){
             arC = true;
         }else{
             arC = false;
         }
+       
         setSeguro(arC);
+
     }
     /**
      * @param seguro

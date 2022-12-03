@@ -38,8 +38,8 @@ public class GerenciarClientes implements IClientes{
                 return listaDClientes.get(i);
             } 
         } 
-        System.out.println("Cliente encontrado! O CPF do cliente é : " + CPF );
-        return null;
+        //System.out.println("Cliente encontrado! O CPF do cliente é : " + CPF );
+        return null; 
     }
   
     /* (non-Javadoc)

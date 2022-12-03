@@ -28,23 +28,23 @@ public  class  GerenciarLocacoes implements ILocacoes{
         listaDeLocacoes.add(l);
 
     }
-
+//nullpointer  com uma mensagem especifica, codigo inexistente
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#get(int)
      */
-    public Locacao get(int codigo){
+    public Locacao get(int codigo){//atriburui a lista em uma variavel e dps colocar em um if e dps 
 
        for(int i=0; i<listaDeLocacoes.size();i++){
         if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
             return listaDeLocacoes.get(i);
         }
        }
-       return null;
+       return null;//colocar um t e na classe um try cacth 
     }
 
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#getInfo(int)
-     */
+     *///placa da erro 
     public String getInfo( int codigo){
         for(int i = 0; i<listaDeLocacoes.size();i++){
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
@@ -58,7 +58,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
      * @see gerenciar.ILocacoes#getInfo()
      */
     public String getInfo(){
-        for(int i=0; i<listaDeLocacoes.size();){
+        for(int i=0; i<listaDeLocacoes.size();  ){
             return "Código:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+ "\n Titular da locação: "+listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n Seguro do veículo: "+listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+"\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
         }
       return null;
@@ -67,17 +67,28 @@ public  class  GerenciarLocacoes implements ILocacoes{
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#remove(int)
      */
-    public boolean remove(int codigo){
+   /* */ public boolean remove(int codigo){
         for(int i= 0; i<listaDeLocacoes.size();i++){
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
                 listaDeLocacoes.remove(i);
                 return true;
             }
-            System.out.println(" CPf encontrado, o cpf do cliente é: "+ codigo);
         }
         return false;
     }
 
+
+   /*  public void remove (int codigo) throws IllegalArgumentException{
+        for(int i= 0; i<listaDeLocacoes.size();i++){
+            if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
+                listaDeLocacoes.remove(i);
+                
+            }
+            throw new IllegalArgumentException("aaa");
+        }
+    }
+
+    */
     public boolean existe(int codigo){
        for(int i =0; i<listaDeLocacoes.size();i++){
         if(listaDeLocacoes.get(i).getCodigoDaLocacao()==codigo){

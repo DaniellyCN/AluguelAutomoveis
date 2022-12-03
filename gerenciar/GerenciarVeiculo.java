@@ -39,6 +39,10 @@ public class GerenciarVeiculo implements IVeiculos{
     }
 
    
+
+    public List <Veiculo> getLista(){ //////////////
+        return this.listaV;
+    }
     /* (non-Javadoc)
      * @see IVeiculos#getInfo(java.lang.String)
      */

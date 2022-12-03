@@ -146,12 +146,11 @@ public class GerenciarVeiculosConsole{
     }
         public void verificarCadastroVeiculo(){
         System.out.println(gerenciarVeiculo.getInfo());
-        System.out.println("tamanho"+gerenciarVeiculo.getLista().size());
-        for (Veiculo v : gerenciarVeiculo.getLista()) {
-            System.out.println("batata"+v.getPlaca());
+      
+        
         }
        
-    } 
+    
     
     public void deletarVeiculos (){
         System.out.println("\n Deseja excluir esse cadastro ?\n  1.Sim\n  2.Não");

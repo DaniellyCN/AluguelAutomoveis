@@ -28,6 +28,8 @@ public class GerenciarClienteConsole {
     public void menuCadastroCliente() {
         int op;
         do {
+
+        
             System.out.println(" **** Cadastro de clientes ****");
             System.out.println("[1] Abrir cadastro");
             System.out.println("[2] Verificar cadastro");

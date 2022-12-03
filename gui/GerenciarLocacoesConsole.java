@@ -1,9 +1,16 @@
 package gui;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+
 import gerenciar.GerenciarClientes;
 import gerenciar.GerenciarLocacoes;
 import gerenciar.GerenciarVeiculo;
 import gerenciar.Locacao;
+
+
+///alterei o método cadastro
+
 
 /*
  * Classe de interface gráfica responsável por cadastrar, verificar e deletar locações.
@@ -29,53 +36,89 @@ public class GerenciarLocacoesConsole  {
     public void menuLocacao(){
         int op; 
         do{
-            System.out.println("---- Cadastro da locação ----");
-            System.out.println(" 1.Cadastrar \n 2.Verificar cadastro \n 3.Deletar cadastro  \n 4.Sair");
-            op = entrada.nextInt();
-            entrada.nextLine();
-            switch(op){
-                case 1:
-                CadastrarLocacao();
+
+         
+                System.out.println("---- Cadastro da locação ----");
+                System.out.println(" 1.Cadastrar \n 2.Verificar cadastro \n 3.Deletar cadastro  \n 4.Sair");
+                op = entrada.nextInt();
+                entrada.nextLine();
+                switch(op){
+                    case 1:
+                    CadastrarLocacao();
+                        break;
+                    case 2: 
+                    verificarCadastro();
                     break;
-                case 2: 
-                verificarCadastro();
-                case 3:
-                deletarCadastro();
-                case 4: 
-                 op = 0;
-                default: 
-            }
-        }while(op!=0); 
+                    case 3:
+                        deletarCadastro();
+                    break;
+                    case 4: 
+                    
+                    default: 
+                    //op=0;
+                
+                }
+            
+            
+        }while(op!=4); 
     }
 
     /**
      * Método para cadastrar locação de veículos.
      */
     public void CadastrarLocacao(){
+        boolean ok;
         Locacao locacao = new Locacao();
-    
-        System.out.println("Digite o código da locação: ");
-        locacao.setCodigoDaLocacao(entrada.nextInt());
-
-        System.out.println("Informe o CPF do titular: ");
-        locacao.setCliente(gerenciarClientes.get(entrada.nextLong()));
        
-        System.out.println("Informe a placa do veiculo para a locação");
-        locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));
-       
-        entrada.nextLine();
-        System.out.println("Informe se o veículo possui seguro: ");
-        locacao.setSeguro(entrada.nextLine());
-    
-        System.out.println("Informe a data inicial da locação: ");
-        locacao.setDataInicial(entrada.nextLine());
-        
-        System.out.println("Informe a data final: ");
-        locacao.setDataFinal(entrada.nextLine());
+           
+                System.out.println("O código da locação: ");
+                System.out.println(locacao.getCodigoDaLocacao());
 
-        System.out.println(" Cadastro concluído! ");
-        gerenciarLocacoes.add(locacao);
+        do{
+            try{
+                ok = true;
+                System.out.println("Informe o CPF do titular: ");
+                locacao.setCliente(gerenciarClientes.get(entrada.nextLong()));
+            
+            }
+            catch(InputMismatchException e ){
+                ok= false;
+                System.out.println("erro: digite um valor valido");
+
+            }
+            finally{
+                entrada.nextLine();
+            }
+        }while(!ok);
+
+        do{
+            try{
+                System.out.println("Informe a placa do veiculo para a locação");
+                locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));
+                
+            
+                System.out.println("Informe se o veículo possui seguro: "); //erro se o usuário informar um numero 
+                locacao.setSeguro(entrada.nextLine());
+            
+                System.out.println("Informe a data inicial da locação: "); // 
+                locacao.setDataInicial(entrada.nextLine());
+                
+                System.out.println("Informe a data final: ");
+                locacao.setDataFinal(entrada.nextLine());
+
+                System.out.println(" Cadastro concluído! ");
+                gerenciarLocacoes.add(locacao);
+            }
+            catch(InputMismatchException e){
+                ok= false;
+                System.out.println("erro: ");
+            }
+            
+
+        }while(!ok);
+       
     }
+       
     /**
      * Método para verificar cadastro de veículos.
      */
