@@ -146,8 +146,7 @@ public class GerenciarVeiculosConsole{
     }
         public void verificarCadastroVeiculo(){
         System.out.println(gerenciarVeiculo.getInfo());
-      
-        
+
         }
        
     

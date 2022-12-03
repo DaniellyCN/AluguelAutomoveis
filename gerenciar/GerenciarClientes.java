@@ -74,7 +74,7 @@ public class GerenciarClientes implements IClientes{
         String dados = "";
         for(int i=0;i<listaDClientes.size();i++){
             if(listaDClientes.get(i) != null){
-                dados += "\n Detalhes do cadastro do cliente: \n CPF: "+listaDClientes.get(i).getCpf()+ " Nome: "+listaDClientes.get(i).getNome()+" Rua: " + listaDClientes.get(i).getRua()+" Número da casa: "+ listaDClientes.get(i).getNumeroCasa()+ " Bairro: "+ listaDClientes.get(i).getBairro()+" Cidade: "+listaDClientes.get(i).getCidade()+" Telefone: "+listaDClientes.get(i).getTelefone()+ "Carteira de motorista: " + listaDClientes.get(i).getCnh()+ "\n ------";
+                dados += "\n Detalhes do cadastro do cliente: \n CPF: "+listaDClientes.get(i).getCpf()+ " Nome: "+listaDClientes.get(i).getNome()+" Rua: " + listaDClientes.get(i).getRua()+" Número da casa: "+ listaDClientes.get(i).getNumeroCasa()+ " Bairro: "+ listaDClientes.get(i).getBairro()+" Cidade: "+listaDClientes.get(i).getCidade()+" Telefone: "+listaDClientes.get(i).getTelefone()+ " Carteira de motorista: " + listaDClientes.get(i).getCnh()+ "\n ------";
             }
         }
         return dados;

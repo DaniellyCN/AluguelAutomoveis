@@ -1,6 +1,5 @@
 package gui;
 
-
 import java.util.Scanner;
 
 import gerenciar.Cliente;
@@ -67,19 +66,20 @@ public class GerenciarClienteConsole {
         System.out.print("Informe o CPF do titular: ");
         cliente.setCpf(entrada.nextLong());
 
-        System.out.print("informe sua carteira de motorista: ");
+        System.out.print("Informe sua carteira de motorista: ");
         cliente.setCnh(entrada.nextLong());
 
+        entrada.nextLine();
         System.out.print("Informe a rua: ");
         cliente.setRua(entrada.nextLine());
-        entrada.nextLine();
+        
         System.out.print("Informe o número da casa: ");
         cliente.setNumeroCasa(entrada.nextInt());
 
+        entrada.nextLine();
         System.out.print("Informe o bairro: ");
         cliente.setBairro(entrada.nextLine());
-        entrada.nextLine();
-
+        
         System.out.print("Informe a cidade: ");
         cliente.setCidade(entrada.nextLine());
 
