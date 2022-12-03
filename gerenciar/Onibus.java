@@ -1,5 +1,7 @@
 package gerenciar;
 
+import Excecoes.ArCondicionadoException;
+
 /*
  * Classe ônibus extends de veículo
  */
@@ -45,18 +47,27 @@ public class Onibus extends Veiculo {
     /**
      * @return ar condicionado do ônibus 
      */
-    public boolean getArC() {
-        return arC;
+    public String getArC() {
+        if (arC == true) {
+            return "Sim"; 
+        } else {
+            return "Não";
+        }
     }
 
     /**
      * @param arCondicionado
      */
-    public void setArC( String arCondicionado) {
-        if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
+    public void setArC(int arCondicionado) throws ArCondicionadoException{
+        switch (arCondicionado) {
+            case 1:
             arC = true;
-        }else{
+                break;
+            case 2:
             arC = false;
+                break;
+            default:
+            throw new ArCondicionadoException();
         }
     }
     /**
@@ -109,6 +120,6 @@ public class Onibus extends Veiculo {
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+" Categoria: "+categoria+" Internet:  "+internet+" Ar condicionado: "+ arC +" Número de passageiro"+ numeroPass;
+        return super.toString()+" Categoria: "+categoria+" Internet:  "+internet+" Ar condicionado: "+ getArC() +" Número de passageiro"+ numeroPass;
     }
 }

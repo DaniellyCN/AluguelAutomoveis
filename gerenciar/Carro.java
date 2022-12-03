@@ -28,32 +28,11 @@ public class Carro extends Veiculo {
      */
     public String getArC() {
         if (arC == true) {
-           return "Sim"; 
+            return "Sim"; 
         } else {
             return "Não";
         }
         
-    }
-
-    public void setArC(int arCondicionado) throws ArCondicionadoException{
-        switch (arCondicionado) {
-            case 1:
-            arC = true;
-                break;
-            case 2:
-            arC = false;
-                break;
-            default:
-            throw new ArCondicionadoException();
-        }
-        
-        /*if(arCondicionado == 1){
-            arC = true;
-        }else if(arCondicionado == 2){
-            arC = false;
-        }else{   
-            throw new ArCondicionadoException();
-        } */       
     }
 
     /**
@@ -78,11 +57,18 @@ public class Carro extends Veiculo {
         return numeroPorta;
     }
 
-    /**
-     * @param arC
-     */
-    public void setArC( boolean arC) {
-        this.arC = arC;
+    public void setArC(int arCondicionado) throws ArCondicionadoException{
+        switch (arCondicionado) {
+            case 1:
+            arC = true;
+                break;
+            case 2:
+            arC = false;
+                break;
+            default:
+            throw new ArCondicionadoException();
+        }
+          
     }
     /**
      * @param mediaKm
@@ -94,18 +80,27 @@ public class Carro extends Veiculo {
     /**
      * @param numeroPass
      */
-    public void setNumePass(int numeroPass) {
-        this.numeroPass = numeroPass;
+    public void setNumePass(int numeroPass) throws Exception{
+        if (numeroPass <= 4 && numeroPass >=0 ) {
+           this.numeroPass = numeroPass; 
+        } else {
+            throw new Exception("O número de passageiros deve ser entre 0 e 4.");
+        }
+        
     }
 
     /**
      * @param numeroPorta
      */
-    public void setNumPorta(int numeroPorta) {
-        this.numeroPorta = numeroPorta;
+    public void setNumPorta(int numeroPorta) throws Exception{
+        if (numeroPorta == 2 || numeroPorta == 4) {
+           this.numeroPorta = numeroPorta; 
+        } else {
+            throw new Exception("São aceitas somente as opções 2 portas ou 4 portas.");
+        }
+        
  
     }
-
     
     /* (non-Javadoc)
      * @see gerenciar.Veiculo#toString()

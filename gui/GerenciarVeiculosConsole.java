@@ -127,6 +127,9 @@ public class GerenciarVeiculosConsole{
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
+            } catch(Exception e1){
+                System.out.println(e1.getMessage());
+
             }
         }while(testCarro);
         
@@ -139,6 +142,8 @@ public class GerenciarVeiculosConsole{
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
+            } catch (Exception e1){
+                System.out.println(e1.getMessage());
             }
         }while(testCarro);
         
@@ -150,54 +155,72 @@ public class GerenciarVeiculosConsole{
     public void cadastroDeOnibus(){
         
         Onibus onibus = new Onibus(null, null, false, false, 0);
+        boolean testOnibus =true;
 
         System.out.println("---Cadastro de ônibus---");
         System.out.println("Informe a placa do ônibus: ");
         onibus.setPlaca(entrada.nextLine());
 
-        boolean testOnibus1 =true;
+        testOnibus =true;
         do{
             System.out.println("informe o ano do ônibus: ");
             try {
                 onibus.setAno(entrada.nextInt());
-                testOnibus1=false;
+                testOnibus=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();
             }
-        }while(testOnibus1);
+        }while(testOnibus);
 
-        boolean testOnibus2 =true;
+        testOnibus =true;
         do{   
             System.out.println("Informe o valor da diária: ");
             try {
                 onibus.setValorD(entrada.nextDouble());
-                testOnibus2=false;
+                testOnibus=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testOnibus2);
+        }while(testOnibus);
 
-        System.out.println("O ônibus possui internet? ");
-        onibus.setInternet(entrada.nextLine());
-
-        entrada.nextLine();
-
-        System.out.println("O ônibus possui ar condicionado?");
-        onibus.setArC(entrada.nextLine());
-
-        boolean testOnibus3 =true;
+        testOnibus=true;
         do{   
-            System.out.println("informe o numero de passageiro: ");
+            System.out.println("O ônibus possui internet? (1) sim (2) não"); 
+            try {
+                onibus.setInternet(entrada.nextInt());
+                testOnibus=false;
+            } catch (ArCondicionadoException e) {
+                System.out.println(e.getMessage());
+            } catch(Exception e1){
+                System.out.println(e1.getMessage());
+            }
+        }while(testOnibus);
+        
+        
+        testOnibus=true;
+        do{   
+            System.out.println("O ônibus possui ar condicionado? (1) sim (2) não"); 
+            try {
+                onibus.setArC(entrada.nextInt());
+                testOnibus=false;
+            } catch (ArCondicionadoException e) {
+                System.out.println(e.getMessage());
+            }
+        }while(testOnibus); 
+
+        testOnibus=true;
+        do{   
+            System.out.println("Informe o numero de passageiro: ");
             try {
                 onibus.setNumePass(entrada.nextInt());
-                testOnibus3=false;
+                testOnibus=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testOnibus3);
+        }while(testOnibus);
         
 
         System.out.println("Cadastro finalizado!");
