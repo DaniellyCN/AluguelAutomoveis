@@ -2,7 +2,7 @@ package gerenciar;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import Excecoes.PlacaInexistenteException;
 public class GerenciarVeiculo implements IVeiculos{
     
     List<Veiculo> listaV; // = new ArrayList<>();
@@ -27,13 +27,14 @@ public class GerenciarVeiculo implements IVeiculos{
      * @see IVeiculos#get(java.lang.String)
      */
     
-    public Veiculo get(String placa) {
+    public Veiculo get(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca().equals(placa)) {
                 return listaV.get(i);
             }
-        }  
-        return null;
+        } 
+        throw new PlacaInexistenteException(); 
+        
     }
 
    
@@ -45,13 +46,14 @@ public class GerenciarVeiculo implements IVeiculos{
      * @see IVeiculos#getInfo(java.lang.String)
      */
 
-    public String getInfo(String placa) {
+    public String getInfo(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca().equals(placa)) {
                 return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
-        return null;
+        throw new PlacaInexistenteException();
+        
     }
 
     /* (non-Javadoc)
@@ -101,13 +103,13 @@ public class GerenciarVeiculo implements IVeiculos{
      * @see IVeiculos#existe(java.lang.String)
      */
     
-    public boolean existe(String placa) {
+    public boolean existe(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca().equals(placa)){ 
                 return true;
             }
         }
-        return false;
+        throw new PlacaInexistenteException();
     }
     
     /* (non-Javadoc)

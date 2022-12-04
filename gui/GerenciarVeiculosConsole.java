@@ -10,6 +10,7 @@ import gerenciar.Onibus;
 import gerenciar.Veiculo;
 import java.util.InputMismatchException;
 import Excecoes.ArCondicionadoException;
+import Excecoes.PlacaInexistenteException;
 
 public class GerenciarVeiculosConsole{
 
@@ -30,7 +31,7 @@ public class GerenciarVeiculosConsole{
             System.out.println("2.Cadastro de ônibus");
             System.out.println("3.Cadastro de Caminhão");
             System.out.println("4.Verificar cadastros dos veículos");
-            System.out.println("5. deletar veiculo");
+            System.out.println("5.Deletar veiculo");
             System.out.println("6.Sair");
             
             op = entrada.nextInt();
@@ -303,25 +304,32 @@ public class GerenciarVeiculosConsole{
     System.out.println(gerenciarVeiculo.getInfo());
 
     }
-       
-    
-    
+  
     public void deletarVeiculos (){
-        System.out.println("\n Deseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
-        int opcao = entrada.nextInt();
-        entrada.nextLine();
-        if (opcao == 1) {
-            System.out.println("Digite o número da placa:");
-             String placa = entrada.nextLine();
 
-            if (gerenciarVeiculo.existe(placa)) {
+        System.out.println("Digite o número da placa que deseja excluir:");
+        String placa = entrada.nextLine();
+        boolean teste=false;
+        try {
+            teste = gerenciarVeiculo.existe(placa);
+        } catch (PlacaInexistenteException e) {
+            System.out.println(e.getMessage());
+        }
+        if (teste == true) {
+            System.out.println("\n Deseja excluir esse cadastro ?\n  1.Sim\n  2.Não");
+            int opcao = entrada.nextInt();    
+
+            if (opcao == 1) {
                 gerenciarVeiculo.remove(placa);
                 System.out.println("Conta excluida!!");
+            }else if (opcao == 2) {
+                System.out.println("Processo cancelado");
+            }else {
+                System.out.println("Opção inválida");
             }
         }
-        if (opcao == 2) {
-            System.out.println("Processo cancelado");
-        }
+
+        
 
     }
     

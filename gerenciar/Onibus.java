@@ -37,12 +37,12 @@ public class Onibus extends Veiculo {
      * @return categoria
      */
     public String getCategoria () {//(leito, executivo ou convencional)
-        if (categoria == "leito 1") {
-            return "Leito";
-        } else if (categoria == "executivo 2") {
-            return "Executivo";
-        }else if (categoria == "convencional 3"){
-            return "Convencional";
+        if (categoria == "leito") {
+            return "leito";
+        } else if (categoria == "executivo") {
+            return "executivo";
+        }else if (categoria == "convencional"){
+            return "convencional";
         }else{
             return " ";
         }
@@ -104,26 +104,27 @@ public class Onibus extends Veiculo {
             internet=false;
                 break;
             default:
-                break;
+                throw new Exception("Insira uma opção válida (1)Sim (2)Não");
         }
     }
 
     /**
      * @param categoria
      */
-    public void setCategoria(int cat) {
+    public void setCategoria(int cat) throws Exception{
         switch (cat) {
             case 1:
-             categoria = "leito 1" ;  
+             categoria = "leito" ;  
                 break;
             case 2:
-            categoria = "executivo 2" ;   
+            categoria = "executivo" ;   
                 break;
             case 3:
-            categoria = "convencional 3" ;    
+            categoria = "convencional" ;    
                 break;
             default:
-                break;
+            throw new Exception("Insira uma opção válida (1)Leito (2)Executivo (3)Convencional");
+                
         }
         
     }
@@ -144,6 +145,6 @@ public class Onibus extends Veiculo {
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+" Categoria: "+getCategoria()+" Internet:  "+getInternet()+" Ar condicionado: "+ getArC() +" Número de passageiro"+ numeroPass;
+        return super.toString()+" Categoria: "+getCategoria()+" Internet:  "+getInternet()+" Ar condicionado: "+ getArC() +" Número de passageiro: "+ numeroPass;
     }
 }
