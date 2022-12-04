@@ -45,18 +45,16 @@ public class GerenciarVeiculosConsole{
                     break;
                 case 3:
                 cadastroDeCaminhao();
-                break;
+                    break;
                 case 4: 
                 verificarCadastroVeiculo();
-                break;
+                    break;
                 case 5: 
-                
                 deletarVeiculos();
-                break;
-                case 6: 
-                
-                    default: 
-                    //System.out.println("Opção inválida");
+                    break;
+                default:
+                System.out.println("\n Opção inválida! \n");
+                    
             }
         }while(op!=6); 
     }

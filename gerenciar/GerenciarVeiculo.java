@@ -94,7 +94,7 @@ public class GerenciarVeiculo implements IVeiculos{
                 listaV.remove(i);
                 return true;
             }
-        }System.out.println("\n placa encontrada, a placa do carro é: "+ placa);
+        }
         return false;
     }
 
