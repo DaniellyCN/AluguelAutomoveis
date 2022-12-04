@@ -1,15 +1,17 @@
 package gerenciar;
 
-import java.util.InputMismatchException;
+import Excecoes.SeguroException;
 
-import javax.xml.catalog.Catalog;
+//import java.util.InputMismatchException;
+
+//import javax.xml.catalog.Catalog;
 
 /*
  * Classe locação
  */
 
 public class Locacao{
-    private static int codigoDaLocacao = 0;
+    private int codigoDaLocacao = 0;
     private int codigo;
     private Cliente cliente;
     private Veiculo veiculo;
@@ -39,12 +41,15 @@ public class Locacao{
      /**
      * @return código da locação
      */
-    public static int getCodigoDaLocacao() {
-        return codigoDaLocacao++;
+    public int getCodigoDaLocacao() {
+        return this.codigoDaLocacao;   
     }
     /**
      * @param codigoDaLocacao
      */
+    public void setCodigoDaLocacao(int codigoDaLocacao){
+        this.codigoDaLocacao= codigoDaLocacao;
+    }
     
     /**
      * @return cliente
@@ -73,30 +78,53 @@ public class Locacao{
     /**
      * @return seguro
      */
-    public boolean getSeguro() {
-        return seguro;
+    //public boolean getSeguro() {
+       // return seguro;
+   // }
+
+    public String getSeguro() {
+        if (seguro == true) {
+           return "Sim"; 
+        } else {
+            return "Não";
+        }
+
     }
+
+
+
+
      /**
      * @param seguro
      */
-    public void setSeguro( String seguro) throws IllegalArgumentException {
-
+    public void setSeguro( int seguroDeCarro) throws SeguroException {
         
-        boolean arC;
-        if(seguro.toLowerCase().equals("sim")){
-            arC = true;
-        }else{
-            arC = false;
+        
+        switch (seguroDeCarro) {
+            case 1:
+            seguro = true;
+                break;
+            case 2:
+            seguro = false;
+                break;
+            default:
+            throw new SeguroException();
         }
+        //boolean arC;
+        //i//f(seguro.toLowerCase().equals("sim")){
+            //arC = true;
+        //}else{
+           // arC = false;
+        //}
        
-        setSeguro(arC);
+       // setSeguro(arC);
 
     }
     /**
      * @param seguro
      */
     public void setSeguro(boolean seguro) {
-        this.seguro = seguro;
+       this.seguro = seguro;
     }
      /**
      * @return data inicial da locação

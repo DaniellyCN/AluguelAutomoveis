@@ -1,8 +1,9 @@
 package gui;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
+//import java.util.concurrent.ExecutionException;
 
+import Excecoes.SeguroException;
 import gerenciar.GerenciarClientes;
 import gerenciar.GerenciarLocacoes;
 import gerenciar.GerenciarVeiculo;
@@ -16,6 +17,7 @@ import gerenciar.Locacao;
  * Classe de interface gráfica responsável por cadastrar, verificar e deletar locações.
  */
 public class GerenciarLocacoesConsole  {
+    private int totalLocacoes;
     private GerenciarLocacoes gerenciarLocacoes;// = new GerenciarLocacoes();
     private GerenciarClientes gerenciarClientes;// = new GerenciarClientes();
     private GerenciarVeiculo gerenciarVeiculo;
@@ -63,60 +65,88 @@ public class GerenciarLocacoesConsole  {
         }while(op!=4); 
     }
 
+    private int criarCodigoLocacao(){
+        this.totalLocacoes++;
+        return this.totalLocacoes;
+    }
     /**
      * Método para cadastrar locação de veículos.
      */
     public void CadastrarLocacao(){
-        boolean ok;
         Locacao locacao = new Locacao();
+        boolean CadasLocacao = true;
        
-           
-                System.out.println("O código da locação: ");
-                System.out.println(Locacao.getCodigoDaLocacao());
+        /*
+         * Código da locação gera um código automatico para o cliente.
+         */
+        System.out.println("O código da locação: ");   
+        int novoCodigoLocacao = this.criarCodigoLocacao();        
+        System.out.println(novoCodigoLocacao);
 
+        locacao.setCodigoDaLocacao(novoCodigoLocacao);
+        
         do{
+            System.out.println("Informe o CPF do titular: ");
             try{
-                ok = true;
-                System.out.println("Informe o CPF do titular: ");
                 locacao.setCliente(gerenciarClientes.get(entrada.nextLong()));
-            
-            }
-            catch(InputMismatchException e ){
-                ok= false;
-                System.out.println("erro: digite um valor valido");
-
+                CadasLocacao = false;
+            }catch(InputMismatchException e ){
+                System.out.println("Por favor, insira um valor numérico");
             }
             finally{
                 entrada.nextLine();
             }
-        }while(!ok);
-
+        }while(CadasLocacao);
+        
+        CadasLocacao=true;
         do{
+            System.out.println("Informe a placa do veiculo");
             try{
-                System.out.println("Informe a placa do veiculo para a locação");
-                locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));
-                
-            
-                System.out.println("Informe se o veículo possui seguro: "); //erro se o usuário informar um numero 
-                locacao.setSeguro(entrada.nextLine());
-            
-                System.out.println("Informe a data inicial da locação: "); // 
+            locacao.setVeiculo(gerenciarVeiculo.get(entrada.nextLine()));
+            CadasLocacao=false;
+            }catch(InputMismatchException e){
+                System.out.println("Por favor, insira um valor numérico");
+            }
+        }while(CadasLocacao);
+
+        CadasLocacao=true;
+        do{   
+            System.out.println("Informe se o veículo possui seguro: (1) sim (2) não");
+            try {
+                locacao.setSeguro(entrada.nextInt());
+                CadasLocacao=false;
+            } catch (SeguroException e) {
+                System.out.println(e.getMessage());
+            }
+            finally{
+                entrada.nextLine();
+            }
+        }while(CadasLocacao); 
+    
+        CadasLocacao=true;
+       do{
+            System.out.println("Informe a data inicial da locação: "); 
+            try{
                 locacao.setDataInicial(entrada.nextLine());
-                
-                System.out.println("Informe a data final: ");
+                CadasLocacao=false;
+            }catch(InputMismatchException e){
+            System.out.println("Por favor, insira um valor válido");
+           }
+       }while(CadasLocacao);
+
+       CadasLocacao=true;
+       do{
+            System.out.println("Informe a data final:"); 
+            try{
                 locacao.setDataFinal(entrada.nextLine());
+                CadasLocacao=false;
+            }catch(InputMismatchException e){
+            System.out.println("Por favor, insira um valor válido");
+           }
+       }while(CadasLocacao);
 
-                System.out.println(" Cadastro concluído! ");
-                gerenciarLocacoes.add(locacao);
-            }
-            catch(InputMismatchException e){
-                ok= false;
-                System.out.println("erro: ");
-            }
-            
-
-        }while(!ok);
-       
+        System.out.println(" Cadastro concluído! ");
+        gerenciarLocacoes.add(locacao);
     }
        
     /**

@@ -32,22 +32,28 @@ public  class  GerenciarLocacoes implements ILocacoes{
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#get(int)
      */
-    public Locacao get(int codigo){//atriburui a lista em uma variavel e dps colocar em um if e dps 
+    public Locacao get(int codigo){
 
-       for(int i=0; i<listaDeLocacoes.size();i++){
+      for(int i=0; i<listaDeLocacoes.size();i++){
+        listaDeLocacoes.get(i);
         if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
-            return listaDeLocacoes.get(i);
+           return listaDeLocacoes.get(i);
         }
        }
-       return null;//colocar um t e na classe um try cacth 
+       return null;
     }
+
+   
+
 
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#getInfo(int)
      *///placa da erro 
     public String getInfo( int codigo){
         for(int i = 0; i<listaDeLocacoes.size();i++){
+            listaDeLocacoes.get(i);
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
+                listaDeLocacoes.get(i);
                 return "Código" + listaDeLocacoes.get(i).getCodigoDaLocacao();
             }
         } 
@@ -57,18 +63,52 @@ public  class  GerenciarLocacoes implements ILocacoes{
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#getInfo()
      */
-    public String getInfo(){
-        for(int i=0; i<listaDeLocacoes.size();  ){
-            return "Código:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+ "\n Titular da locação: "+listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n Seguro do veículo: "+listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+"\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
+    //public String getInfo(){
+      // for(int i=0; i<listaDeLocacoes.size();){
+        //listaDeLocacoes.get(i);
+        //return  "Código:  " + Locacao.getCodigoDaLocacao()+"\n Titular da locação: "+listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n Seguro do veículo: "+listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+"\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
+        //}
+    //return null;
+   // }
+
+
+        public String getInfo(){
+    String dados = "";
+    for (int i = 0; i < listaDeLocacoes.size(); i++) {
+        if (listaDeLocacoes.get(i) != null) {
+            dados += "/n Código da locação:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+"\n Titular da locação: "
+            +listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n O veículo possui seguro? "
+            +listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+
+            "\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
+      
         }
-      return null;
     }
+    return dados;
+
+}
+
+
+
+
+   // public String getInfo() {
+       // String dados = "";
+       // for(int i=0;i<listaDeLocacoes.size();i++){
+           // dados += "Locacoes"+listaDeLocacoes.get(i).toString()+"\n";
+      //  }
+       // return dados;
+    //} 
+
+
+
+
+
 
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#remove(int)
      */
    /* */ public boolean remove(int codigo){
         for(int i= 0; i<listaDeLocacoes.size();i++){
+            listaDeLocacoes.get(i);
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
                 listaDeLocacoes.remove(i);
                 return true;
@@ -91,7 +131,8 @@ public  class  GerenciarLocacoes implements ILocacoes{
     */
     public boolean existe(int codigo){
        for(int i =0; i<listaDeLocacoes.size();i++){
-        if(listaDeLocacoes.get(i).getCodigoDaLocacao()==codigo){
+        listaDeLocacoes.get(i);
+        if( listaDeLocacoes.get(i).getCodigoDaLocacao()==codigo){
             return true;
         }
 
