@@ -1,15 +1,18 @@
 package gerenciar;
 
+import java.util.StringTokenizer;
+
 import Excecoes.ArCondicionadoException;
 
 /*
  * Classe ônibus extends de veículo
  */
 public class Onibus extends Veiculo {
-    private String categoria;
+    private int categoria;
     private boolean internet;
     private boolean arC;
     private  int numeroPass;
+    private String teste;
 
     /**
      * @param placa placa do ônibus
@@ -18,7 +21,7 @@ public class Onibus extends Veiculo {
      * @param arC   ar condicionado do ônibus
      * @param numeroPass número de passageiros
      */
-    public Onibus(String placa, String categoria, boolean internet, boolean
+    public Onibus(String placa, int categoria, boolean internet, boolean
     arC, int numeroPass) {
         super(placa);
         this.categoria = categoria;
@@ -33,15 +36,28 @@ public class Onibus extends Veiculo {
     /**
      * @return categoria
      */
-    public String getCategoria() {
-        return categoria;
+    public String getCategoria () {//(leito, executivo ou convencional)
+        if (categoria == 1) {
+            return "Leito";
+        } else if (categoria == 2) {
+            return "Executivo";
+        }else if (categoria == 3){
+            return "Convencional";
+        }else{
+            return " ";
+        }
     }
 
     /**
      * @return internet do ônibus 
      */
-    public boolean getInternet() {
-        return internet;
+    public String getInternet() {
+        if (internet == true) {
+            return "Sim"; 
+        } else {
+            return "Não";
+        }
+        
     }
 
     /**
@@ -56,6 +72,12 @@ public class Onibus extends Veiculo {
     }
 
     /**
+     * @return número de passageiros do ônibus
+     */
+    public int getNumePass() {
+        return numeroPass;
+    }
+        /**
      * @param arCondicionado
      */
     public void setArC(int arCondicionado) throws ArCondicionadoException{
@@ -73,53 +95,55 @@ public class Onibus extends Veiculo {
     /**
      * @param internet
      */
-    public void setInternet( String internet) {
-        if(internet == "Sim" || internet == "Sim".toLowerCase() || internet == "Sim".toUpperCase()){
-            arC = true;
-        }else{
-            arC = false;
+    public void setInternet(int net) throws Exception{
+        switch (net) {
+            case 1:
+            internet = true;    
+                break;
+            case 2:
+            internet=false;
+                break;
+            default:
+                break;
         }
-    }
-
-    /**
-     * @return número de passageiros do ônibus
-     */
-    public int getNumePass() {
-        return numeroPass;
     }
 
     /**
      * @param categoria
      */
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    /**
-     * @param internet
-     */
-    public void setInternet(boolean internet) {
-        this.internet = internet;
-    }
-
-    /**
-     * @param arC
-     */
-    public void setArC(boolean arC) {
-        this.arC = arC;
+    public void setCategoria(int cat) {
+        switch (cat) {
+            case 1:
+             teste = "leito 1" ;  
+                break;
+            case 2:
+            teste = "executivo 2" ;   
+                break;
+            case 3:
+            teste = "convencional 3" ;    
+                break;
+            default:
+                break;
+        }
+        
     }
 
     /**
      * @param numeroPass
      */
-    public void setNumePass(int numeroPass) {
-        this.numeroPass = numeroPass;
+    public void setNumePass(int numeroPass) throws Exception{
+        if (numeroPass <= 50 && numeroPass >=0 ) {
+            this.numeroPass = numeroPass; 
+         } else {
+            throw new Exception("O número máximo de passageiros é 50.");
+         }
+       
     }
 
     /* (non-Javadoc)
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+" Categoria: "+categoria+" Internet:  "+internet+" Ar condicionado: "+ getArC() +" Número de passageiro"+ numeroPass;
+        return super.toString()+" Categoria: "+getCategoria()+" Internet:  "+getInternet()+" Ar condicionado: "+ getArC() +" Número de passageiro"+ numeroPass;
     }
 }

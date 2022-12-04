@@ -154,7 +154,7 @@ public class GerenciarVeiculosConsole{
     }
     public void cadastroDeOnibus(){
         
-        Onibus onibus = new Onibus(null, null, false, false, 0);
+        Onibus onibus = new Onibus(null, 0, false, false, 0);
         boolean testOnibus =true;
 
         System.out.println("---Cadastro de ônibus---");
@@ -163,7 +163,7 @@ public class GerenciarVeiculosConsole{
 
         testOnibus =true;
         do{
-            System.out.println("informe o ano do ônibus: ");
+            System.out.println("Informe o ano do ônibus: ");
             try {
                 onibus.setAno(entrada.nextInt());
                 testOnibus=false;
@@ -219,6 +219,8 @@ public class GerenciarVeiculosConsole{
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
+            } catch (Exception e1){
+                System.out.println(e1.getMessage());
             }
         }while(testOnibus);
         
