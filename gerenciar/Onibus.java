@@ -8,7 +8,7 @@ import Excecoes.ArCondicionadoException;
  * Classe ônibus extends de veículo
  */
 public class Onibus extends Veiculo {
-    private int categoria;
+    private String categoria;
     private boolean internet;
     private boolean arC;
     private  int numeroPass;
@@ -21,7 +21,7 @@ public class Onibus extends Veiculo {
      * @param arC   ar condicionado do ônibus
      * @param numeroPass número de passageiros
      */
-    public Onibus(String placa, int categoria, boolean internet, boolean
+    public Onibus(String placa, String categoria, boolean internet, boolean
     arC, int numeroPass) {
         super(placa);
         this.categoria = categoria;
@@ -37,11 +37,11 @@ public class Onibus extends Veiculo {
      * @return categoria
      */
     public String getCategoria () {//(leito, executivo ou convencional)
-        if (categoria == 1) {
+        if (categoria == "leito 1") {
             return "Leito";
-        } else if (categoria == 2) {
+        } else if (categoria == "executivo 2") {
             return "Executivo";
-        }else if (categoria == 3){
+        }else if (categoria == "convencional 3"){
             return "Convencional";
         }else{
             return " ";
@@ -114,13 +114,13 @@ public class Onibus extends Veiculo {
     public void setCategoria(int cat) {
         switch (cat) {
             case 1:
-             teste = "leito 1" ;  
+             categoria = "leito 1" ;  
                 break;
             case 2:
-            teste = "executivo 2" ;   
+            categoria = "executivo 2" ;   
                 break;
             case 3:
-            teste = "convencional 3" ;    
+            categoria = "convencional 3" ;    
                 break;
             default:
                 break;

@@ -154,7 +154,7 @@ public class GerenciarVeiculosConsole{
     }
     public void cadastroDeOnibus(){
         
-        Onibus onibus = new Onibus(null, 0, false, false, 0);
+        Onibus onibus = new Onibus(null, null, false, false, 0);
         boolean testOnibus =true;
 
         System.out.println("---Cadastro de ônibus---");
@@ -212,6 +212,17 @@ public class GerenciarVeiculosConsole{
 
         testOnibus=true;
         do{   
+            System.out.println("O ônibus possui qual categoria? (1) Leito (2) Executivo (3) Convencional"); 
+            try {
+                onibus.setCategoria(entrada.nextInt());
+                testOnibus=false;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }while(testOnibus); 
+
+        testOnibus=true;
+        do{   
             System.out.println("Informe o numero de passageiro: ");
             try {
                 onibus.setNumePass(entrada.nextInt());
@@ -231,58 +242,58 @@ public class GerenciarVeiculosConsole{
     public void cadastroDeCaminhao(){
         
         Caminhao caminhao = new Caminhao(null, 0, 0);
+        boolean testCaminhao =true;
 
         System.out.println("---Cadastro do Caminhão ---");
         System.out.println("Informe a placa do caminhão: ");
         caminhao.setPlaca(entrada.nextLine());
 
-        boolean testCaminhao1 =true;
         do{
             System.out.println("Informe o ano do caminhão : ");
             try {
                 caminhao.setAno(entrada.nextInt());
-                testCaminhao1=false;
+                testCaminhao=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();
             }
-        }while(testCaminhao1);
+        }while(testCaminhao);
 
-        boolean testCaminhao2 =true;
+        testCaminhao =true;
         do{   
             System.out.println("Informe o valor da diária: ");
             try {
                 caminhao.setValorD(entrada.nextDouble());
-                testCaminhao2=false;
+                testCaminhao=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCaminhao2);
+        }while(testCaminhao);
 
-        boolean testCaminhao3 =true;
+        testCaminhao =true;
         do{   
-            System.out.println("Informe o numero de eixos: ");
+            System.out.println("Informe o número de eixos: ");
             try {
                 caminhao.setNumEixos(entrada.nextInt());
-                testCaminhao3=false;
+                testCaminhao=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCaminhao3);
+        }while(testCaminhao);
 
-        boolean testCaminhao4 =true;
+        testCaminhao =true;
         do{   
             System.out.println("Informe a carga máxima permitida: ");
             try {
                 caminhao.seCargaMax(entrada.nextInt());
-                testCaminhao4=false;
+                testCaminhao=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
                 entrada.nextLine();  
             }
-        }while(testCaminhao4);        
+        }while(testCaminhao);         
 
         System.out.println("Cadastro finalizado!");
         gerenciarVeiculo.add(caminhao);
