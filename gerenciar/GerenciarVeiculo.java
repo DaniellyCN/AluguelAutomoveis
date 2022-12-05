@@ -68,6 +68,14 @@ public class GerenciarVeiculo implements IVeiculos{
         return dados;
     } 
 
+    public int getQuantElementos() {
+        int quant = 0;
+        for(int i=0;i<listaV.size();i++){
+            quant++;
+        }
+        return quant;
+    }
+
     /* (non-Javadoc)
      * @see IVeiculos#getResumoInfo()
      */
