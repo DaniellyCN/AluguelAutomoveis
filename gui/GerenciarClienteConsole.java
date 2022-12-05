@@ -1,89 +1,111 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+package gui;
 
+import java.util.Scanner;
+
+import gerenciar.Cliente;
+import gerenciar.GerenciarClientes;
+
+/*
+ * Classe de interface gráfica do cliente, responsável por abrir, verificar e deletar cadastro do cliente.
+ */
 public class GerenciarClienteConsole {
     private GerenciarClientes gerenciarClientes;
     Scanner entrada = new Scanner(System.in);
-    static ArrayList<Cliente> listaDClientes = new ArrayList<>();
 
+    /**
+     * @param gerenciarClientes Passa de parâmetro gerenciar clientes onde possui os
+     *                          métodos para manipular a classe.
+     */
     public GerenciarClienteConsole(GerenciarClientes gerenciarClientes) {
         this.gerenciarClientes = gerenciarClientes;
     }
 
     public GerenciarClienteConsole() {
-
     }
 
+    /**
+     * Menu de cadastro, verificação e exclusão.
+     */
     public void menuCadastroCliente() {
         int op;
         do {
-            System.out.println("-------- Cadastro de clientes -------");
-            System.out.println("1.Abrir conta");
-            System.out.println("2.Verificar conta");
-            System.out.println("3.Deletar conta");
-            System.out.println("4.Sair");
+            System.out.println(" **** Cadastro de clientes ****");
+            System.out.println("[1] Abrir cadastro");
+            System.out.println("[2] Verificar cadastro");
+            System.out.println("[3] Deletar cadastro");
+            System.out.println("[4] Sair");
 
             op = entrada.nextInt();
             entrada.nextLine();
             switch (op) {
                 case 1:
-                    abrirConta();
+                    abrircadastro();
                     break;
                 case 2:
-                    verificarConta();
+                    verificarCadastro();
                     break;
                 case 3:
-                    deletarConta();
+                    deletarCadastro();
                 default:
-                case 4:
-                    sair();
-                    // System.out.println("Opção inválida");
+                    op = 0;
             }
         } while (op != 0);
     }
 
-    public void abrirConta() {
-
+    /**
+     * Método para abrir cadastro do cliente
+     */
+    public void abrircadastro() {
         Cliente cliente = new Cliente(null, 0, 0, null, 0, null, null, 0, 0);
-        System.out.println("----------------------------------------------------------------------------");
-        System.out.println("Abertura de conta");
-        System.out.print("Informe o seu nome : ");
+
+        System.out.println("-----------------------------------------");
+        System.out.println(" Abertura do cadastro: ");
+        System.out.print("Informe o seu nome: ");
         cliente.setNome(entrada.nextLine());
 
         System.out.print("Informe o CPF do titular: ");
         cliente.setCpf(entrada.nextLong());
 
-        System.out.print("informe sua carteira de motorista: ");
+        System.out.print("Informe sua carteira de motorista: ");
         cliente.setCnh(entrada.nextLong());
 
+        entrada.nextLine();
         System.out.print("Informe a rua: ");
         cliente.setRua(entrada.nextLine());
-        entrada.nextLine();
-        System.out.print("Informe o numCasa: ");
+
+        System.out.print("Informe o número da casa: ");
         cliente.setNumeroCasa(entrada.nextInt());
 
+        entrada.nextLine();
         System.out.print("Informe o bairro: ");
         cliente.setBairro(entrada.nextLine());
-        entrada.nextLine();
-        System.out.print("Informe o cidade: ");
+
+        System.out.print("Informe a cidade: ");
         cliente.setCidade(entrada.nextLine());
 
         System.out.print("Informe o telefone do titular: ");
         cliente.setTelefone(entrada.nextLong());
 
+        System.out.print("Informe o CEP do titular: ");
+        cliente.setCep(entrada.nextLong());
+
         System.out.println("Conta cadastrada!!");
-        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------");
         gerenciarClientes.add(cliente);
 
     }
 
-
-    public void verificarConta() {
+    /**
+     * Método que verifica o cadastro do cliente.
+     */
+    public void verificarCadastro() {
         System.out.println(gerenciarClientes.getResumoInfo());
     }
 
-    public void deletarConta() {
+    /**
+     * Método para deletar cadastro do cliente.
+     */
+    public void deletarCadastro() {
 
         int opcao;
 
@@ -99,13 +121,9 @@ public class GerenciarClienteConsole {
             }
         }
         if (opcao == 2) {
-            System.out.println("processo cancelado");
+            System.out.println("Processo cancelado");
         }
 
     }
 
-    public void sair() {
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.menuPrincipal();
-    }
 }

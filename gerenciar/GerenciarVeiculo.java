@@ -1,14 +1,24 @@
-import java.util.List;
-import java.util.ArrayList;
+package gerenciar;
 
+import java.util.ArrayList;
+import java.util.List;
+import Excecoes.PlacaInexistenteException;
 public class GerenciarVeiculo implements IVeiculos{
     
-    ArrayList<Veiculo> listaV=new ArrayList<>();
+    List<Veiculo> listaV; // = new ArrayList<>();
+
+    public GerenciarVeiculo (List<Veiculo> veiculos){
+        this.listaV = veiculos;
+    }
+
+    public GerenciarVeiculo (){
+        this.listaV = new ArrayList<>();
+    }
     
     /* (non-Javadoc)
     * @see IVeiculos#add(Veiculo)
     */
-    @Override
+   
     public void add(Veiculo v) {
          listaV.add(v);    
     }
@@ -16,51 +26,66 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#get(java.lang.String)
      */
-    @Override
-    public Veiculo get(String placa) {
+    
+    public Veiculo get(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa) {
+            if (listaV.get(i).getPlaca().equals(placa)) {
                 return listaV.get(i);
             }
-        }
-        return null;
+        } 
+        throw new PlacaInexistenteException(); 
+        
     }
 
+   
+
+    public List <Veiculo> getLista(){ //////////////
+        return this.listaV;
+    }
     /* (non-Javadoc)
      * @see IVeiculos#getInfo(java.lang.String)
      */
-    @Override
-    public String getInfo(String placa) {
+
+    public String getInfo(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa) {
+            if (listaV.get(i).getPlaca().equals(placa)) {
                 return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
-        return null;
+        throw new PlacaInexistenteException();
+        
     }
 
     /* (non-Javadoc)
      * @see IVeiculos#getInfo()
      */
-    @Override
+   
     public String getInfo() {
         String dados = "";
         for(int i=0;i<listaV.size();i++){
-            dados += listaV.get(i).toString()+"\n";
+            dados += "veiculo"+listaV.get(i).toString()+"\n";
         }
         return dados;
     } 
 
+    public int getQuantElementos() {
+        int quant = 0;
+        for(int i=0;i<listaV.size();i++){
+            quant++;
+        }
+        return quant;
+    }
+
     /* (non-Javadoc)
      * @see IVeiculos#getResumoInfo()
      */
-    @Override
+    
     public String getResumoInfo() {
         
         String dados = "";
         for(int i=0;i<listaV.size();i++){
             if(listaV.get(i) != null){
-                dados += "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+                dados += " Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
         return dados;
@@ -70,10 +95,10 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#remove(java.lang.String)
      */
-    @Override
+ 
     public boolean remove(String placa) {
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa) {
+            if (listaV.get(i).getPlaca().equals(placa)) {
                 listaV.remove(i);
                 return true;
             }
@@ -85,16 +110,16 @@ public class GerenciarVeiculo implements IVeiculos{
     /* (non-Javadoc)
      * @see IVeiculos#existe(java.lang.String)
      */
-    @Override
-    public boolean existe(String placa) {
+    
+    public boolean existe(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
-            if (listaV.get(i).getPlaca()==placa){
+            if (listaV.get(i).getPlaca().equals(placa)){ 
                 return true;
             }
         }
-        return false;
+        throw new PlacaInexistenteException();
     }
-
+    
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
