@@ -40,6 +40,6 @@ public class Caminhao extends Veiculo{
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+" Número de eixos : "+numEixos+" carga máxima: "+ cargaMax;
+        return super.toString()+" Número de eixos : "+numEixos+" Carga máxima: "+ cargaMax;
     }
 }

@@ -2,6 +2,9 @@ package gerenciar;
 
 
 import java.util.List;
+
+import Excecoes.LocacaoNaoPodeSerEfetuada;
+
 import java.util.ArrayList;
 
 /*
@@ -29,58 +32,84 @@ public  class  GerenciarLocacoes implements ILocacoes{
 
     }
 
-    /* (non-Javadoc)
-     * @see gerenciar.ILocacoes#get(int)
-     */
-    public Locacao get(int codigo){
+   
+    public Locacao get(int codigo) {
+        Locacao locacao = null;
 
-       for(int i=0; i<listaDeLocacoes.size();i++){
-        if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
-            return listaDeLocacoes.get(i);
+        if(listaDeLocacoes.size() < 1){
+            throw new RuntimeException("Não existe uma locacao cadastrada. ");
         }
+        for(int i=0; i<listaDeLocacoes.size();i++){
+            listaDeLocacoes.get(i);
+            if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
+                locacao =  listaDeLocacoes.get(i);
+            }
+        } 
+        if(locacao == null){
+            throw new RuntimeException("Não foi possível encontrar o código. "+codigo);
        }
-       return null;
+       return locacao;
     }
 
-    /* (non-Javadoc)
-     * @see gerenciar.ILocacoes#getInfo(int)
-     */
+
+    /// falta aqui 
     public String getInfo( int codigo){
         for(int i = 0; i<listaDeLocacoes.size();i++){
+            listaDeLocacoes.get(i);
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
+                listaDeLocacoes.get(i);
                 return "Código" + listaDeLocacoes.get(i).getCodigoDaLocacao();
             }
         } 
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see gerenciar.ILocacoes#getInfo()
-     */
-    public String getInfo(){
-        for(int i=0; i<listaDeLocacoes.size();){
-            return "Código:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+ "\n Titular da locação: "+listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n Seguro do veículo: "+listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+"\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
+
+    public String getInfo(){ /// se essa lista estiver vazia
+        if(listaDeLocacoes.size() < 1){
+            throw new RuntimeException("Não existe uma locação cadastrada. "); 
+        } 
+        String dados = "";
+        for (int i = 0; i < listaDeLocacoes.size(); i++) {
+            if (listaDeLocacoes.get(i) != null) {
+                dados += "/n Código da locação:  " + listaDeLocacoes.get(i).getCodigoDaLocacao()+"\n Titular da locação: "
+                +listaDeLocacoes.get(i).getCliente()+"\n Veículo: "+listaDeLocacoes.get(i).getVeiculo()+"\n O veículo possui seguro? "
+                +listaDeLocacoes.get(i).getSeguro()+"\n Data inicia da locação"+listaDeLocacoes.get(i).getDataInicial()+
+                "\n Data final da locação"+listaDeLocacoes.get(i).getDataFinal();
+            }
         }
-      return null;
+        return dados;
+        
     }
+    
 
     /* (non-Javadoc)
      * @see gerenciar.ILocacoes#remove(int)
      */
-    public boolean remove(int codigo){
+   /* */ public boolean remove(int codigo){
+
+        if(listaDeLocacoes.size()<1){
+            
+            throw new RuntimeException("nao foi possveil deletar "); 
+        }
         for(int i= 0; i<listaDeLocacoes.size();i++){
+            listaDeLocacoes.get(i);
             if(listaDeLocacoes.get(i).getCodigoDaLocacao() == codigo){
                 listaDeLocacoes.remove(i);
                 return true;
             }
-            System.out.println(" CPf encontrado, o cpf do cliente é: "+ codigo);
         }
         return false;
     }
 
     public boolean existe(int codigo){
+        if(listaDeLocacoes.size()<1){
+            
+            throw new RuntimeException(""); 
+        }
        for(int i =0; i<listaDeLocacoes.size();i++){
-        if(listaDeLocacoes.get(i).getCodigoDaLocacao()==codigo){
+        listaDeLocacoes.get(i);
+        if( listaDeLocacoes.get(i).getCodigoDaLocacao()==codigo){
             return true;
         }
 

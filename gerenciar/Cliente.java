@@ -1,7 +1,5 @@
 package gerenciar;
 
-
-
 public class Cliente {
     private String nome;
     private long cpf;
@@ -54,7 +52,7 @@ public class Cliente {
         return cidade;
     }
 
-    public long cep() {
+    public long getCep() {
         return cep;
     }
 

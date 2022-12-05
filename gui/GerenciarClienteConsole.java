@@ -1,27 +1,27 @@
 package gui;
 
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import gerenciar.Cliente;
 import gerenciar.GerenciarClientes;
 
-
 /*
  * Classe de interface gráfica do cliente, responsável por abrir, verificar e deletar cadastro do cliente.
  */
 public class GerenciarClienteConsole {
-    private  GerenciarClientes gerenciarClientes;
+    private GerenciarClientes gerenciarClientes;
     Scanner entrada = new Scanner(System.in);
 
     /**
-     * @param gerenciarClientes  Passa de parâmetro gerenciar clientes onde possui os métodos para manipular a classe.
+     * @param gerenciarClientes Passa de parâmetro gerenciar clientes onde possui os
+     *                          métodos para manipular a classe.
      */
     public GerenciarClienteConsole(GerenciarClientes gerenciarClientes) {
         this.gerenciarClientes = gerenciarClientes;
     }
-    public GerenciarClienteConsole() {}
+
+    public GerenciarClienteConsole() {
+    }
 
     /**
      * Menu de cadastro, verificação e exclusão.
@@ -63,42 +63,43 @@ public class GerenciarClienteConsole {
             System.out.println(" Abertura do cadastro: ");
             System.out.print("Informe o seu nome: ");
             cliente.setNome(entrada.nextLine());
-    
+
             System.out.print("Informe o CPF do titular: ");
             cliente.setCpf(entrada.nextLong());
-    
-            System.out.print("informe sua carteira de motorista: ");
+
+            System.out.print("Informe sua carteira de motorista: ");
             cliente.setCnh(entrada.nextLong());
-    
+
+            entrada.nextLine();
             System.out.print("Informe a rua: ");
             cliente.setRua(entrada.nextLine());
-            entrada.nextLine();
+
             System.out.print("Informe o número da casa: ");
             cliente.setNumeroCasa(entrada.nextInt());
-    
+
+            entrada.nextLine();
             System.out.print("Informe o bairro: ");
             cliente.setBairro(entrada.nextLine());
-            entrada.nextLine();
-    
+
             System.out.print("Informe a cidade: ");
             cliente.setCidade(entrada.nextLine());
-    
+
             System.out.print("Informe o telefone do titular: ");
             cliente.setTelefone(entrada.nextLong());
-    
+
+            System.out.print("Informe o CEP do titular: ");
+            cliente.setCep(entrada.nextLong());
+
             System.out.println("Conta cadastrada!!");
             System.out.println("-----------------------------------------");
             gerenciarClientes.add(cliente);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        }catch(Exception e){
+            e.getMessage();
         }
-       
-
     }
 
-
     /**
-     *Método que verifica o cadastro do cliente.
+     * Método que verifica o cadastro do cliente.
      */
     public void verificarCadastro() {
         System.out.println(gerenciarClientes.getResumoInfo());
@@ -137,5 +138,4 @@ public class GerenciarClienteConsole {
 
     }
 
-    
 }

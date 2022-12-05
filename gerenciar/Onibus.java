@@ -1,5 +1,9 @@
 package gerenciar;
 
+import java.util.StringTokenizer;
+
+import Excecoes.ArCondicionadoException;
+
 /*
  * Classe ônibus extends de veículo
  */
@@ -8,6 +12,7 @@ public class Onibus extends Veiculo {
     private boolean internet;
     private boolean arC;
     private  int numeroPass;
+    private String teste;
 
     /**
      * @param placa placa do ônibus
@@ -31,42 +36,38 @@ public class Onibus extends Veiculo {
     /**
      * @return categoria
      */
-    public String getCategoria() {
-        return categoria;
+    public String getCategoria () {//(leito, executivo ou convencional)
+        if (categoria == "leito") {
+            return "leito";
+        } else if (categoria == "executivo") {
+            return "executivo";
+        }else if (categoria == "convencional"){
+            return "convencional";
+        }else{
+            return " ";
+        }
     }
 
     /**
      * @return internet do ônibus 
      */
-    public boolean getInternet() {
-        return internet;
+    public String getInternet() {
+        if (internet == true) {
+            return "Sim"; 
+        } else {
+            return "Não";
+        }
+        
     }
 
     /**
      * @return ar condicionado do ônibus 
      */
-    public boolean getArC() {
-        return arC;
-    }
-
-    /**
-     * @param arCondicionado
-     */
-    public void setArC( String arCondicionado) {
-        if(arCondicionado == "Sim" || arCondicionado == "Sim".toLowerCase() || arCondicionado == "Sim".toUpperCase()){
-            arC = true;
-        }else{
-            arC = false;
-        }
-    }
-    /**
-     * @param internet
-     */
-    public void setInternet( String internet) {
-        if(internet == "Sim" || internet == "Sim".toLowerCase() || internet == "Sim".toUpperCase()){
-            arC = true;
-        }else{
-            arC = false;
+    public String getArC() {
+        if (arC == true) {
+            return "Sim"; 
+        } else {
+            return "Não";
         }
     }
 
@@ -76,39 +77,74 @@ public class Onibus extends Veiculo {
     public int getNumePass() {
         return numeroPass;
     }
+        /**
+     * @param arCondicionado
+     */
+    public void setArC(int arCondicionado) throws ArCondicionadoException{
+        switch (arCondicionado) {
+            case 1:
+            arC = true;
+                break;
+            case 2:
+            arC = false;
+                break;
+            default:
+            throw new ArCondicionadoException();
+        }
+    }
+    /**
+     * @param internet
+     */
+    public void setInternet(int net) throws Exception{
+        switch (net) {
+            case 1:
+            internet = true;    
+                break;
+            case 2:
+            internet=false;
+                break;
+            default:
+                throw new Exception("Insira uma opção válida (1)Sim (2)Não");
+        }
+    }
 
     /**
      * @param categoria
      */
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    /**
-     * @param internet
-     */
-    public void setInternet( boolean internet) {
-        this.internet = internet;
-    }
-
-    /**
-     * @param arC
-     */
-    public void setArC(boolean arC) {
-        this.arC = arC;
+    public void setCategoria(int cat) throws Exception{
+        switch (cat) {
+            case 1:
+             categoria = "leito" ;  
+                break;
+            case 2:
+            categoria = "executivo" ;   
+                break;
+            case 3:
+            categoria = "convencional" ;    
+                break;
+            default:
+            throw new Exception("Insira uma opção válida (1)Leito (2)Executivo (3)Convencional");
+                
+        }
+        
     }
 
     /**
      * @param numeroPass
      */
-    public void setNumePass(int numeroPass) {
-        this.numeroPass = numeroPass;
+    public void setNumePass(int numeroPass) throws Exception{
+        if (numeroPass <= 50 && numeroPass >=0 ) {
+            this.numeroPass = numeroPass; 
+         } else {
+            throw new Exception("O número máximo de passageiros é 50.");
+         }
+       
     }
 
     /* (non-Javadoc)
      * @see gerenciar.Veiculo#toString()
      */
     public String toString (){
-        return super.toString()+"Categoria: "+categoria+" internet:  "+internet+"Ar condicionado: "+ arC +" Número de passageiro"+ numeroPass;
+        return super.toString()+" Categoria: "+getCategoria()+" Internet:  "+getInternet()+" Ar condicionado: "+ getArC() +" Número de passageiro: "+ numeroPass;
     }
 }

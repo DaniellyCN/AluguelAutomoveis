@@ -1,10 +1,8 @@
 package gerenciar;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
-
+import Excecoes.PlacaInexistenteException;
 public class GerenciarVeiculo implements IVeiculos{
     
     List<Veiculo> listaV; // = new ArrayList<>();
@@ -29,27 +27,33 @@ public class GerenciarVeiculo implements IVeiculos{
      * @see IVeiculos#get(java.lang.String)
      */
     
-    public Veiculo get(String placa) {
+    public Veiculo get(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca().equals(placa)) {
                 return listaV.get(i);
             }
-        }  
-        return null;
+        } 
+        throw new PlacaInexistenteException(); 
+        
     }
 
    
+
+    public List <Veiculo> getLista(){ //////////////
+        return this.listaV;
+    }
     /* (non-Javadoc)
      * @see IVeiculos#getInfo(java.lang.String)
      */
 
-    public String getInfo(String placa) {
+    public String getInfo(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca().equals(placa)) {
                 return "Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
-        return null;
+        throw new PlacaInexistenteException();
+        
     }
 
     /* (non-Javadoc)
@@ -64,6 +68,14 @@ public class GerenciarVeiculo implements IVeiculos{
         return dados;
     } 
 
+    public int getQuantElementos() {
+        int quant = 0;
+        for(int i=0;i<listaV.size();i++){
+            quant++;
+        }
+        return quant;
+    }
+
     /* (non-Javadoc)
      * @see IVeiculos#getResumoInfo()
      */
@@ -73,7 +85,7 @@ public class GerenciarVeiculo implements IVeiculos{
         String dados = "";
         for(int i=0;i<listaV.size();i++){
             if(listaV.get(i) != null){
-                dados += "[ Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
+                dados += " Placa: "+listaV.get(i).getPlaca()+" Ano: "+listaV.get(i).getAno()+" Valor da diária: "+listaV.get(i).getValorD();
             }
         }
         return dados;
@@ -90,7 +102,7 @@ public class GerenciarVeiculo implements IVeiculos{
                 listaV.remove(i);
                 return true;
             }
-        }System.out.println("\n placa encontrada, a placa do carro é: "+ placa);
+        }
         return false;
     }
 
@@ -99,13 +111,13 @@ public class GerenciarVeiculo implements IVeiculos{
      * @see IVeiculos#existe(java.lang.String)
      */
     
-    public boolean existe(String placa) {
+    public boolean existe(String placa) throws PlacaInexistenteException{
         for(int i=0;i<listaV.size();i++){
             if (listaV.get(i).getPlaca().equals(placa)){ 
                 return true;
             }
         }
-        return false;
+        throw new PlacaInexistenteException();
     }
     
     /* (non-Javadoc)
