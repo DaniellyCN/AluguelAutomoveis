@@ -9,14 +9,14 @@ public class Veiculo{
 
     private String placa;
     private int ano;
-    private double valorDiaria;
+    private int valorDiaria;
     /**
      * Contrutor da classe veiculo com três param
      * @param placa
      * @param ano
      * @param valorDiaria
      */
-    public Veiculo(String placa, int ano, double valorDiaria){
+    public Veiculo(String placa, int ano, int valorDiaria){
         this.placa=placa;
         this.ano=ano;
         this.valorDiaria=valorDiaria;
@@ -32,15 +32,7 @@ public class Veiculo{
         this.valorDiaria=0;
     }
     
-    /**
-     * @param placa
-     * @param valorDiaria
-     */
-    public Veiculo(String placa, double valorDiaria){
-        this.placa=placa;
-        this.ano=0;
-        this.valorDiaria=valorDiaria;
-    }
+ 
     public Veiculo(){
         
     }
@@ -83,12 +75,12 @@ public class Veiculo{
     /**
      * @return double
      */
-    public double getValorD(){return valorDiaria;}
+    public int getValorD(){return valorDiaria;}
 
     /**
      * @param valorDiaria
      */
-    public void setValorD(double valorDiaria){this.valorDiaria=valorDiaria;}
+    public void setValorD(int valorDiaria){this.valorDiaria=valorDiaria;}
 
     @Override
     public String toString (){

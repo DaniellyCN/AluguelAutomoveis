@@ -85,7 +85,7 @@ public class GerenciarVeiculosConsole{
         do{   
             System.out.println("Informe o valor da diária: ");
             try {
-                carro.setValorD(entrada.nextDouble());
+                carro.setValorD(entrada.nextInt());
                 testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
@@ -109,7 +109,7 @@ public class GerenciarVeiculosConsole{
         do{   
             System.out.println("Informe a média de km: ");
             try {
-                carro.setMediaKm(entrada.nextDouble());
+                carro.setMediaKm(entrada.nextInt());
                 testCarro=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
@@ -176,7 +176,7 @@ public class GerenciarVeiculosConsole{
         do{   
             System.out.println("Informe o valor da diária: ");
             try {
-                onibus.setValorD(entrada.nextDouble());
+                onibus.setValorD(entrada.nextInt());
                 testOnibus=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");
@@ -262,7 +262,7 @@ public class GerenciarVeiculosConsole{
         do{   
             System.out.println("Informe o valor da diária: ");
             try {
-                caminhao.setValorD(entrada.nextDouble());
+                caminhao.setValorD(entrada.nextInt());
                 testCaminhao=false;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, insira um valor numérico");

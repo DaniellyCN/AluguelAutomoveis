@@ -3,8 +3,8 @@ import Excecoes.ArCondicionadoException;
 
 public class Carro extends Veiculo {
     protected boolean arC;
-    protected double mediaKm;
-    protected int numeroPass, numeroPorta;
+    protected int mediaKm;
+    protected int numeroPass, numeroPorta, arCint;
 
     /**
      * @param placa
@@ -13,7 +13,7 @@ public class Carro extends Veiculo {
      * @param numeroPass
      * @param numeroPorta
      */
-    public Carro(String placa, boolean arC, double mediaKm, int numeroPass, int numeroPorta) {
+    public Carro(String placa, boolean arC, int mediaKm, int numeroPass, int numeroPorta) {
         super(placa);
         this.arC= arC;
         this.mediaKm = mediaKm;
@@ -34,12 +34,16 @@ public class Carro extends Veiculo {
         }
         
     }
+    public int getArCint(){
+        return arCint;
+    }
+
 
     /**
      * @return media de km do carro
      */
 
-    public double getMediaKm() {
+    public int getMediaKm() {
         return mediaKm;
     }
 
@@ -61,9 +65,11 @@ public class Carro extends Veiculo {
         switch (arCondicionado) {
             case 1:
             arC = true;
+            arCint=1;
                 break;
             case 2:
             arC = false;
+            arCint=1;
                 break;
             default:
             throw new ArCondicionadoException();
@@ -73,7 +79,7 @@ public class Carro extends Veiculo {
     /**
      * @param mediaKm
      */
-    public void setMediaKm(double mediaKm) {
+    public void setMediaKm(int mediaKm) {
         this.mediaKm = mediaKm;
     }
 
