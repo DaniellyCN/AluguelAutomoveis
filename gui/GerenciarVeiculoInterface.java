@@ -19,8 +19,7 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     
     private GerenciarVeiculo gerenciarVeiculo;
     
-    DefaultTableModel modeloOnibus = new DefaultTableModel();
-    DefaultTableModel modeloCaminhao = new DefaultTableModel();
+    DefaultListModel modeloLista = new DefaultListModel();
     ArrayList<Carro> listaCarro;
     ArrayList<Onibus> listaOnibus;
     ArrayList<Caminhao> listaCaminhao;
@@ -29,9 +28,8 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     public GerenciarVeiculoInterface(GerenciarVeiculo gerenciarVeiculo) {
         initComponents();     
         this.gerenciarVeiculo= gerenciarVeiculo;     
-        
-        tblOnibus.setModel(modeloOnibus);
-        tblCaminhao.setModel(modeloCaminhao);
+      
+        lstVeiculos.setModel(modeloLista);
         
         listaCarro = new ArrayList();
         listaOnibus = new ArrayList();
@@ -43,88 +41,93 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     public void ManipularInterface(){
         switch(modo){
             case "Navegar":
-                btnSalvar.setEnabled(false);
-                btnCancelar.setEnabled(false);
+                btnSalvarCarro.setEnabled(false);
+                btnCancelarCarro.setEnabled(false);
                 txtPlaca.setEnabled(false);
                 txtAno.setEnabled(false);
                 txtDiaria.setEnabled(false);
-                txtAr.setEnabled(false);
                 txtKM.setEnabled(false);
-                txtNumPass.setEnabled(false);
-                txtNumPortas.setEnabled(false);
-                btnNovo.setEnabled(true);
+                btnNovoCarro.setEnabled(true);
                 btnEditarCarro.setEnabled(false);
-                btnExcluir.setEnabled(false);
+                btnExcluirCarro.setEnabled(false);
                 break;
             case "Novo":
-                btnSalvar.setEnabled(true);
-                btnCancelar.setEnabled(true);
+                btnSalvarCarro.setEnabled(true);
+                btnCancelarCarro.setEnabled(true);
                 txtPlaca.setEnabled(true);
                 txtAno.setEnabled(true);
                 txtDiaria.setEnabled(true);
-                txtAr.setEnabled(true);
                 txtKM.setEnabled(true);
-                txtNumPass.setEnabled(true);
-                txtNumPortas.setEnabled(true);
-                btnNovo.setEnabled(false);
+                btnNovoCarro.setEnabled(false);
                 btnEditarCarro.setEnabled(false);
-                btnExcluir.setEnabled(false);               
+                btnExcluirCarro.setEnabled(false);               
                 break;
             case "Editar":
-                btnSalvar.setEnabled(true);
-                btnCancelar.setEnabled(true);
+                btnSalvarCarro.setEnabled(true);
+                btnCancelarCarro.setEnabled(true);
                 txtPlaca.setEnabled(true);
                 txtAno.setEnabled(true);
                 txtDiaria.setEnabled(true);
-                txtAr.setEnabled(true);
                 txtKM.setEnabled(true);
-                txtNumPass.setEnabled(true);
-                txtNumPortas.setEnabled(true);
-                btnNovo.setEnabled(false);
+                btnNovoCarro.setEnabled(false);
                 btnEditarCarro.setEnabled(false);
-                btnExcluir.setEnabled(false);  
+                btnExcluirCarro.setEnabled(false);  
                 break;
             case "Excluir":
-                btnSalvar.setEnabled(false);
-                btnCancelar.setEnabled(false);
+                btnSalvarCarro.setEnabled(false);
+                btnCancelarCarro.setEnabled(false);
                 txtPlaca.setEnabled(false);
                 txtAno.setEnabled(false);
                 txtDiaria.setEnabled(false);
-                txtAr.setEnabled(false);
                 txtKM.setEnabled(false);
-                txtNumPass.setEnabled(false);
-                txtNumPortas.setEnabled(false);
-                btnNovo.setEnabled(true);
+                btnNovoCarro.setEnabled(true);
                 btnEditarCarro.setEnabled(false);
-                btnExcluir.setEnabled(false);  
+                btnExcluirCarro.setEnabled(false);  
                 break;
             case "Selecao":
-                    btnSalvar.setEnabled(false);
-                    btnCancelar.setEnabled(false);
-                    txtPlaca.setEnabled(false);
-                    txtAno.setEnabled(false);
-                    txtDiaria.setEnabled(false);
-                    txtAr.setEnabled(false);
-                    txtKM.setEnabled(false);
-                    txtNumPass.setEnabled(false);
-                    txtNumPortas.setEnabled(false);
-                    btnNovo.setEnabled(true);
-                    btnEditarCarro.setEnabled(true);
-                    btnExcluir.setEnabled(true);  
-                    break;
+                btnSalvarCarro.setEnabled(false);
+                btnCancelarCarro.setEnabled(false);
+                txtPlaca.setEnabled(false);
+                txtAno.setEnabled(false);
+                txtDiaria.setEnabled(false);
+                txtKM.setEnabled(false);
+                btnNovoCarro.setEnabled(true);
+                btnEditarCarro.setEnabled(true);
+                btnExcluirCarro.setEnabled(true);  
+                break;
         
         }
     }
   
     public void LoadTableCarro(){
-        DefaultTableModel modelo = new DefaultTableModel(new Object [] {"Placa","Ano", "Valor da Diária","Ar Cond.", "Km", "NºPassageiros", "NºPortas" },0);
+        DefaultTableModel modeloCarro = new DefaultTableModel(new Object [] {"Placa","Ano", "Valor da Diária","Ar Cond.", "Km", "NºPortas" , "NºPassageiros"},0);
 
             for(int i=0;i<listaCarro.size();i++){
                 Object linha []=new Object[]{listaCarro.get(i).getPlaca(),listaCarro.get(i).getAno(),listaCarro.get(i).getValorD(), listaCarro.get(i).getArC(), listaCarro.get(i).getMediaKm(), listaCarro.get(i).getNumePorta(), listaCarro.get(i).getNumePass()};
-                modelo.addRow(linha);
+                modeloCarro.addRow(linha);
             }// cuidado com a lista de carro
 
-            tblCarro.setModel(modelo);
+            tblCarro.setModel(modeloCarro);
+    }   
+    public void LoadTableOnibus(){
+        DefaultTableModel modeloOnibus = new DefaultTableModel(new Object [] {"Placa","Ano", "Valor da Diária", "Internet", "Ar Cond.", "Categoria" , "NºPassageiros"},0);
+
+            for(int i=0;i<listaOnibus.size();i++){
+                Object linha []=new Object[]{listaOnibus.get(i).getPlaca(),listaOnibus.get(i).getAno(),listaOnibus.get(i).getValorD(), listaOnibus.get(i).getInternet(), listaOnibus.get(i).getArC(), listaOnibus.get(i).getCategoria(), listaCarro.get(i).getNumePass()};
+                modeloOnibus.addRow(linha);
+            }// cuidado com a lista de bus
+
+            tblOnibus.setModel(modeloOnibus);
+    }
+    public void LoadTableCaminhao(){
+        DefaultTableModel modeloCaminhao = new DefaultTableModel(new Object [] {"Placa","Ano", "Valor da Diária","Ar Cond.", "Km", "NºPassageiros", "NºPortas" },0);
+
+            for(int i=0;i<listaCaminhao.size();i++){
+                Object linha []=new Object[]{listaCaminhao.get(i).getPlaca(),listaCaminhao.get(i).getAno(),listaCaminhao.get(i).getValorD(), listaCaminhao.get(i).getNumEixos(), listaCaminhao.get(i).getCargaMax()};
+                modeloCaminhao.addRow(linha);
+            }// cuidado com a lista de bus
+
+            tblCaminhao.setModel(modeloCaminhao);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,22 +148,22 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         txtPlaca = new javax.swing.JTextField();
         txtDiaria = new javax.swing.JTextField();
-        txtAr = new javax.swing.JTextField();
         txtKM = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtNumPass = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtAno = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtNumPortas = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        btnSalvar = new javax.swing.JButton();
+        btnSalvarCarro = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
+        btnCancelarCarro = new javax.swing.JButton();
+        opArCarro = new javax.swing.JComboBox<>();
+        opNumPortaCarro = new javax.swing.JComboBox<>();
+        opNumPassCarro = new javax.swing.JComboBox<>();
+        btnExcluirCarro = new javax.swing.JButton();
+        btnNovoCarro = new javax.swing.JButton();
         btnEditarCarro = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblCarro = new javax.swing.JTable();
@@ -168,15 +171,12 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblOnibus = new javax.swing.JTable();
         btnNovoOnibus = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
-        btnExcluir1 = new javax.swing.JButton();
+        btnEditarOnibus = new javax.swing.JButton();
+        btnExcluirOnibus = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         txtPlaca1 = new javax.swing.JTextField();
         txtDiaria1 = new javax.swing.JTextField();
-        txtAr1 = new javax.swing.JTextField();
-        txtInternet = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtNumPass1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtAno1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -186,13 +186,16 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        btnCancelar1 = new javax.swing.JButton();
+        btnCancelarOnibus = new javax.swing.JButton();
+        opArOnibus = new javax.swing.JComboBox<>();
+        opNumPassOnibus = new javax.swing.JComboBox<>();
+        opInternetOnibus = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblCaminhao = new javax.swing.JTable();
         btnNovoCaminhao = new javax.swing.JButton();
-        btnEditar2 = new javax.swing.JButton();
-        btnExcluir2 = new javax.swing.JButton();
+        btnEditarCaminhao = new javax.swing.JButton();
+        btnExcluirCaminhao = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         txtPlaca2 = new javax.swing.JTextField();
         txtDiaria2 = new javax.swing.JTextField();
@@ -205,7 +208,7 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         btnSalvarCaminhao = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        btnCancelar2 = new javax.swing.JButton();
+        btnCancelarCaminhao = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lstVeiculos = new javax.swing.JList<>();
         btnTodosVeiculos = new javax.swing.JButton();
@@ -256,12 +259,6 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             }
         });
 
-        txtAr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtArActionPerformed(evt);
-            }
-        });
-
         txtKM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtKMActionPerformed(evt);
@@ -270,12 +267,6 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Placa do carro:");
-
-        txtNumPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumPassActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Ano:");
@@ -289,19 +280,13 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Possui ar condicionado:");
 
-        txtNumPortas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumPortasActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Valor da diária:");
 
-        btnSalvar.setText("Salvar ");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarCarro.setText("Salvar ");
+        btnSalvarCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                btnSalvarCarroActionPerformed(evt);
             }
         });
 
@@ -314,12 +299,18 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Número de passageiros:");
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarCarro.setText("Cancelar");
+        btnCancelarCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnCancelarCarroActionPerformed(evt);
             }
         });
+
+        opArCarro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+
+        opNumPortaCarro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4 portas", "2 portas" }));
+
+        opNumPassCarro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -329,6 +320,10 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtKM, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,30 +332,26 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(opArCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(5, 5, 5)
+                        .addComponent(opNumPassCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarCarro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelarCarro))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAr, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtKM, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumPortas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumPass, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                        .addComponent(opNumPortaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(96, 198, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,7 +371,7 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtAr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opArCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -388,27 +379,27 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtNumPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opNumPortaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtNumPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnSalvarCarro)
+                    .addComponent(btnCancelarCarro)
+                    .addComponent(opNumPassCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        btnExcluir.setText("Excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluirCarro.setText("Excluir");
+        btnExcluirCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnExcluirCarroActionPerformed(evt);
             }
         });
 
-        btnNovo.setText("Novo");
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        btnNovoCarro.setText("Novo");
+        btnNovoCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                btnNovoCarroActionPerformed(evt);
             }
         });
 
@@ -439,18 +430,18 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNovoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(122, 122, 122)
                             .addComponent(btnEditarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(116, 116, 116)
-                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExcluirCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,9 +450,9 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluirCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNovo))
+                    .addComponent(btnNovoCarro))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -486,12 +477,12 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             }
         });
 
-        btnEditar1.setText("Editar");
+        btnEditarOnibus.setText("Editar");
 
-        btnExcluir1.setText("Excluir");
-        btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluirOnibus.setText("Excluir");
+        btnExcluirOnibus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluir1ActionPerformed(evt);
+                btnExcluirOnibusActionPerformed(evt);
             }
         });
 
@@ -509,26 +500,8 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             }
         });
 
-        txtAr1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAr1ActionPerformed(evt);
-            }
-        });
-
-        txtInternet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInternetActionPerformed(evt);
-            }
-        });
-
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Placa do ônibus:");
-
-        txtNumPass1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumPass1ActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Ano:");
@@ -567,12 +540,18 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Número de passageiros:");
 
-        btnCancelar1.setText("Cancelar");
-        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarOnibus.setText("Cancelar");
+        btnCancelarOnibus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar1ActionPerformed(evt);
+                btnCancelarOnibusActionPerformed(evt);
             }
         });
+
+        opArOnibus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+
+        opNumPassOnibus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50" }));
+
+        opInternetOnibus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -582,37 +561,37 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAno1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPlaca1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDiaria1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInternet, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(opNumPassOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvarOnibus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelar1))
+                        .addComponent(btnCancelarOnibus))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(opInternetOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAr1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(opArOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAno1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDiaria1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -633,11 +612,11 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(txtInternet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opInternetOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtAr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opArOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -645,10 +624,10 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(txtNumPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvarOnibus)
-                    .addComponent(btnCancelar1))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(btnCancelarOnibus)
+                    .addComponent(opNumPassOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -656,17 +635,17 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnNovoOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNovoOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditarOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)
-                        .addComponent(btnExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnExcluirOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -676,11 +655,11 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoOnibus)
-                    .addComponent(btnEditar1)
-                    .addComponent(btnExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditarOnibus)
+                    .addComponent(btnExcluirOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Ônibus", jPanel3);
@@ -702,12 +681,12 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             }
         });
 
-        btnEditar2.setText("Editar");
+        btnEditarCaminhao.setText("Editar");
 
-        btnExcluir2.setText("Excluir");
-        btnExcluir2.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluirCaminhao.setText("Excluir");
+        btnExcluirCaminhao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluir2ActionPerformed(evt);
+                btnExcluirCaminhaoActionPerformed(evt);
             }
         });
 
@@ -765,10 +744,10 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setText("Nº Eixos");
 
-        btnCancelar2.setText("Cancelar");
-        btnCancelar2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarCaminhao.setText("Cancelar");
+        btnCancelarCaminhao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar2ActionPerformed(evt);
+                btnCancelarCaminhaoActionPerformed(evt);
             }
         });
 
@@ -802,8 +781,8 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(btnSalvarCaminhao)
                         .addGap(40, 40, 40)
-                        .addComponent(btnCancelar2)))
-                .addContainerGap(214, Short.MAX_VALUE))
+                        .addComponent(btnCancelarCaminhao)))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -829,7 +808,7 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(txtCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvarCaminhao)
-                    .addComponent(btnCancelar2))
+                    .addComponent(btnCancelarCaminhao))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
 
@@ -838,19 +817,17 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addComponent(btnNovoCaminhao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(107, 107, 107)
-                        .addComponent(btnEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditarCaminhao, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExcluir2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(btnExcluirCaminhao, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -859,8 +836,8 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar2)
+                    .addComponent(btnExcluirCaminhao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditarCaminhao)
                     .addComponent(btnNovoCaminhao))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -880,12 +857,12 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(lstVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 7, Short.MAX_VALUE)
-                .addComponent(lstVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(230, 230, 230)
+                .addGap(254, 254, 254)
                 .addComponent(btnTodosVeiculos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -908,11 +885,11 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(jLabel1))
+                        .addGap(41, 41, 41)
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(235, 235, 235)
+                        .addComponent(jLabel1)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -938,27 +915,15 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDiariaActionPerformed
 
-    private void txtArActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtArActionPerformed
-
     private void txtKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKMActionPerformed
 
-    private void txtNumPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumPassActionPerformed
-
     private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnoActionPerformed
-
-    private void txtNumPortasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPortasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumPortasActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    //MÉTODOS DO CARRO
+    private void btnSalvarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCarroActionPerformed
  
             if(modo.equals("Novo")){
                 Carro carro = new Carro();
@@ -966,21 +931,41 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 String placa =txtPlaca.getText();
                 int ano = Integer.parseInt( txtAno.getText());
                 int diaria = Integer.parseInt(txtDiaria.getText());
-                int arC = Integer.parseInt(txtAr.getText());
+                String opArC = opArCarro.getSelectedItem().toString();
+                if(opArC == "Sim"){
+                    int arC = 1;
+                    carro.setArC(arC);
+                }else if(opArC == "Não"){
+                    int arC = 2;
+                    carro.setArC(arC);
+                }      
                 int km = Integer.parseInt(txtKM.getText());
-                int numPortas = Integer.parseInt(txtNumPortas.getText());
-                int numPass = Integer.parseInt(txtNumPass.getText());
+                String opNumPortas= opNumPortaCarro.getSelectedItem().toString();
+                if(opNumPortas == "4 portas"){
+                    int numPortas = 4;
+                    try {
+                        carro.setNumPorta(numPortas);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else if(opNumPortas == "2 portas"){
+                    int numPortas = 2;
+                    try {
+                        carro.setNumPorta(numPortas);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                //int numPass = Integer.parseInt(txtNumPass.getText());
+                int numPass= Integer.parseInt(opNumPassCarro.getSelectedItem().toString());
+               
 
                 carro.setPlaca(placa);
                 carro.setAno(ano);
-                carro.setValorD(diaria);
-                carro.setArC(arC);
+                carro.setValorD(diaria);    
                 carro.setMediaKm(km);
-                try {
-                    carro.setNumPorta(numPortas);
-                } catch (Exception ex) {
-                    Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
                 try {
                     carro.setNumePass(numPass);
                 } catch (Exception ex) {
@@ -990,20 +975,42 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
                 listaCarro.add(carro);
                 //JOptionPane.showMessageDialog(null, "Carro adicionado!");         
                 
-            }else if(modo.equals("Editar")){// parei no editar ta dando erro
+            }else if(modo.equals("Editar")){
                int index = tblCarro.getSelectedRow();
                listaCarro.get(index).setPlaca(txtPlaca.getText());
                listaCarro.get(index).setAno(Integer.parseInt(txtAno.getText()));
-               listaCarro.get(index).setValorD(Integer.parseInt(txtDiaria.getText()));
-               listaCarro.get(index).setArC(Integer.parseInt(txtAr.getText()));
+               listaCarro.get(index).setValorD(Integer.parseInt(txtDiaria.getText())); 
+               /////////////////////////////////
+               String opArC = opArCarro.getSelectedItem().toString();
+                if(opArC == "Sim"){
+                    int arC = 1;
+                    listaCarro.get(index).setArC(arC);
+                    
+                }else if(opArC == "Não"){
+                    int arC = 2;
+                    listaCarro.get(index).setArC(arC);
+                }   
                listaCarro.get(index).setMediaKm(Integer.parseInt(txtKM.getText()));
-                try {
-                    listaCarro.get(index).setNumPorta(Integer.parseInt(txtNumPortas.getText()));
-                } catch (Exception ex) {
-                    Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+               ////////////////////////////////////
+               String opNumPortas= opNumPortaCarro.getSelectedItem().toString();
+                if(opNumPortas == "4 portas"){
+                    int numPortas = 4;
+                    try {
+                        listaCarro.get(index).setNumPorta(numPortas);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else if(opNumPortas == "2 portas"){
+                    int numPortas = 2;
+                    try {
+                        listaCarro.get(index).setNumPorta(numPortas);
+                    } catch (Exception ex) {
+                        Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                //////////////////////////////////////////////////////////////
                 try {
-                    listaCarro.get(index).setNumePass(Integer.parseInt(txtNumPass.getText()));
+                    listaCarro.get(index).setNumePass(Integer.parseInt(opNumPassCarro.getSelectedItem().toString()));
                 } catch (Exception ex) {
                     Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1017,65 +1024,69 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             txtPlaca.setText("");
             txtAno.setText("");
             txtDiaria.setText("");
-            txtAr.setText("");
             txtKM.setText("");
-            txtNumPortas.setText("");
-            txtNumPass.setText("");
                  
             
             
         
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_btnSalvarCarroActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void btnExcluirCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCarroActionPerformed
+        int index = tblCarro.getSelectedRow();
         
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        if (index>=0 && index<listaCarro.size()){
+            listaCarro.remove(index);
+        }
+        LoadTableCarro();
+        modo="Navegar";
+        ManipularInterface();
+    }//GEN-LAST:event_btnExcluirCarroActionPerformed
+    
+    private void btnNovoCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCarroActionPerformed
        
         txtPlaca.setText("");
         txtAno.setText("");
         txtDiaria.setText("");
-        txtAr.setText("");
         txtKM.setText("");
-        txtNumPortas.setText("");
-        txtNumPass.setText("");
         modo="Novo";
         ManipularInterface();
-    }//GEN-LAST:event_btnNovoActionPerformed
-
+    }//GEN-LAST:event_btnNovoCarroActionPerformed
+    
     private void btnEditarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroActionPerformed
         modo="Editar";
         ManipularInterface();
     }//GEN-LAST:event_btnEditarCarroActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnCancelarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCarroActionPerformed
         txtPlaca.setText("");
         txtAno.setText("");
         txtDiaria.setText("");
-        txtAr.setText("");
         txtKM.setText("");
-        txtNumPortas.setText("");
-        txtNumPass.setText("");
         modo="Navegar";
         ManipularInterface();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarCarroActionPerformed
 
+    //MÉTODOS DO ONIBUS
     private void btnNovoOnibusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoOnibusActionPerformed
         txtPlaca1.setText("");
         txtAno1.setText("");
         txtDiaria1.setText("");
-        txtAr1.setText("");
-        txtInternet.setText("");
         txtCategoria.setText("");
-        txtNumPass.setText("");
         modo="Novo";
         ManipularInterface();
     }//GEN-LAST:event_btnNovoOnibusActionPerformed
 
-    private void btnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir1ActionPerformed
+    private void btnExcluirOnibusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirOnibusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluir1ActionPerformed
+        int index = tblOnibus.getSelectedRow();
+        
+        if (index>=0 && index<listaOnibus.size()){
+            listaOnibus.remove(index);
+        }
+        LoadTableOnibus();
+        modo="Navegar";
+        ManipularInterface();
+    }//GEN-LAST:event_btnExcluirOnibusActionPerformed
 
     private void txtPlaca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlaca1ActionPerformed
         // TODO add your handling code here:
@@ -1084,18 +1095,6 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     private void txtDiaria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaria1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDiaria1ActionPerformed
-
-    private void txtAr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAr1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAr1ActionPerformed
-
-    private void txtInternetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInternetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInternetActionPerformed
-
-    private void txtNumPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumPass1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumPass1ActionPerformed
 
     private void txtAno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAno1ActionPerformed
         // TODO add your handling code here:
@@ -1106,27 +1105,46 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void btnSalvarOnibusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarOnibusActionPerformed
-            Onibus onibus = new Onibus();// aqui
+            
+        if(modo.equals("Novo")){
+            Onibus onibus = new Onibus();
                 
             String placa =txtPlaca1.getText();
             int ano = Integer.parseInt( txtAno1.getText());
             int diaria = Integer.parseInt(txtDiaria1.getText());
-            int arC = Integer.parseInt(txtAr1.getText());
-            int internet = Integer.parseInt(txtInternet.getText());
+            String opArC = opArOnibus.getSelectedItem().toString();
+                if(opArC == "Sim"){
+                    int arC = 1;
+                    onibus.setArC(arC);
+                }else if(opArC == "Não"){
+                    int arC = 2;
+                    onibus.setArC(arC);
+                }    
+            String opInternet = opInternetOnibus.getSelectedItem().toString();
+                if(opInternet == "Sim"){
+                    int internet = 1;
+                        try {
+                            onibus.setInternet(internet);
+                        } catch (Exception ex) {
+                            Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }else if(opInternet == "Não"){
+                        int internet = 2;
+                        try {
+                            onibus.setInternet(internet);
+                        } catch (Exception ex) {
+                            Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                //PAREI NA CATEGORIA DO ONIBUS
             int categoria = Integer.parseInt(txtCategoria.getText());
-            int numPass = Integer.parseInt(txtNumPass1.getText());
+            int numPass= Integer.parseInt(opNumPassOnibus.getSelectedItem().toString());
 
             onibus.setPlaca(placa);
             onibus.setAno(ano);
             onibus.setValorD(diaria);
-            onibus.setArC(arC);
             try {
                 onibus.setCategoria(categoria);
-            } catch (Exception ex) {
-                Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                onibus.setInternet(internet);
             } catch (Exception ex) {
                 Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1138,39 +1156,54 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             gerenciarVeiculo.add(onibus);
             listaOnibus.add(onibus);
             
-            DefaultTableModel modeloOnibus = new DefaultTableModel(new Object [] {"Placa","Ano", "Valor da Diária", "Internet","Ar Cond.","Categoria" , "NºPassageiros" },0);
-      
-            for(int i=0;i<listaOnibus.size();i++){
-                Object linha []=new Object[]{listaOnibus.get(i).getPlaca(),listaOnibus.get(i).getAno(),listaOnibus.get(i).getValorD(),listaOnibus.get(i).getInternet(), listaOnibus.get(i).getArC(), listaOnibus.get(i).getCategoria(), listaOnibus.get(i).getNumePass()};
-                modeloOnibus.addRow(linha);
-            }// tem que arrumar mas valenndo
+        }else if (modo.equals("Editar")){
+            int index = tblOnibus.getSelectedRow();
+            listaOnibus.get(index).setPlaca(txtPlaca1.getText());
+            listaOnibus.get(index).setAno(Integer.parseInt(txtAno1.getText()));
+            listaOnibus.get(index).setValorD(Integer.parseInt(txtDiaria1.getText()));
+            String opArC = opArOnibus.getSelectedItem().toString();
+                if(opArC == "Sim"){
+                    int arC = 1;
+                    listaOnibus.get(index).setArC(arC);
+                    
+                }else if(opArC == "Não"){
+                    int arC = 2;
+                    listaOnibus.get(index).setArC(arC);
+                }
+            try {/////////
+                listaOnibus.get(index).setCategoria(Integer.parseInt(txtCategoria.getText()));
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+               listaCarro.get(index).setNumePass(Integer.parseInt(opNumPassCarro.getSelectedItem().toString()));
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciarVeiculoInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
-            tblOnibus.setModel(modeloOnibus);
-            JOptionPane.showMessageDialog(null, "Ônibus adicionado!");
+        LoadTableOnibus();
         
-            modo="Navegar";
-            ManipularInterface();
-            //limpar os campos
-            txtPlaca1.setText("");
-            txtAno1.setText("");
-            txtDiaria1.setText("");
-            txtAr1.setText("");
-            txtInternet.setText("");
-            txtCategoria.setText("");
-            txtNumPass1.setText("");
+        modo="Navegar";
+        ManipularInterface();
+        //limpar os campos
+        txtPlaca1.setText("");
+        txtAno1.setText("");
+        txtDiaria1.setText("");
+        txtCategoria.setText("");
     }//GEN-LAST:event_btnSalvarOnibusActionPerformed
 
-    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+    private void btnCancelarOnibusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarOnibusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar1ActionPerformed
+    }//GEN-LAST:event_btnCancelarOnibusActionPerformed
 
     private void btnNovoCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCaminhaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoCaminhaoActionPerformed
 
-    private void btnExcluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir2ActionPerformed
+    private void btnExcluirCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCaminhaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluir2ActionPerformed
+    }//GEN-LAST:event_btnExcluirCaminhaoActionPerformed
 
     private void txtPlaca2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlaca2ActionPerformed
         // TODO add your handling code here:
@@ -1231,17 +1264,17 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             txtCarga.setText("");
     }//GEN-LAST:event_btnSalvarCaminhaoActionPerformed
 
-    private void btnCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar2ActionPerformed
+    private void btnCancelarCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCaminhaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar2ActionPerformed
+    }//GEN-LAST:event_btnCancelarCaminhaoActionPerformed
 
     private void btnTodosVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosVeiculosActionPerformed
         // Mostrar todo os veículos
-        DefaultListModel todosV;
-        todosV = new DefaultListModel();
-        //lstVeiculos.addAll(gerenciarVeiculo.getInfo());
-        //lstVeiculos.setModel(gerenciarVeiculo.getInfo());
+        modeloLista.removeAllElements();
+        for(int i=0;i<listaCarro.size();i++){
+           modeloLista.addElement(listaCarro.get(i));
         
+        }
         
     }//GEN-LAST:event_btnTodosVeiculosActionPerformed
 
@@ -1254,10 +1287,7 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
             txtPlaca.setText(C.getPlaca());
             txtAno.setText(String.valueOf(C.getAno()));
             txtDiaria.setText(String.valueOf(C.getValorD()));
-            txtAr.setText(String.valueOf(C.getArCint()));
             txtKM.setText(String.valueOf(C.getMediaKm()));
-            txtNumPortas.setText(String.valueOf(C.getNumePorta()));
-            txtNumPass.setText(String.valueOf(C.getNumePass()));
             
             modo="Selecao";
             ManipularInterface();
@@ -1299,20 +1329,20 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCancelar1;
-    private javax.swing.JButton btnCancelar2;
-    private javax.swing.JButton btnEditar1;
-    private javax.swing.JButton btnEditar2;
+    private javax.swing.JButton btnCancelarCaminhao;
+    private javax.swing.JButton btnCancelarCarro;
+    private javax.swing.JButton btnCancelarOnibus;
+    private javax.swing.JButton btnEditarCaminhao;
     private javax.swing.JButton btnEditarCarro;
-    private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnExcluir1;
-    private javax.swing.JButton btnExcluir2;
-    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnEditarOnibus;
+    private javax.swing.JButton btnExcluirCaminhao;
+    private javax.swing.JButton btnExcluirCarro;
+    private javax.swing.JButton btnExcluirOnibus;
     private javax.swing.JButton btnNovoCaminhao;
+    private javax.swing.JButton btnNovoCarro;
     private javax.swing.JButton btnNovoOnibus;
-    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarCaminhao;
+    private javax.swing.JButton btnSalvarCarro;
     private javax.swing.JButton btnSalvarOnibus;
     private javax.swing.JButton btnTodosVeiculos;
     private javax.swing.JLabel jLabel1;
@@ -1351,25 +1381,25 @@ public class GerenciarVeiculoInterface extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JList<String> lstVeiculos;
+    private javax.swing.JComboBox<String> opArCarro;
+    private javax.swing.JComboBox<String> opArOnibus;
+    private javax.swing.JComboBox<String> opInternetOnibus;
+    private javax.swing.JComboBox<String> opNumPassCarro;
+    private javax.swing.JComboBox<String> opNumPassOnibus;
+    private javax.swing.JComboBox<String> opNumPortaCarro;
     private javax.swing.JTable tblCaminhao;
     private javax.swing.JTable tblCarro;
     private javax.swing.JTable tblOnibus;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtAno1;
     private javax.swing.JTextField txtAno2;
-    private javax.swing.JTextField txtAr;
-    private javax.swing.JTextField txtAr1;
     private javax.swing.JTextField txtCarga;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtDiaria;
     private javax.swing.JTextField txtDiaria1;
     private javax.swing.JTextField txtDiaria2;
-    private javax.swing.JTextField txtInternet;
     private javax.swing.JTextField txtKM;
     private javax.swing.JTextField txtNeixos;
-    private javax.swing.JTextField txtNumPass;
-    private javax.swing.JTextField txtNumPass1;
-    private javax.swing.JTextField txtNumPortas;
     private javax.swing.JTextField txtPlaca;
     private javax.swing.JTextField txtPlaca1;
     private javax.swing.JTextField txtPlaca2;
