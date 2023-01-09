@@ -18,7 +18,7 @@ public class Main {
        
        
 
-       MenuPrincipal menuPrincipal = new MenuPrincipal(new GerenciarLocacoes(locacoes), new GerenciarClientes(clientes), new GerenciarVeiculo(veiculos));
+       MenuPrincipal menuPrincipal = new MenuPrincipal(new GerenciarLocacoes(locacoes, clientes, veiculos), new GerenciarClientes(clientes), new GerenciarVeiculo(veiculos));
         
         //MenuPrincipal menuPrincipal = new MenuPrincipal(new GerenciarLocacoes(), new GerenciarClientes(), new GerenciarVeiculo());
         menuPrincipal.menuPrincipal();
