@@ -20,11 +20,15 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
     private GerenciarLocacoes gerenciarLocacoes;
     private GerenciarVeiculo gerenciarVeiculo;
     private int totalLocacoes;
-    
     DefaultTableModel modelo = new DefaultTableModel();
     private String dataInicialDiaAno;
 
     
+    /**
+     * @param gerenciarLocacoes
+     * comboBoxModel do cliente e do veículo.
+     * 
+     */
     public GerenciarLocacoesInterface(GerenciarLocacoes gerenciarLocacoes) {
         initComponents();
         this.gerenciarLocacoes = gerenciarLocacoes;
@@ -40,6 +44,10 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
     }
 
     
+
+    /**
+     * Preenche a tabela com informações.
+     */
     public void loadTableLocacoes(){
         DefaultTableModel novoModelo = new DefaultTableModel(new Object[] {"Código da locação ", "Cliente", "Placa do veículo", "Seguro", "Data inicial da locação", "Data final da locação"},0);
             
@@ -53,19 +61,24 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
                     gerenciarLocacoes.getListaLocacoes().get(i).getDataFinal()
                };
                novoModelo.addRow(linha);     
-                //System.out.println(gerenciarLocacoes.getListaLocacoes().get(i));
+              
         }
             
         this.modelo = novoModelo;
         tabelaLocacoes.setModel(modelo);
     }
     
-    
+    /*
+     * Gera o código da locação automático.
+     */
     public int codigo (){
         this.totalLocacoes++;
         return this.totalLocacoes;
         
     }
+    /*
+     * Define as informações para adicionar na lista.
+     */
     public void salvar(){
         Locacao locacao = new Locacao();
         locacao.setCodigoDaLocacao(codigo());
@@ -86,33 +99,21 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
         locacao.setCliente(cliente);
         locacao.setVeiculo(veiculo);
         locacao.setSeguro(seguro);
-        
-        
-       
-        
-        
-
+    
         String dataInicialLocacao = dataInicialDia+"/"+ dataInicialMes +"/"+dataInicialAno;
         locacao.setDataInicial(dataInicialLocacao);
         
         String dataFinalLocacao = dataFinalDia+"/"+ dataFinalMes +"/"+dataFinalAno;
         locacao.setDataFinal(dataFinalLocacao);
-        
-      
-        //System.out.println(cliente);
-        //System.out.println(veiculo);
-        
+    
         gerenciarLocacoes.add(locacao);
-           //System.out.println(gerenciarLocacoes.getListaLocacoes().size());
         loadTableLocacoes();
         }
     
-    public void excluir (java.awt.event.ActionEvent evt){
-          //Locacao locacao = new Locacao();
-          
-          
-        
-          
+        /*
+         * Excluir um cadastro da locação.
+         */
+        public void excluir (java.awt.event.ActionEvent evt){
             if(tabelaLocacoes.getSelectedRow() != -1){
             gerenciarLocacoes.remove(tabelaLocacoes.getSelectedRow());
             loadTableLocacoes();
@@ -122,19 +123,15 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
         }
           
    }
-    
-    
-   
-    
+    /*
+     * Editar uma informação do cadastro.
+     */
   public void editar(java.awt.event.ActionEvent evt){
     Locacao locacao = new Locacao();
     if(tabelaLocacoes.getSelectedRow() !=-1){
         
-      
         locacao.setCodigoDaLocacao(codigo());
-        
         Cliente cliente = (Cliente)comboBoxCliente.getSelectedItem();
-
         Veiculo veiculo = (Veiculo) comboBoxVeiculo.getSelectedItem();
         
         boolean seguro = checkboxSeguro.getState();
@@ -147,19 +144,15 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
         int dataFinalMes = Integer.parseInt( dataFinalLocacaoMes.getText());
         int dataFinalAno= Integer.parseInt( dataFinalLocacaoAno.getText());
         
-        //locacao.setCodigoDaLocacao(codigoDaLocacao);
         locacao.setCliente(cliente);
         locacao.setVeiculo(veiculo);
         locacao.setSeguro(seguro);
         
-        
         String dataInicialTESTE = dataInicialDia+"/"+ dataInicialMes +"/"+dataInicialAno;
-        
-        
+    
         locacao.setDataInicial(dataInicialTESTE);
         locacao.setDataInicial(dataInicialTESTE);
         locacao.setDataInicial(dataInicialTESTE);
-        
         
         String dataFinalTESTE = dataInicialDia+"/"+ dataInicialMes +"/"+dataInicialAno;
         
@@ -170,10 +163,8 @@ public class GerenciarLocacoesInterface extends javax.swing.JFrame {
         System.out.println(cliente);
         System.out.println(veiculo);
         
-        
         gerenciarLocacoes.getListaDeLocacoes().set(tabelaLocacoes.getSelectedRow(),locacao);
      
-        
             loadTableLocacoes();
             JOptionPane.showMessageDialog(null, "atualizado");
             

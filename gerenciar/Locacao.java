@@ -3,10 +3,6 @@ package gerenciar;
 import Excecoes.SeguroException;
 import javax.swing.JTextField;
 
-//import java.util.InputMismatchException;
-
-//import javax.xml.catalog.Catalog;
-
 /*
  * Classe locação
  */
@@ -79,9 +75,6 @@ public class Locacao{
     /**
      * @return seguro
      */
-    //public boolean getSeguro() {
-       // return seguro;
-   // }
 
     public String getSeguro() {
         if (seguro == true) {
@@ -91,9 +84,6 @@ public class Locacao{
         }
 
     }
-
-
-
 
      /**
      * @param seguro
@@ -111,15 +101,6 @@ public class Locacao{
             default:
             throw new SeguroException();
         }
-        //boolean arC;
-        //i//f(seguro.toLowerCase().equals("sim")){
-            //arC = true;
-        //}else{
-           // arC = false;
-        //}
-       
-       // setSeguro(arC);
-
     }
     /**
      * @param seguro

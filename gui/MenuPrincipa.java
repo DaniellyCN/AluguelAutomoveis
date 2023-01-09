@@ -112,7 +112,7 @@ public class MenuPrincipa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /*
-     * métodos para abrir a interface.
+     * métodos para abrir a interface gráfica.
      */
     private void addVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVeiculoActionPerformed
         GerenciarVeiculoInterface gerenciarVeiculoInterface = new GerenciarVeiculoInterface(gerenciarVeiculo);
@@ -175,8 +175,8 @@ public class MenuPrincipa extends javax.swing.JFrame {
                 
                 //codigo  que tem que comentar  
                 
-                //Cliente cliente = new Cliente("Milena", 123123,123123,"rua teste", 123, "bairro teste", "Alegrete", 123123, 123123);
-               // clientes.add(cliente);
+                Cliente cliente = new Cliente("Milena", 123123,123123,"rua teste", 123, "bairro teste", "Alegrete", 123123, 123123);
+                clientes.add(cliente);
                 
                 
                // Cliente = new Cliente("Milena", 12,123123,"rua teste dois", 1235678, "bairro testedois", "Alegrete", 189898, 1121212);
