@@ -52,7 +52,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
     }
 
 
-    /// falta aqui 
+    
     public String getInfo( int codigo){
         for(int i = 0; i<listaDeLocacoes.size();i++){
             listaDeLocacoes.get(i);
@@ -105,7 +105,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
     public boolean existe(int codigo){
         if(listaDeLocacoes.size()<1){
             
-            throw new RuntimeException(""); 
+            throw new RuntimeException("não existe"); 
         }
        for(int i =0; i<listaDeLocacoes.size();i++){
         listaDeLocacoes.get(i);
