@@ -37,12 +37,12 @@ public class Onibus extends Veiculo {
      * @return categoria
      */
     public String getCategoria () {//(leito, executivo ou convencional)
-        if (categoria == "leito") {
-            return "leito";
-        } else if (categoria == "executivo") {
-            return "executivo";
-        }else if (categoria == "convencional"){
-            return "convencional";
+        if (categoria == "Leito") {
+            return "Leito";
+        } else if (categoria == "Executivo") {
+            return "Executivo";
+        }else if (categoria == "Convencional"){
+            return "Convencional";
         }else{
             return " ";
         }
@@ -111,16 +111,16 @@ public class Onibus extends Veiculo {
     /**
      * @param categoria
      */
-    public void setCategoria(int cat) throws Exception{
+    public void setCategoria(String cat) throws Exception{
         switch (cat) {
-            case 1:
-             categoria = "leito" ;  
+            case "Leito":
+             categoria = "Leito" ;  
                 break;
-            case 2:
-            categoria = "executivo" ;   
+            case "Executivo":
+            categoria = "Executivo" ;   
                 break;
-            case 3:
-            categoria = "convencional" ;    
+            case "Convencional":
+            categoria = "Convencional" ;    
                 break;
             default:
             throw new Exception("Insira uma opção válida (1)Leito (2)Executivo (3)Convencional");
