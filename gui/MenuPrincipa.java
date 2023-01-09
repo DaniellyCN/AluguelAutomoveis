@@ -21,7 +21,6 @@ public class MenuPrincipa extends javax.swing.JFrame {
         this.gerenciarVeiculo= gerenciarVeiculo;
         
     }
- 
     
     //////////////////////////////////////////////////////////////////////
 

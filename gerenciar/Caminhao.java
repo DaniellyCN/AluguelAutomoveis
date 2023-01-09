@@ -33,7 +33,7 @@ public class Caminhao extends Veiculo{
     /**
      * @param cargaMax
      */
-    public void seCargaMax(int cargaMax){this.cargaMax=cargaMax;}
+    public void setCargaMax(int cargaMax){this.cargaMax=cargaMax;}
 
 
     /* (non-Javadoc)
