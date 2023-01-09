@@ -1,6 +1,6 @@
 package gui;
+import gerenciar.Caminhao;
 import gerenciar.Cliente;
-import java.util.Scanner;
 import gerenciar.GerenciarClientes;
 import gerenciar.GerenciarLocacoes;
 import gerenciar.GerenciarVeiculo;
@@ -8,19 +8,24 @@ import gerenciar.Locacao;
 import gerenciar.Veiculo;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MenuPrincipa extends javax.swing.JFrame {
     private GerenciarVeiculo gerenciarVeiculo;
-    //private GerenciarClientes gerenciarCliente;
-    //private GerenciarLocacoes gerenciarLocacoes;
+    private GerenciarLocacoes gerenciarLocacoes;
+    private GerenciarClientes gerenciarClientes;
+
     
     
     public MenuPrincipa(GerenciarLocacoes gerenciarLocacoes, GerenciarClientes gerenciarClientes, GerenciarVeiculo gerenciarVeiculo) {
         initComponents();
         this.gerenciarVeiculo= gerenciarVeiculo;
+        this.gerenciarLocacoes = gerenciarLocacoes;
+        this.gerenciarClientes = gerenciarClientes;
         
     }
+ 
     
     //////////////////////////////////////////////////////////////////////
 
@@ -106,18 +111,31 @@ public class MenuPrincipa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * métodos para abrir a interface.
+     */
     private void addVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVeiculoActionPerformed
         GerenciarVeiculoInterface gerenciarVeiculoInterface = new GerenciarVeiculoInterface(gerenciarVeiculo);
         gerenciarVeiculoInterface.setVisible(true);
     }//GEN-LAST:event_addVeiculoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+     ClienteInterfaceGrafica gerenciarClientes = new ClienteInterfaceGrafica();
+     gerenciarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+       GerenciarLocacoesInterface gerenciarLocacoesInterface = new GerenciarLocacoesInterface (gerenciarLocacoes);
+       
+       
+       if(gerenciarLocacoes.getListaClientes().isEmpty()|| gerenciarLocacoes.getListaVeiculos().isEmpty()){
+         JOptionPane.showMessageDialog(null, "atenção: Não existe veículos ou clientes cadastrados!");
+       }else{ gerenciarLocacoesInterface.setVisible(true);}
+      
+      
+      //gerenciarLocacoesInterface.setVisible(true);
+       
+    }
 
     /**
      * @param args the command line arguments
@@ -154,7 +172,27 @@ public class MenuPrincipa extends javax.swing.JFrame {
                 List<Cliente> clientes = new ArrayList<>();
                 List<Locacao> locacoes = new ArrayList<>();
                 
-                new MenuPrincipa(new GerenciarLocacoes(locacoes), new GerenciarClientes(clientes), new GerenciarVeiculo(veiculos)).setVisible(true);
+                
+                //codigo  que tem que comentar  
+                
+                //Cliente cliente = new Cliente("Milena", 123123,123123,"rua teste", 123, "bairro teste", "Alegrete", 123123, 123123);
+               // clientes.add(cliente);
+                
+                
+               // Cliente = new Cliente("Milena", 12,123123,"rua teste dois", 1235678, "bairro testedois", "Alegrete", 189898, 1121212);
+                //clientes.add(cliente);
+                
+                
+               //Veiculo meuCaminhao = new Caminhao("12345",6, 100);
+                //meuCaminhao.setAno(2023);
+                //meuCaminhao.setValorD(200);
+                
+               //veiculos.add(meuCaminhao);
+                
+                //locacoes.add(new Locacao(cliente,meuCaminhao,true, "07/08/2023","10/08/2023"));
+                
+                
+                new MenuPrincipa(new GerenciarLocacoes(locacoes, clientes, veiculos), new GerenciarClientes(clientes), new GerenciarVeiculo(veiculos)).setVisible(true);
                 
             }
         });
