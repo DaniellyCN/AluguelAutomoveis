@@ -1,6 +1,7 @@
 package gerenciar;
 
 import Excecoes.SeguroException;
+import javax.swing.JTextField;
 
 //import java.util.InputMismatchException;
 
@@ -156,5 +157,17 @@ public class Locacao{
     public String toString (){
         return "Código da locação: "+codigoDaLocacao+ "Cliente"+cliente+"Veículo"+veiculo + "Seguro: "+seguro+ "Data inicial da locação: "+dataInicial+"Data final da locação: "+dataFinal;
       
+    }
+
+    public void setDataInicial(JTextField dataInicialLocacaoMes) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setDataInicial(int dataInicialAno) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setDataFinal(int dataFinalDia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

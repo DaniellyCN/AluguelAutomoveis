@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public  class  GerenciarLocacoes implements ILocacoes{
     private List <Locacao> listaDeLocacoes;
+    private List <Veiculo> listaVeiculos;
+    private List <Cliente> listaClientes;
   
     /**
      * Lista de locações
@@ -20,8 +22,10 @@ public  class  GerenciarLocacoes implements ILocacoes{
         listaDeLocacoes = new ArrayList<>();
     }
 
-    public GerenciarLocacoes (List<Locacao> listaLocacoes){
+    public GerenciarLocacoes (List<Locacao> listaLocacoes, List<Cliente> listaClientes, List<Veiculo> listaVeiculos ){
         this.listaDeLocacoes = listaLocacoes;
+        this.listaVeiculos = listaVeiculos;
+        this.listaClientes = listaClientes;
     }
 
     /* (non-Javadoc)
@@ -52,7 +56,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
     }
 
 
-    
+     
     public String getInfo( int codigo){
         for(int i = 0; i<listaDeLocacoes.size();i++){
             listaDeLocacoes.get(i);
@@ -82,15 +86,24 @@ public  class  GerenciarLocacoes implements ILocacoes{
         
     }
     
+    
+    public List <Locacao> getListaLocacoes(){ ////////////// Add
+        return this.listaDeLocacoes;
+    }
+    
+    public int getQuantElementos() { ///////////// Add
+        int quant = 0;
+       for(int i=0;i<listaDeLocacoes.size();i++){
+            quant++;
+        }
+        return quant;
+    }
 
-    /* (non-Javadoc)
-     * @see gerenciar.ILocacoes#remove(int)
-     */
-   /* */ public boolean remove(int codigo){
+    public boolean remove(int codigo){
 
         if(listaDeLocacoes.size()<1){
             
-            throw new RuntimeException("nao foi possveil deletar "); 
+            throw new RuntimeException("Não foi possível deletar "); 
         }
         for(int i= 0; i<listaDeLocacoes.size();i++){
             listaDeLocacoes.get(i);
@@ -105,7 +118,7 @@ public  class  GerenciarLocacoes implements ILocacoes{
     public boolean existe(int codigo){
         if(listaDeLocacoes.size()<1){
             
-            throw new RuntimeException("não existe"); 
+            throw new RuntimeException(""); 
         }
        for(int i =0; i<listaDeLocacoes.size();i++){
         listaDeLocacoes.get(i);
@@ -127,5 +140,36 @@ public  class  GerenciarLocacoes implements ILocacoes{
         }
         return dados;
      }
+
+    public List<Locacao> getListaDeLocacoes() {
+        return listaDeLocacoes;
+    }
+
+    public void setListaDeLocacoes(List<Locacao> listaDeLocacoes) {
+        this.listaDeLocacoes = listaDeLocacoes;
+    }
+
+    public List<Veiculo> getListaVeiculos() {
+        return listaVeiculos;
+    }
+
+    public void setListaVeiculos(List<Veiculo> listaVeiculos) {
+        this.listaVeiculos = listaVeiculos;
+    }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+        
+   
+    }
+    
+    
+    
+    
     
 }
+
