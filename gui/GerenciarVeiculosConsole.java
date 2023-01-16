@@ -16,6 +16,13 @@ public class GerenciarVeiculosConsole{
 
     private GerenciarVeiculo gerenciarVeiculo;
 
+    
+    
+    
+    
+    
+    
+    
 
     Scanner entrada = new Scanner(System.in);
 
