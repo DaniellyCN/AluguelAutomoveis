@@ -28,6 +28,8 @@ public class GerenciarVeiculosConsole{
     
     
     
+    
+    
 
     Scanner entrada = new Scanner(System.in);
 
